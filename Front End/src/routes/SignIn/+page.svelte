@@ -47,5 +47,5 @@ password = event.target.value
 <button>Click here to proceed</button>
 </form>
 
-<a href="/SignUp"><button>Click here to SignUp</button></a>
+<a href="/SignUp"><button>Click here to SignUp  </button></a>
 <p>{errorMessage}</p>

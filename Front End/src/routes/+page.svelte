@@ -1,11 +1,10 @@
 <script>
   import SignUp from "./SignUp/+page.svelte";
   import SignIn from "./SignIn/+page.svelte";
-  import { Router, Route, Link } from "svelte-navigator";
+  import { Router, Link, Route } from "svelte-routing";
   import Navbar from "../lib/navbar.svelte";
-
-  export const informationArray = [];
-  let SignState = "";
+  export const name = "Hello";
+  export let url = "";
 </script>
 
 <Router {url}>
