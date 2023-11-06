@@ -7,6 +7,7 @@
 </script>
 <Router {url}>
 <div>
+  <Navbar />
 <p>Please click one of the below to continue</p>
 <a href="/SignUp"><button>Sign Up</button></a>
 <a href="/SignIn"><button>Log In</button></a>
