@@ -1,5 +1,5 @@
 <script>
-    import {data} from '../../lib/store'
+   import {data} from '../../lib/store'
    import { navigate } from 'svelte-routing'; 
    import { MyUser } from '../../lib/store';
     let username=""
@@ -28,7 +28,6 @@
         }
 
     }
-    console.log(dataValue)
 </script>
 
 <h2>Sign In</h2>
