@@ -1,10 +1,11 @@
 <script>
-
   import { MyUser } from "../../lib/store";
+  import Navbar from "../../lib/navbar.svelte";
   let user;
-  MyUser.subscribe((value) =>{
-        user = value
-    })
-
+  MyUser.subscribe((value) => {
+    user = value;
+  });
 </script>
-<h1>here {user}</h1>
+
+<Navbar />
+<h1>Hello {user}</h1>
