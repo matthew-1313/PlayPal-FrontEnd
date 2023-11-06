@@ -1,6 +1,7 @@
 <script>
     import {data} from '../../lib/store'
-    import { goto } from '$app/navigation';
+   import { navigate } from 'svelte-routing'; 
+   import { MyUser } from '../../lib/store';
     let username=""
     let password=""
     let signedIn = ""
@@ -18,7 +19,8 @@
             if (username === dataValue[i].username && password === dataValue[i].password){
                 signedIn = username
                 isHere = true
-                alert("You are signed in")
+                $MyUser = dataValue[i].username
+                navigate('/NavPage')
             }
         }
         if (isHere){
