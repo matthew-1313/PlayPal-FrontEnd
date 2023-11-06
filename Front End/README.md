@@ -1,6 +1,4 @@
-this is a test!  
-
-This is a test by Emory for a straight push to main with no approval.
+this is a test!
 
 # create-svelte
 
