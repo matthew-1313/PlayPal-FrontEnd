@@ -1,11 +1,16 @@
 <script>
     import { passwordStrength } from 'check-password-strength'
+    import {data} from '../../lib/store'
     let show_password = false
     $: type = show_password ? 'text' : 'password'
+    const addToArray = () => {
+		$data = [...$data, { username : username, password : password}];
+    }
     let username = ""
     let password = ""
     let checkPassword = ""
     let errorMessage = ""
+    let correctMessage = ""
     $:if (username.length > 0) {
 		errorMessage = ""
 	}
@@ -20,10 +25,12 @@
             errorMessage = `Your password strength is currently ${myPassword.value}! Please make this stronger by adding more numbers or special characters`
         }else{
             errorMessage = ""
+            correctMessage = "this has now been added to the DB"
+            addToArray()
         }
     }
 </script>
-<h2>Fill in the details below</h2>
+<h2>Sign Up Below:</h2>
 <form on:submit={submitChecker} id="fillForm">
     <label for="username">Please enter username here     
         <input on:change={(event) =>{
@@ -46,3 +53,4 @@
 </form>
 <a href="/SignIn">Click to Log in</a>
 <p>{errorMessage}</p>
+<p>{correctMessage}</p>
