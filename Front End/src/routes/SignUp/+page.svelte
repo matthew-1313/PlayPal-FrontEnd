@@ -51,6 +51,6 @@
     <button type="button" on:click="{ () => show_password = !show_password }">{show_password ? 'Hide passwords' : 'Show passwords'}</button>
     <button>Click here to proceed</button>
 </form>
-<a href="/SignIn">Click to Log in</a>
+<button><a href="/SignIn">Click to Log in</a></button>
 <p>{errorMessage}</p>
 <p>{correctMessage}</p>

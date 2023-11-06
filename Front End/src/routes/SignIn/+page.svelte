@@ -1,6 +1,7 @@
 <script>
     import {data} from '../../lib/store'
-    import { goto } from '$app/navigation';
+   import { navigate } from 'svelte-routing'; 
+   import { MyUser } from '../../lib/store';
     let username=""
     let password=""
     let signedIn = ""
@@ -18,10 +19,11 @@
             if (username === dataValue[i].username && password === dataValue[i].password){
                 signedIn = username
                 isHere = true
-                alert("You are signed in")
+                $MyUser = dataValue[i].username
+                navigate('/NavPage')
             }
         }
-        if (isHere){
+        if (!isHere){
             errorMessage="Incorrect Details given"
         }
 
@@ -45,5 +47,5 @@ password = event.target.value
 <button>Click here to proceed</button>
 </form>
 
-<a href="/"><button>Click here to go Back</button></a>
+<a href="/SignUp"><button>Click here to SignUp</button></a>
 <p>{errorMessage}</p>
