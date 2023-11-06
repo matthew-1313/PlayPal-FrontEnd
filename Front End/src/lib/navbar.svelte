@@ -1,10 +1,10 @@
 <script>
     import Home from "../routes/Home/+page.svelte"
     import Profile from "../routes/Profile/+page.svelte"
-    import Calendar from "../routes/main/Calendar/+page.svelte"
+    import Calendar from "../routes/Calendar/+page.svelte"
     import Friends from "../routes/Friends/+page.svelte"
     import Games from '../routes/Games/+page.svelte'
-    import Messages from '../routes/main/Messages/+page.svelte'
+    import Messages from '../routes/Messages/+page.svelte'
 
     export let menu = 1
 </script>
