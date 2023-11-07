@@ -40,7 +40,6 @@ onMount(async() =>{
    
 })
 </script>
-
 <h1>This is the Games page</h1>
 <p></p>
 {#if !isLoading}

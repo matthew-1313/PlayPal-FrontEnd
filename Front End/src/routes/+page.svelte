@@ -1,10 +1,12 @@
 <script>
   import SignUp from "./SignUp/+page.svelte";
-  import SignIn from "./SignIn/+page.svelte"
+  import SignIn from "./SignIn/+page.svelte";
   import { Router, Link, Route } from "svelte-routing";
-  export const name = "Hello"
+  import Navbar from "../lib/navbar.svelte";
+  export const name = "Hello";
   export let url = "";
 </script>
+
 <Router {url}>
 <div>
 <p>Please click one of the below to continue</p>
@@ -16,6 +18,3 @@
 </div>
 </div>
 </Router>
-
-
-
