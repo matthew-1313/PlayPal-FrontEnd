@@ -5,7 +5,7 @@ const RawgApi = axios.create({
 });
 
 export const getGameById = (gameId) => {
-  return RawgApi.get("/games/gameIdkey=0c4bd7b594bf43a69030cea65b605923").then(
+  return RawgApi.get(`/games/${gameId}key=0c4bd7b594bf43a69030cea65b605923`).then(
     ({ game }) => {
       console.log(game);
       let singleGameObj = {
