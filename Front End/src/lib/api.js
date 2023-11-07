@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios";
 const RawgApi = axios.create({
-    baseURL : "https://api.rawg.io/api"
-})
+  baseURL: "https://api.rawg.io/api",
+});
 
 const condenseArray = (array) =>{
     let answer = ""
@@ -96,3 +96,48 @@ export const gamesSearch = (userInput) =>{
     return err.response.status
 })
 }
+
+export const getAllGames = () => {
+    const gamesArray = [];
+    return RawgApi.get(`/games?key=0c4bd7b594bf43a69030cea65b605923`)
+      .then(({ data }) => {
+        const myResults = data.results;
+        let gamesObject = {};
+        for (let i = 0; i < myResults.length; i++) {
+          gamesObject = {};
+          gamesObject.id = myResults[i].id;
+          gamesObject.name = myResults[i].name;
+          gamesObject.released = myResults[i].released;
+          gamesObject.image = myResults[i].background_image;
+          gamesObject.metacritic = myResults[i].metacritic;
+          gamesObject.genres = myResults[i].genres;
+          gamesArray.push(gamesObject);
+        }
+        return gamesArray;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
+
+export const getGameById = (gameId) => {
+    console.log(gameId)
+    return RawgApi.get(`/games/${gameId}?key=0c4bd7b594bf43a69030cea65b605923`).then(
+      ({data}) => {
+        console.log(data);
+        let singleGameObj = {
+          id: data.id,
+          name: data.name,
+          released: data.released,
+          image: data.image,
+          metacritic: data.metacritic,
+          genres: data.genres,
+          platforms: data.platforms,
+          esrb_rating: data.esrb_rating,
+          description: data.description,
+          website: data.website,
+        };
+        return singleGameObj;
+      }
+    );
+  };
