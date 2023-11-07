@@ -45,6 +45,7 @@ onMount(async() =>{
 <p></p>
 {#if !isLoading}
 <main>
+    <label>Search by Genre for the most popular metacritic games:
   <select bind:value={currentId} on:change={(event) =>{
         event.preventDefault()
         topic = event.target.value.toLowerCase()
@@ -53,22 +54,25 @@ onMount(async() =>{
         changeTopic()
 
     }}>
-        {#each $gameCategories as category}
+        <option value="" disabled selected>Select your option</option>        
+    {#each $gameCategories as category}
         <option value={category.id} key={category.name}>{category.name}</option>
         {/each}
     </select>
-    <ul>
+    <ol>
         {#each $gamesSortedData as game}
         <div id="gamesDiv">
         <li>Name :{game.name}</li>
-        <li>Genre: {game.genre}</li>
-        <li>Released: {game.released}</li>
-        <li>metacritic: {game.metacritic}</li>
+        <p>Genre: {game.genre}</p>
+        <p>Released: {game.released}</p>
+        <p>metacritic: {game.metacritic}</p>
         <img alt="imageOf{game.name}" src={game.image}/>
+        <p>Click here to view the game</p>
     </div>
         {/each}
         <br>
-    </ul>
+</ol>
+</label>
 </main>
 {:else}
 <div>
