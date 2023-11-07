@@ -1,4 +1,5 @@
 <script>
+
   import { MyUser } from "../../lib/store";
   import Navbar from "../../lib/navbar.svelte";
   let user;
@@ -6,6 +7,6 @@
     user = value;
   });
 </script>
+<h1>Hi {user}</h1>
+<Navbar/>
 
-<Navbar />
-<h1>Hello {user}</h1>
