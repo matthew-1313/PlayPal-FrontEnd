@@ -2,6 +2,7 @@
   import SignUp from "./SignUp/+page.svelte";
   import SignIn from "./SignIn/+page.svelte";
   import Games from "./Games/+page.svelte";
+  import Home from "./Home/+page.svelte"
   import SingleGamePage from "./SingleGamePage/+page.svelte";
   import gameId from "./Games/[gameId]/+page.svelte";
   import { Router, Link, Route } from "svelte-routing";
@@ -18,6 +19,7 @@
     <div>
       <Route path="/SignUp" component={SignUp} />
       <Route path="/SignIn" component={SignIn} />
+      <Route path="/Home" component={Home} />
       <Route path="/Games" component={Games} />
       <Route path="/Games/[gameId]" component={gameId} />
     </div>
