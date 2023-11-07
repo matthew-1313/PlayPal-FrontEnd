@@ -1,9 +1,5 @@
 <script>
-  import { onMount } from "svelte";
-  import { gamesDataHome } from "./store";
-  import testGamesApiResponse from "../db/test/games_test.json";
   import { getAllGames } from "../lib/api";
-  import SingleGamePage from "../routes/SingleGamePage/+page.svelte";
 
   async function fetchData() {
     const res = await getAllGames();

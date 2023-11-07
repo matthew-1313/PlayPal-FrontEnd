@@ -2,8 +2,7 @@
   import SignUp from "./SignUp/+page.svelte";
   import SignIn from "./SignIn/+page.svelte";
   import Games from "./Games/+page.svelte";
-  import Home from "./Home/+page.svelte"
-  import SingleGamePage from "./SingleGamePage/+page.svelte";
+  import Home from "./Home/+page.svelte";
   import gameId from "./Games/[gameId]/+page.svelte";
   import { Router, Link, Route } from "svelte-routing";
   import Navbar from "../lib/navbar.svelte";
