@@ -1,5 +1,6 @@
 <script>
 import {getGames,getAllGenres} from '../../lib/api'
+  import Navbar from '../../lib/navbar.svelte';
 import { gamesSortedData,gameCategories } from '../../lib/store';
 import { onMount } from 'svelte';
 let topic = "action"
@@ -40,8 +41,8 @@ onMount(async() =>{
    
 })
 </script>
+<Navbar/>
 <h1>This is the Games page</h1>
-<p></p>
 {#if !isLoading}
 <main>
     <label>Search by Genre for the most popular metacritic games:
