@@ -1,36 +1,33 @@
 <script>
-  import { data } from "../../lib/store";
-  import { navigate } from "svelte-routing";
-  import { MyUser } from "../../lib/store";
-  let username = "";
-  let password = "";
-  let signedIn = "";
-  let errorMessage = "";
-  let dataValue;
-  data.subscribe((value) => {
-    dataValue = value;
-  });
-  let show_password = false;
-  $: type = show_password ? "text" : "password";
-  function CheckWithArray() {
-    errorMessage = "";
-    let isHere = false;
-    for (let i = 0; i < dataValue.length; i++) {
-      if (
-        username === dataValue[i].username &&
-        password === dataValue[i].password
-      ) {
-        signedIn = username;
-        isHere = true;
-        $MyUser = dataValue[i].username;
-        navigate("/Home");
-      }
+   import {data} from '../../lib/store'
+   import { navigate } from 'svelte-routing'; 
+   import { MyUser } from '../../lib/store';
+    let username=""
+    let password=""
+    let signedIn = ""
+    let errorMessage=""
+    let dataValue;
+    data.subscribe((value) =>{
+        dataValue = value
+    })
+    let show_password = false
+    $: type = show_password ? 'text' : 'password'
+    function CheckWithArray(){
+        errorMessage=""
+        let isHere = false
+        for (let i = 0; i < dataValue.length;i++){
+            if (username === dataValue[i].username && password === dataValue[i].password){
+                signedIn = username
+                isHere = true
+                $MyUser = dataValue[i].username
+                navigate('/NavPage')
+            }
+        }
+        if (!isHere){
+            errorMessage="Incorrect Details given"
+        }
+
     }
-    if (!isHere) {
-      errorMessage = "Incorrect Details given";
-    }
-  }
-  console.log(dataValue);
 </script>
 
 <h2>Sign In</h2>

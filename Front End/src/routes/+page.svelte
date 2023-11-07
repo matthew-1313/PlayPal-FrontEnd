@@ -8,14 +8,13 @@
 </script>
 
 <Router {url}>
-  <div>
-    <Navbar />
-    <p>Please click one of the below to continue</p>
-    <a href="/SignUp"><button>Sign Up</button></a>
-    <a href="/SignIn"><button>Log In</button></a>
-    <div>
-      <Route path="/SignUp" component={SignUp} />
-      <Route path="/SignIn" component={SignIn} />
-    </div>
-  </div>
+<div>
+<p>Please click one of the below to continue</p>
+<a href="/SignUp"><button>Sign Up</button></a>
+<a href="/SignIn"><button>Log In</button></a>
+<div>
+  <Route path="/SignUp" component={SignUp} />
+  <Route path="/SignIn" component={SignIn} />
+</div>
+</div>
 </Router>
