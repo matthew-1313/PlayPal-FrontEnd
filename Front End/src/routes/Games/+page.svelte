@@ -84,30 +84,26 @@ onMount(async() =>{
         <p>Click here to view the game</p>
     </div>
         {/each}
-        <br>
-</ol>
-</label>
-</main>
+        <br />
+      </ol>
+    </label>
+  </main>
 {:else}
-<div>
+  <div>
     <h2>Loading....</h2>
 </div>
 {/if} 
 
-
 <style>
-    img{
-        max-height: 300px;
-    }
-    #gamesDiv{
-        padding: 20px;
-        margin: 20px;
-        border: 15px solid green;
-    }
-    li{
-        text-decoration: none;
-    }
+  img {
+    max-height: 300px;
+  }
+  #gamesDiv {
+    padding: 20px;
+    margin: 20px;
+    border: 15px solid green;
+  }
+  li {
+    text-decoration: none;
+  }
 </style>
-
-
-
