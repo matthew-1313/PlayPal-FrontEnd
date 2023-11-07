@@ -20,7 +20,7 @@
                 signedIn = username
                 isHere = true
                 $MyUser = dataValue[i].username
-                navigate('/NavPage')
+                navigate('/Home')
             }
         }
         if (!isHere){
