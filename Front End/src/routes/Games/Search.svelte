@@ -13,6 +13,7 @@ function getSearch (){
     return gamesSearch(searchTerm).then((data) =>{
         if (data === 400 || data === 404){
             isError=true
+            isLoading=false
         }else{
         searchGameData.set(data)
         isLoading = false

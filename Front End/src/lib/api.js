@@ -3,6 +3,32 @@ const RawgApi = axios.create({
     baseURL : "https://api.rawg.io/api"
 })
 
+const condenseArray = (array) =>{
+    let answer = ""
+    let newArray = array.map((item) =>{
+        return item.name
+    })
+    for (let i = 0; i < newArray.length;i++){
+        if (newArray.length > 1){
+        if (i === newArray.length-2){
+            answer += ` ${newArray[i]} `
+        }else if (i === newArray.length-1){
+            answer +=  `and ${newArray[i]}`
+        } else{
+            answer += `${newArray[i]}, `
+        }
+    }else{
+        answer = newArray[i]
+    }
+    }
+    if (answer.length > 0){
+    return answer
+    }else{
+        return `Topic not specified`
+    }
+    
+
+}
 export const getGames =(topic,bool) =>{
     const myGamesArray = []
     const RatingChange = {
@@ -21,7 +47,8 @@ return RawgApi.get(`/games?key=0c4bd7b594bf43a69030cea65b605923&&genres=${topic}
                 userObject.metacritic = "Not Available"
             }else{
             userObject.metacritic = myResults[i].metacritic
-            }        userObject.genre = topic
+            }        
+        userObject.genre = condenseArray(myResults[i].genres) 
         userObject.rating = myResults[i].rating
     
         myGamesArray.push(userObject)
@@ -56,11 +83,10 @@ export const gamesSearch = (userInput) =>{
             userObject.metacritic = myResults[i].metacritic
             }
             if (myResults[i].genres.length > 0){
-            userObject.genre = myResults[i].genres[0].name        
+            userObject.genre = condenseArray(myResults[i].genres)      
         }else{
             userObject.genre = "not Specified"
-        }
-
+        } 
             userObject.rating = myResults[i].rating        
             myGamesArray.push(userObject)
     }

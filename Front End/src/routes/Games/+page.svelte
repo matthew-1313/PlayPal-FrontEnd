@@ -56,7 +56,6 @@ onMount(async() =>{
   <select bind:value={currentId} on:change={(event) =>{
         event.preventDefault()
         topic = event.target.value.toLowerCase()
-        console.log(topic)
         isLoading = true
         changeTopic()
 
