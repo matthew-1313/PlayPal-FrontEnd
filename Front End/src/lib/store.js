@@ -7,3 +7,4 @@ export const MyUser = writable("");
 export const gamesSortedData = writable([]);
 export const gameCategories = writable([]);
 export const gamesDataHome = writable([]);
+export const searchGameData = writable([]);
