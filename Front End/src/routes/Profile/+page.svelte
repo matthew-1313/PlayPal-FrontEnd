@@ -3,15 +3,17 @@
   import { getContext } from "svelte";
   const getUser = getContext('myUser')
   import { MyUser } from "../../lib/store";
+  import {db} from '../../lib/firebase'
+  import {doc} from 'firebase/firestore'
   let user = "";
   let checkUser = "";
-  let bio = "a";
+  let bio = "";
   let checkBio = "";
   let checkImage = ""
   let errorMessage = ""
   let image = "https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg";
   const imageUrlChecker = /(https?:\/\/.*\.(?:png|jpeg|jpg))/i
-  let sub = MyUser.subscribe((value) =>{
+  MyUser.subscribe((value) =>{
     user = value
   })
   $: areStatsChanging = false
