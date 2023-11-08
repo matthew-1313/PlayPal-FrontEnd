@@ -5,7 +5,7 @@
   import { MyUser } from "../../lib/store";
   let user = "";
   let checkUser = "";
-  let bio = "";
+  let bio = "a";
   let checkBio = "";
   let checkImage = ""
   let errorMessage = ""
