@@ -1,31 +1,35 @@
 <script>
-   import {data} from '../../lib/store'
-   import { navigate } from 'svelte-routing'; 
-   import { MyUser } from '../../lib/store';
-    let username=""
-    let password=""
-    let errorMessage=""
-    let dataValue;
-    data.subscribe((value) =>{
-        dataValue = value
-    })
-    let show_password = false
-    $: type = show_password ? 'text' : 'password'
-    function CheckWithArray(){
-        errorMessage=""
-        let isHere = false
-        for (let i = 0; i < dataValue.length;i++){
-            if (username === dataValue[i].username && password === dataValue[i].password){
-                isHere = true
-                $MyUser = dataValue[i].username
-                navigate('/Home')
-            }
-        }
-        if (!isHere){
-            errorMessage="Incorrect Details given"
-        }
+  import { data } from "../../lib/store";
+  import { navigate } from "svelte-routing";
+  import { MyUser } from "../../lib/store";
+  import { getDocs, collection } from "firebase/firestore";
+  import { db } from "../../lib/firebase/firebase.client.js";
+  let username = "";
+  let password = "";
+  let errorMessage = "";
+  let dataValue;
+  data.subscribe((value) => {
+    dataValue = value;
+  });
+  let show_password = false;
+  $: type = show_password ? "text" : "password";
+  async function CheckWithArray() {
+    const querySnapshot = await getDocs(collection(db, "Profiles"));
+    errorMessage = "";
 
-    }
+    let isHere = false;
+    querySnapshot.forEach((user) => {
+      const myUser = user.data();
+      if (username === myUser.Username && password === myUser.Password) {
+        isHere = true;
+        $MyUser = myUser.Username;
+        navigate("/Home");
+      }
+      if (!isHere) {
+        errorMessage = "Incorrect Details given";
+      }
+    });
+  }
 </script>
 
 <h2>Sign In</h2>
