@@ -83,7 +83,7 @@
     flex-direction: row;
   }
   img{
-    width: 200px;
+    width: 199px;
     max-height: 100%;
   }
 </style>
