@@ -4,6 +4,7 @@
   import { data } from "../../../lib/store";
   import Navbar from "../../../lib/navbar.svelte";
   import GameReview from "../../GameReview/+page.svelte";
+  import ReviewComponent from "../../ReviewComponent/+page.svelte";
   let gameId = $page.params.gameId;
 
   async function fetchData(gameId) {
@@ -33,7 +34,7 @@
 {:then data}
   <div>
     <img src={data.image} alt={data.name} />
-    <p>{data.name}</p>
+    <p><b>{data.name}</b></p>
     <p>{data.released}</p>
     {#each data.parent_platforms_arr as parent}
       | {parent.platform.name} |
@@ -41,6 +42,9 @@
     <p>
       Metacritic: {data.metacritic} | PlayPal User Rating: {data.playpal_rating}
     </p>
+    {#each data.genres as genre}
+      | {genre.name} |
+    {/each}
     <p>{data.website}</p>
     <button on:click={showDescr}>Show/Hide Game Description</button>
     {#if visableDescr}
@@ -53,7 +57,8 @@
   <p>{error.message}</p>
 {/await}
 <br />
-<GameReview />
+<GameReview {gameId} />
+<ReviewComponent />
 
 <style>
   img {
