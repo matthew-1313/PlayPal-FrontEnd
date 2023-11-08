@@ -69,7 +69,7 @@
     font-style: italic;
     background-repeat: no-repeat;
     background-size: cover;
-    shape-margin: 0.75rem;
+    shape-margin: 2rem;
     border-radius: 0px 0px 10px 10px;
   }
 </style>
