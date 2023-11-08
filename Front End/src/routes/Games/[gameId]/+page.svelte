@@ -2,7 +2,8 @@
   import { page } from "$app/stores";
   import { getGameById } from "../../../lib/api";
   import { data } from "../../../lib/store";
-  import Navbar from "../../../lib/navbar.svelte"
+  import Navbar from "../../../lib/navbar.svelte";
+  import GameReview from "../../GameReview/+page.svelte";
   let gameId = $page.params.gameId;
 
   async function fetchData(gameId) {
@@ -10,30 +11,49 @@
     const data = await res;
 
     if (res) {
-      return data
+      return data;
     } else {
       throw new Error(data);
     }
   }
 
+  let visableDescr = false;
+  function showDescr() {
+    if (visableDescr === false) {
+      visableDescr = true;
+    } else if (visableDescr === true) {
+      visableDescr = false;
+    }
+  }
 </script>
+
 <Navbar />
 {#await fetchData(gameId)}
-<p>loading</p>
+  <p>loading</p>
 {:then data}
-<div>
-  <img src={data.image} alt={data.name}>
-<p>{data.name}</p>
-<p>{data.released}</p>
-{#each data.parent_platforms_arr as parent}
-| {parent.platform.name} |
-{/each}
-<p>Metacritic: {data.metacritic}</p>
-<p>{data.website}</p>
-</div>
+  <div>
+    <img src={data.image} alt={data.name} />
+    <p>{data.name}</p>
+    <p>{data.released}</p>
+    {#each data.parent_platforms_arr as parent}
+      | {parent.platform.name} |
+    {/each}
+    <p>
+      Metacritic: {data.metacritic} | PlayPal User Rating: {data.playpal_rating}
+    </p>
+    <p>{data.website}</p>
+    <button on:click={showDescr}>Show/Hide Game Description</button>
+    {#if visableDescr}
+      <div id="game_description">
+        {@html data.description}
+      </div>
+    {/if}
+  </div>
 {:catch error}
-<p>{error.message}</p>
+  <p>{error.message}</p>
 {/await}
+<br />
+<GameReview />
 
 <style>
   img {
