@@ -4,7 +4,6 @@
    import { MyUser } from '../../lib/store';
     let username=""
     let password=""
-    let signedIn = ""
     let errorMessage=""
     let dataValue;
     data.subscribe((value) =>{
@@ -17,7 +16,6 @@
         let isHere = false
         for (let i = 0; i < dataValue.length;i++){
             if (username === dataValue[i].username && password === dataValue[i].password){
-                signedIn = username
                 isHere = true
                 $MyUser = dataValue[i].username
                 navigate('/Home')

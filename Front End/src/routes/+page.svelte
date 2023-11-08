@@ -5,7 +5,6 @@
   import Home from "./Home/+page.svelte";
   import gameId from "./Games/[gameId]/+page.svelte";
   import { Router, Link, Route } from "svelte-routing";
-  import Navbar from "../lib/navbar.svelte";
   export const name = "Hello";
   export let url = "";
 </script>
