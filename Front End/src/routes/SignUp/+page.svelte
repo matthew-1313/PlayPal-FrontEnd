@@ -2,6 +2,8 @@
     import { passwordStrength } from 'check-password-strength'
     import {data} from '../../lib/store'
     import ToProfile from './ToProfile.svelte';
+    import {db} from '../../lib/firebase/firebase.client'
+    import {doc,setDoc} from 'firebase/firestore'
     let show_password = false
     let dataValue;
     let StartProfile = false
@@ -9,9 +11,6 @@
         dataValue = value
     })
     $: type = show_password ? 'text' : 'password'
-    const addToArray = () => {
-		$data = [...$data, { username : username, password : password}];
-    }
     const checkUsers = (myUserName) =>{
             const userNames = dataValue.map((user) =>{
                 return user.username
@@ -25,6 +24,13 @@
     let checkPassword = ""
     let errorMessage = ""
     let correctMessage = ""
+
+    async function addToDataBase (){
+    const docRef = await setDoc(doc(db, "Profiles",username), {
+    Username: username,
+    Password: password
+    });
+  }
     $:if (username.length > 0) {
 		errorMessage = ""
 	}
@@ -43,7 +49,7 @@
             errorMessage = ""
             correctMessage = "this has now been added to the DB"
             StartProfile = true
-            addToArray()
+            addToDataBase()
         }
     }
 </script>
