@@ -6,7 +6,8 @@
 
   //gets the current gameId from the url params, and sets it as game_id to be sent off in submitReview
   export let gameId;
-  let game_id = gameId;
+  export let game_name;
+  export let game_img;
 
   //sets userRating to default 0, until a rating button is pushed
   let userRating = 0;
@@ -35,9 +36,11 @@
       user_avatar: "",
       review_title: userReviewTitle,
       body: userReview,
-      game_id: game_id,
+      game_id: gameId,
       user_game_rating: userRating,
-      created_at: Timestamp.fromDate(new Date("December 10, 1815")),
+      created_at: Timestamp.fromDate(new Date(Date.now())),
+      game_img: game_img,
+      game_name: game_name
     });
     //resets data fields
     reviewField.value = "";
