@@ -6,12 +6,16 @@
   import GameReview from "../../GameReview/+page.svelte";
   import ReviewComponent from "../../ReviewComponent/+page.svelte";
   let gameId = $page.params.gameId;
+  let game_name = ""
+  let game_img = ""
 
   async function fetchData(gameId) {
     const res = await getGameById(gameId);
     const data = await res;
 
     if (res) {
+      game_name = data.name
+      game_img = data.image
       return data;
     } else {
       throw new Error(data);
@@ -57,7 +61,7 @@
   <p>{error.message}</p>
 {/await}
 <br />
-<GameReview {gameId} />
+<GameReview {gameId} {game_img} {game_name} />
 <ReviewComponent {gameId} />
 
 <style>
