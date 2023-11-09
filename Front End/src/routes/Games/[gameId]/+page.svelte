@@ -58,7 +58,7 @@
 {/await}
 <br />
 <GameReview {gameId} />
-<ReviewComponent />
+<ReviewComponent {gameId} />
 
 <style>
   img {

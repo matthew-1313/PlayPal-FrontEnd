@@ -1,4 +1,23 @@
 <script>
+  export let gameId
+  gameId = gameId
+  import { collection, getDocs, query, where } from "firebase/firestore";
+  import { db } from '../../lib/firebase/firebase.client'
+  import { onMount } from "svelte";
+
+
+  const reviewsRef = collection(db, "Reviews")
+  const queriedReviews = query(reviewsRef, where("game_id", "==", gameId))
+
+  let gameReviews = [];
+  onMount(async () => {
+    const querySnapshot = await getDocs(queriedReviews)
+    gameReviews = querySnapshot.docs.map((review) => {
+      return review.data()
+    })
+
+  })
+  
   const testData = {
     id: 3498,
     reviews: [
@@ -32,14 +51,14 @@
 
 <h3>Past Reviews:</h3>
 <div>
-  {#each testData.reviews as review}
+  {#each gameReviews as review}
     <div class="reviewCard">
       <div>
         <p>
           <img src={review.user_avatar} alt={review.username} />
           {review.username} | <b>User Rating:</b>
           {review.user_game_rating} | <b>Reviewed at:</b>
-          {review.created_at}
+          {review.created_at.toDate().toDateString()}
         </p>
       </div>
       <div>
