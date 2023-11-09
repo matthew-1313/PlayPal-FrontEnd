@@ -3,6 +3,7 @@
   import { db } from "../../lib/firebase/firebase.client";
   import { MyUser } from "../../lib/store";
   import { get } from "svelte/store";
+  import { StoredUserInfo } from "../../lib/store";
 
   //gets the current gameId from the url params, and sets it as game_id to be sent off in submitReview
   export let gameId;
@@ -12,8 +13,8 @@
   //sets userRating to default 0, until a rating button is pushed
   let userRating = 0;
 
-  const username = get(MyUser);
-
+  //const username = get(MyUser);
+  const activeUser = get(StoredUserInfo);
   //these are the users final review/title to be sent off in submitReview
   let userReview = "";
   let userReviewTitle = "";
@@ -32,15 +33,15 @@
   async function submitReview() {
     //sends review
     const docRef = await addDoc(collection(db, "Reviews"), {
-      username: username,
-      user_avatar: "",
+      username: activeUser.username,
+      user_avatar: activeUser.avatar_url,
       review_title: userReviewTitle,
       body: userReview,
       game_id: gameId,
       user_game_rating: userRating,
       created_at: Timestamp.fromDate(new Date(Date.now())),
       game_img: game_img,
-      game_name: game_name
+      game_name: game_name,
     });
     //resets data fields
     reviewField.value = "";

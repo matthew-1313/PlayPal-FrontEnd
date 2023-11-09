@@ -3,7 +3,8 @@
   import { MyUser } from "../../lib/store";
   import { getDocs, collection } from "firebase/firestore";
   import { db } from "../../lib/firebase/firebase.client.js";
-  import { goto } from '$app/navigation';
+  import { goto } from "$app/navigation";
+  import { StoredUserInfo } from "../../lib/store";
   let username = "";
   let password = "";
   let errorMessage = "";
@@ -19,6 +20,10 @@
       if (username === myUser.Username && password === myUser.Password) {
         isHere = true;
         $MyUser = myUser.Username;
+        StoredUserInfo.set({
+          username: myUser.Username,
+          avatar_url: myUser.image,
+        });
         goto("/Home");
       }
       if (!isHere) {
