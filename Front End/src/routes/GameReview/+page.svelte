@@ -1,25 +1,48 @@
 <script>
+  import { getDocs, collection, addDoc, Timestamp } from "firebase/firestore";
+  import { db } from "../../lib/firebase/firebase.client";
+  import { MyUser } from "../../lib/store";
+  import { get } from "svelte/store";
+  console.log(MyUser.username);
+
   //need to send username, fetch user avatar, game id, body to be storeed on the backend
   export let gameId;
+  const username = get(MyUser);
 
   let userReview = "";
-  let inputField;
-  let newFieldValue = "";
+  let reviewTitle = "";
+  let userReviewTitle = "";
+  let reviewField;
+  let newReviewValue = "";
+  let newTitleValue = "";
   let userRating = 0;
   let game_id = gameId;
 
   function setRating(num) {
     userRating = num;
-    console.log(userRating);
+    // console.log(userRating);
   }
 
-  function submitReview(event) {
-    // send off user review & rating here, with users name, avatar, date of comment, game_id
+  async function submitReview() {
+    const docRef = await addDoc(collection(db, "Reviews"), {
+      username: username,
+      user_avatar: "",
+      review_title: userReviewTitle,
+      body: userReview,
+      game_id: game_id,
+      user_game_rating: userRating,
+      created_at: Timestamp.fromDate(new Date("December 10, 1815")),
+    });
+    reviewField.value = "";
+    userRating = 0;
+    reviewTitle.value = "";
+    // console.log("Document written with ID: ", docRef.id);
   }
 
   function discardReview() {
-    inputField.value = "";
+    reviewField.value = "";
     userRating = 0;
+    reviewTitle.value = "";
   }
 </script>
 
@@ -62,9 +85,19 @@
 <br />
 
 <form>
+  <h3>Review Title:</h3>
+  <input
+    bind:this={reviewTitle}
+    bind:value={newTitleValue}
+    on:change={(event) => {
+      userReviewTitle = event.target.value;
+    }}
+  />
+  <br />
+  <h3>Review:</h3>
   <textarea
-    bind:this={inputField}
-    bind:value={newFieldValue}
+    bind:this={reviewField}
+    bind:value={newReviewValue}
     on:change={(event) => {
       userReview = event.target.value;
       //console.log(userReview);
