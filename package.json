@@ -4,6 +4,7 @@
     "check-password-strength": "^2.0.7",
     "firebase": "^10.5.2",
     "svelte-navigator": "^3.2.2",
-    "svelte-spa-router": "^3.3.0"
+    "svelte-spa-router": "^3.3.0",
+    "vite": "^4.5.0"
   }
 }

@@ -1,13 +1,13 @@
 <script>
   import Navbar from "../../lib/navbar.svelte";
   import { getContext } from "svelte";
-  const getUser = getContext('myUser')
   import { MyUser } from "../../lib/store";
-  import {db} from '../../lib/firebase'
-  import {doc} from 'firebase/firestore'
+  import {db} from '../../lib/firebase/firebase.client'
+  import {updateDoc,getDoc, collection,doc} from 'firebase/firestore'
+  let isLoading = true;
   let user = "";
   let checkUser = "";
-  let bio = "";
+  $: bio = "";
   let checkBio = "";
   let checkImage = ""
   let errorMessage = ""
@@ -18,46 +18,66 @@
   })
   $: areStatsChanging = false
 
-  const submitData = (event) => {
+  async function getDocument (coll, id) {
+  const snap = await getDoc(doc(db, coll, id))
+  if (snap.exists()){
+    console.log(snap.data())
+    isLoading = false
+    return snap.data()
+   } else{
+    return Promise.reject(Error(`No such document: ${coll}.${id}`))
+   }
+}
+$: mySignedInUser = Promise.resolve(getDocument('Profiles',user)).then((data) =>{
+  bio = data.bio
+  image = data.image
+})
+
+
+
+ async function submitData(event){
     event.preventDefault()
-    if (!checkUser){
-      errorMessage = "The User field is empty"
-    }else if (checkBio.length < 5){
+    if (checkBio.length < 5){
       errorMessage = "Bio is not long enough"
     }else if (!imageUrlChecker.test(checkImage)){
       errorMessage = "The Url for the image is not correct, please try again"
     }else{
-      user = checkUser;
       bio = checkBio;
       image = checkImage;
       areStatsChanging = false;
+     const myUserUpdate = doc(db, "Profiles", user);
+      await updateDoc(myUserUpdate, {
+          Username : user,
+          bio : checkBio,
+          image :checkImage
+
+}); 
     }
   }
 </script>
 
 <Navbar />
 <h1>This is the Profile page for {user}</h1>
-{#if !areStatsChanging}
+
+{#if !areStatsChanging && !isLoading}
 <p>Username : {user}</p>
-<p>Bio: {bio}</p>
+<p>Bio: {bio || ""}</p>
 <div id="Image">
 <p>Avatar: </p>
-<img src={image} alt="user profile">
+<img src={image || "https://icon-library.com/images/default-user-icon/default-user-icon-9.jpg"} alt="user profile">
 </div>
 <p>Please see a list of your reviewed games below:</p>
 
 <button on:click={(event) =>{
   event.preventDefault()
+  isLoading = false
   areStatsChanging = true
 }}>Change Information</button>
-
+{:else if isLoading}
+<p>Loading...</p>
 {:else}
 <form on:submit={submitData}>
-  <label>Username<input on:change={(event) =>{
-    event.preventDefault()
-    errorMessage = ""
-    checkUser = event.target.value
-  }} value={checkUser} placeholder="Type New Username Here"></label>
+  <p>I am User {user}</p>
   <label>Bio <textarea on:change={(event) =>{
     event.preventDefault()
     errorMessage=""
@@ -76,8 +96,15 @@
 <button on:click={((event) =>{
   event.preventDefault()
   areStatsChanging = false
+  isLoading = false
 })}>Click Here to Go Back</button>
   {/if}
+
+
+
+
+
+
 
 <style>
   #Image{

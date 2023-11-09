@@ -8,13 +8,9 @@
   let password = "";
   let errorMessage = "";
   let dataValue;
-  data.subscribe((value) => {
-    dataValue = value;
-  });
   let show_password = false;
   $: type = show_password ? "text" : "password";
   async function CheckWithFireBase() {
-    console.log("here")
     const querySnapshot = await getDocs(collection(db, "Profiles"));
     errorMessage = "";
     let isHere = false;
