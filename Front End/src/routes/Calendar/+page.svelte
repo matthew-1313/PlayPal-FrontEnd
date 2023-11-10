@@ -4,21 +4,22 @@
   import DayGrid from '@event-calendar/day-grid';
   import { db } from "../../lib/firebase/firebase.client";
   import { MyUser } from "../../lib/store";
-  import { getDoc } from "firebase/firestore";
+  import { getDoc,doc,updateDoc } from "firebase/firestore";
   import moment from 'moment';
 
-
-  let data = ""
+  let currentUser = ""
   let isAdding = false
   let startTime = ""
   let eventDate = ""
   let endTime = ""
   let gameTitle = ""
   let errorMessage = ""
-  let addToCalendar = {start: `${eventDate} ${startTime}`, end: `${eventDate} ${endTime}`, title: `${gameTitle}`}
+  let fullCalendar = []
+  let addToCalendar = {}
+  let isLoading = false
 
   MyUser.subscribe((value) => {
-  data = value
+  currentUser = value
   })
 
     let ec;
@@ -26,12 +27,14 @@
     let options = {
         view: 'dayGridMonth',
         eventSources: [{events: function() {
+          console.log("Fetching...")
             return [];
         }}]
     };
-
-    function invokeMethod() {
-        ec.addEvent({start: `${eventDate} ${startTime}`, end: `${eventDate} ${endTime}`, title: `${gameTitle}`});
+    function invokeMethod(allCalendarEvents) {
+      allCalendarEvents.forEach(eachItem => {
+        ec.addEvent({start: `${eachItem.start}`, end: `${eachItem.end}`, title: `${eachItem.title}`});
+      });
     }
 
   async function getDocument (coll, id) {
@@ -43,7 +46,6 @@
     return Promise.reject(Error(`No such document: ${coll}.${id}`))
    }
 }
-
 function isValidDate() {
   return !isNaN(Date.parse(eventDate))
 }
@@ -52,7 +54,7 @@ function isValidTime() {
   return ((moment(startTime, 'HH:mm', true).isValid()) && (moment(endTime, 'HH:mm', true).isValid()))
 }
 
-function timeStampChecker(event){
+async function timeStampChecker(event){
   event.preventDefault()
   if (!isValidDate()){
     errorMessage = "Please enter a valid date in the format DD-MM-YY"
@@ -62,11 +64,20 @@ function timeStampChecker(event){
     errorMessage = "Please enter a game title"
   } else {
     errorMessage = ""
-    console.log("this is correct")
+    addToCalendar = {start: `${eventDate} ${startTime}`, end: `${eventDate} ${endTime}`, title: `${gameTitle}`}
+    const myUserUpdate = doc(db,"Profiles",currentUser)
+    await getDocument('Profiles',currentUser).then((data) =>{
+      fullCalendar = [...data.Calendar,addToCalendar]
+    }).then(() =>{
+       updateDoc(myUserUpdate,{
+      Calendar : fullCalendar
+    })
+    })
+    invokeMethod(fullCalendar)
+
+    
   }
 }
-
-console.log(getDocument("Profiles"))
 
 </script>
 <Navbar />
@@ -90,7 +101,7 @@ isAdding = true})}>Add Event</button>
 <label for="EventDate">Date
   <input on:change={(event) =>{
     eventDate = event.target.value
-}} id="EventDate" value={eventDate} placeholder="DD-MM-YYYY">
+}} id="EventDate" value={eventDate} placeholder="YYYY-DD-MM">
 </label>
 <label for="GameTitle">Game Title
   <input on:change={(event) =>{
@@ -103,10 +114,13 @@ isAdding = true})}>Add Event</button>
 <button on:click={((event) => {event.preventDefault()
   isAdding = false
   })}>Close Event</button>
-  <button on:click={invokeMethod}>hello</button>
   <p>{errorMessage}</p>
 {/if}
-
-<Calendar bind:this={ec} {plugins} {options} />
+<button on:click={invokeMethod}>Refetch events</button>
+{#if (!isLoading) }
+<Calendar bind:this={ec} plugins={plugins} options={options}/>
+{:else}
+<p>Loading...</p>
+{/if}
 
 

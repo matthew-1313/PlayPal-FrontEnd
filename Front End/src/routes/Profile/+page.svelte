@@ -7,7 +7,6 @@
   import { updateDoc, getDoc, collection, doc } from "firebase/firestore";
   let isLoading = true;
   let user = "";
-  let checkUser = "";
   $: bio = "";
   let checkBio = "";
   let checkImage = "";
