@@ -28,7 +28,8 @@
     async function addToDataBase (){
     const docRef = await setDoc(doc(db, "Profiles",username), {
     Username: username,
-    Password: password
+    Password: password,
+    Calendar: []
     });
   }
     $:if (username.length > 0) {
