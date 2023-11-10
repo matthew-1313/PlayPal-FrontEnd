@@ -6,7 +6,7 @@
     const data = await res;
 
     if (res) {
-      return data.slice(0, 10);
+      return data.slice(0, 12);
     } else {
       throw new Error(data);
     }
@@ -19,19 +19,21 @@
   {#await fetchData()}
     <p>loading</p>
   {:then data}
-    <div>
+    <div id="grid-container">
       {#each data as game}
-        <div id="gameCard" class="card">
-          <a href="/Games/{game.id}">
+        <a href="/Games/{game.id}">
+          <div id="grid-item" class="card">
+            <div class="content">
+              <div class="detail">
+                <h3>{game.name}</h3>
+                <p><span>Rating: {game.metacritic}</span></p>
+              </div>
+            </div>
             <div class="img-bx">
               <img src={game.image} alt={game.title} id="img_gameCard-home" />
             </div>
-            <div class="content">
-              <h3>{game.name}</h3>
-              <div><span> Rating: {game.metacritic}</span></div>
-            </div></a
-          >
-        </div>
+          </div>
+        </a>
       {/each}
     </div>
   {:catch error}
@@ -41,18 +43,33 @@
 </main>
 
 <style>
-  /* #gameCard {
-    max-width: 30%;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  #grid-container {
+    padding-top: 10px;
+    display: grid;
+    max-width: 60%;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #grid-item {
+    max-width: 300px;
     box-shadow: 1px 1px 5px 5px #77777738;
     border-radius: 8px;
-    margin: 4px;
-  } */
+    margin-bottom: 10px;
+  }
 
   /* #img_gameCard-home {
     max-height: 90px;
   } */
   .card {
     position: relative;
+    text-align: center;
     width: 250px;
     height: 200px;
     background: #fff;
@@ -90,7 +107,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: baseline;
     padding-bottom: 30px;
   }
 
@@ -103,16 +120,15 @@
   }
 
   .content .detail h3 {
+    /* align-items: baseline; */
     color: #444;
     font-size: 1.6em;
     font-weight: bolder;
   }
 
   .content .detail span {
-    align-items: center;
-    vertical-align: auto;
-    font-size: 0.7em;
-    color: #03a9f4;
+    font-size: 1em;
+    color: #d05f22;
     font-weight: bold;
   }
 

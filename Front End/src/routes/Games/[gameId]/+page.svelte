@@ -4,13 +4,18 @@
   import { data } from "../../../lib/store";
   import Navbar from "../../../lib/navbar.svelte";
   import GameReview from "../../GameReview/+page.svelte";
+  import ReviewComponent from "../../ReviewComponent/+page.svelte";
   let gameId = $page.params.gameId;
+  let game_name = ""
+  let game_img = ""
 
   async function fetchData(gameId) {
     const res = await getGameById(gameId);
     const data = await res;
 
     if (res) {
+      game_name = data.name
+      game_img = data.image
       return data;
     } else {
       throw new Error(data);
@@ -33,7 +38,7 @@
 {:then data}
   <div>
     <img src={data.image} alt={data.name} />
-    <p>{data.name}</p>
+    <p><b>{data.name}</b></p>
     <p>{data.released}</p>
     {#each data.parent_platforms_arr as parent}
       | {parent.platform.name} |
@@ -41,6 +46,9 @@
     <p>
       Metacritic: {data.metacritic} | PlayPal User Rating: {data.playpal_rating}
     </p>
+    {#each data.genres as genre}
+      | {genre.name} |
+    {/each}
     <p>{data.website}</p>
     <button on:click={showDescr}>Show/Hide Game Description</button>
     {#if visableDescr}
@@ -53,7 +61,8 @@
   <p>{error.message}</p>
 {/await}
 <br />
-<GameReview />
+<GameReview {gameId} {game_img} {game_name} />
+<ReviewComponent {gameId} />
 
 <style>
   img {
@@ -64,7 +73,7 @@
     font-style: italic;
     background-repeat: no-repeat;
     background-size: cover;
-    shape-margin: 0.75rem;
+    shape-margin: 2rem;
     border-radius: 0px 0px 10px 10px;
   }
 </style>
