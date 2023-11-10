@@ -5,6 +5,7 @@
   import { db } from "../../lib/firebase/firebase.client";
   import { MyUser,getDocument } from "../../lib/store";
   import { getDoc,doc,updateDoc,onSnapshot } from "firebase/firestore";
+  import '@event-calendar/core/index.css';
   import moment from 'moment';
   import { deepEqual } from "../../lib/store";
   import { onMount } from "svelte";
@@ -17,6 +18,7 @@
   let errorMessage = ""
   let fullCalendar = []
   let addToCalendar = {}
+  $: render = false
   MyUser.subscribe((value) => {
   currentUser = value
   })
@@ -26,10 +28,16 @@
         view: 'dayGridMonth',
         eventSources: [{events: function() {
           console.log("Fetching...")
-            return [];
-        }}]
+            return []
+        }}
+      ],
+      datesSet : ((event) =>{
+          console.log(fullCalendar)
+         addAllEvents(fullCalendar)
+
+        })
     };
-    
+
     function addAllEvents(allCalendarEvents) {
       allCalendarEvents.forEach(eachItem => {
         ec.addEvent({start: `${eachItem.start}`, end: `${eachItem.end}`, title: `${eachItem.title}`});
@@ -46,7 +54,6 @@
     addAllEvents(fullCalendar)
    })
    }) 
-
 
 
 function isValidDate() {
