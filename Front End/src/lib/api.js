@@ -41,6 +41,7 @@ export const getGames = (topic, bool) => {
       let userObject = {};
       for (let i = 0; i < myResults.length; i++) {
         userObject = {};
+        userObject.id = myResults[i].id;
         userObject.name = myResults[i].name;
         userObject.released = myResults[i].released;
         userObject.image = myResults[i].background_image;

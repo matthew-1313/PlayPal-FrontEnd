@@ -22,7 +22,7 @@ function changeTopic(){
     .catch((err)=>{
         return (err)
     })
-   
+    
 }
 onMount(async() =>{
     getAllGenres().then((data) =>{
@@ -75,13 +75,15 @@ onMount(async() =>{
     <ol>
         {#each $gamesSortedData as game}
         <div id="gamesDiv">
-        <li>Name :{game.name}</li>
-        <p>Main Genre: {game.genre}</p>
-        <p>Released: {game.released}</p>
-        <p>metacritic: {game.metacritic}</p>
-        <p>User Rating : {game.rating}</p>
-        <img alt="imageOf{game.name}" src={game.image}/>
-        <p>Click here to view the game</p>
+            <a href="/Games/{game.id}">
+            <li>Name :{game.name}</li>
+            <p>Main Genre: {game.genre}</p>
+            <p>Released: {game.released}</p>
+            <p>metacritic: {game.metacritic}</p>
+            <p>User Rating : {game.rating}</p>
+            <img alt="imageOf{game.name}" src={game.image}/>
+            <p>Click here to view the game</p>
+            </a>
     </div>
         {/each}
         <br />
