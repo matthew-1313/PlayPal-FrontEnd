@@ -1,7 +1,7 @@
 <script>
   export let gameId
   gameId = gameId
-  import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+  import { collection, getDocs, query, where, orderBy, onSnapshot } from "firebase/firestore";
   import { db } from '../../lib/firebase/firebase.client'
   import { onMount } from "svelte";
   import { StoredUserInfo } from "../../lib/store";
@@ -15,15 +15,15 @@
 
   let gameReviews = []
   
-  async function getReviews () {
-    const querySnapshot = await getDocs(queriedReviews)
-    gameReviews = querySnapshot.docs.map((review) => {
-      return review.data()
+  onMount(async () => {
+    const unsubscribe = onSnapshot(queriedReviews, (querySnapshot) => {
+      gameReviews = querySnapshot.docs.map((review) => {
+        return review.data()
+      })
     })
-  }
+    return () => unsubscribe()
+  })
 
-  $: getReviews(gameReviews)
-  
 </script>
 
 <h3>Past Reviews:</h3>
@@ -39,6 +39,7 @@
         </p>
       </div>
       <div>
+        <p>Title: {review.review_title}</p>
         <p>{review.body}</p>
       </div>
     </div>
