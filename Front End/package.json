@@ -10,6 +10,7 @@
 	"devDependencies": {
 		"@event-calendar/core": "^2.4.1",
 		"@event-calendar/day-grid": "^2.4.1",
+		"@event-calendar/time-grid": "^2.4.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
 		"svelte": "^4.0.5",
