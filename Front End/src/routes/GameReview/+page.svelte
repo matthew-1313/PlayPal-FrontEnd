@@ -64,6 +64,7 @@
 <p>What would you rate this game?</p>
 
 <!-- star-rating code & css from https://www.creating-a-star-rating-widget-with-pure-html-css/ -->
+<div class="grid-container">
 <div class="rate">
   <input type="radio" id="star5" name="rate" value="5" bind:group={userRating}/>
   <label for="star5" title="5 stars">5 stars</label>
@@ -75,6 +76,7 @@
   <label for="star2" title="2 star">2 stars</label>
   <input type="radio" id="star1" name="rate" value="1" bind:group={userRating}/>
   <label for="star1" title="1 star">1 star</label>
+</div>
 </div>
 
 <!-- <div class="grid-container">
@@ -144,14 +146,14 @@
   }
   /* .grid-container {
     display: inline;
-  }
-  .grid-item {
+    padding-bottom: 50px;
+  } */
+  /* .grid-item {
     border-radius: 20%;
   } */
   .rate {
   /* border: 1px solid #cccccc; */
   float: left;
-  height: 46px;
   padding: 0 10px;
 }
 .rate:not(:checked) > input {
@@ -171,14 +173,5 @@
 .rate > input:checked ~ label { color: #ffc700; }
 .rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label { color: #deb217; }
 .rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label { color: #c59b08; }
-
-/* .star-rating__input:focus ~ .star-rating__focus {
-  position: absolute;
-  top: -.25em;
-  right: -.25em;
-  bottom: -.25em;
-  left: -.25em;
-  outline: 0.25rem solid lightblue;
-} */
 
 </style>
