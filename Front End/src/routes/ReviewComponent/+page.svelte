@@ -24,9 +24,9 @@
     })
     return () => unsubscribe()
   })
-console.log(gameReviews, "query")
+// console.log(gameReviews, "query")
 </script>
-<ReviewEdit {gameReviews} {gameId}/>
+<!-- <ReviewEdit {gameReviews} {gameId}/> -->
 
 <h3>Other Playpal User Reviews:</h3>
 <div>

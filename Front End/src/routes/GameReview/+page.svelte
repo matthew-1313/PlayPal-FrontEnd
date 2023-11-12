@@ -12,7 +12,6 @@
 
   //sets userRating to default 0, until a rating button is pushed
   let userRating = 0;
-  (console.log (userRating))
 
   //const username = get(MyUser);
   const activeUser = get(StoredUserInfo);
@@ -27,9 +26,9 @@
   let newTitleValue = "";
 
   //sets userRating based on 1-5 button clicks, to be sent off in submitReview
-  function setRating(num) {
-    userRating = num;
-  }
+  // function setRating(num) {
+  //   userRating = num;
+  // }
 
   async function submitReview() {
     //sends review
@@ -56,6 +55,8 @@
     userRating = 0;
     reviewTitle.value = "";
   }
+
+
 </script>
 
 <h3>Rate & Leave a review!</h3>
@@ -64,17 +65,18 @@
 
 <!-- star-rating code & css from https://www.creating-a-star-rating-widget-with-pure-html-css/ -->
 <div class="rate">
-  <input type="radio" id="star5" name="rate" value="5" />
+  <input type="radio" id="star5" name="rate" value="5" bind:group={userRating}/>
   <label for="star5" title="5 stars">5 stars</label>
-  <input type="radio" id="star4" name="rate" value="4" />
+  <input type="radio" id="star4" name="rate" value="4" bind:group={userRating}/>
   <label for="star4" title="4 stars">4 stars</label>
-  <input type="radio" id="star3" name="rate" value="3" />
+  <input type="radio" id="star3" name="rate" value="3" bind:group={userRating}/>
   <label for="star3" title="3 star">3 stars</label>
-  <input type="radio" id="star2" name="rate" value="2" />
+  <input type="radio" id="star2" name="rate" value="2" bind:group={userRating}/>
   <label for="star2" title="2 star">2 stars</label>
-  <input type="radio" id="star1" name="rate" value="1" />
+  <input type="radio" id="star1" name="rate" value="1" bind:group={userRating}/>
   <label for="star1" title="1 star">1 star</label>
 </div>
+
 <!-- <div class="grid-container">
   <button
     class="grid-item"
