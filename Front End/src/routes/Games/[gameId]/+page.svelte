@@ -5,17 +5,31 @@
   import Navbar from "../../../lib/navbar.svelte";
   import GameReview from "../../GameReview/+page.svelte";
   import ReviewComponent from "../../ReviewComponent/+page.svelte";
+  import {db} from "../../../lib/firebase/firebase.client"
+  import {collection, query, where, getAggregateFromServer, average} from "firebase/firestore"
+
+
   let gameId = $page.params.gameId;
   let game_name = ""
   let game_img = ""
 
   async function fetchData(gameId) {
+    //fetching the Playpal user rating average query from the Reviews collection where game_id is equal to param gameId
+    const gameReviewsCollection = collection(db, 'Reviews');
+    const gameTitleQuery = query(gameReviewsCollection, where('game_id', '==', gameId))
+    const snapshot = await getAggregateFromServer(gameTitleQuery, {
+      avgPlaypalUsersRating: average('user_game_rating')
+    });
+
+    //fetching the game info from API
     const res = await getGameById(gameId);
     const data = await res;
 
     if (res) {
       game_name = data.name
       game_img = data.image
+      snapshot.data().avgPlaypalUsersRating = data.playpal_rating
+      // console.log(snapshot.data().avgPlaypalUsersRating, "avgPlaypal")
       return data;
     } else {
       throw new Error(data);
@@ -44,7 +58,7 @@
       | {parent.platform.name} |
     {/each}
     <p>
-      Metacritic: {data.metacritic} | PlayPal User Rating: {data.playpal_rating}
+      Metacritic: {data.metacritic} | PlayPal Users Rating: {data.playpal_rating} out of 5 stars
     </p>
     {#each data.genres as genre}
       | {genre.name} |
