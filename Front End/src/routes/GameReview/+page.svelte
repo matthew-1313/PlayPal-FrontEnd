@@ -12,6 +12,7 @@
 
   //sets userRating to default 0, until a rating button is pushed
   let userRating = 0;
+  (console.log (userRating))
 
   //const username = get(MyUser);
   const activeUser = get(StoredUserInfo);
@@ -60,7 +61,21 @@
 <h3>Rate & Leave a review!</h3>
 
 <p>What would you rate this game?</p>
-<div class="grid-container">
+
+<!-- star-rating code & css from https://www.creating-a-star-rating-widget-with-pure-html-css/ -->
+<div class="rate">
+  <input type="radio" id="star5" name="rate" value="5" />
+  <label for="star5" title="5 stars">5 stars</label>
+  <input type="radio" id="star4" name="rate" value="4" />
+  <label for="star4" title="4 stars">4 stars</label>
+  <input type="radio" id="star3" name="rate" value="3" />
+  <label for="star3" title="3 star">3 stars</label>
+  <input type="radio" id="star2" name="rate" value="2" />
+  <label for="star2" title="2 star">2 stars</label>
+  <input type="radio" id="star1" name="rate" value="1" />
+  <label for="star1" title="1 star">1 star</label>
+</div>
+<!-- <div class="grid-container">
   <button
     class="grid-item"
     on:click={() => {
@@ -92,7 +107,7 @@
       setRating(5);
     }}>5 Stars</button
   >
-</div>
+</div> -->
 <br />
 
 <form>
@@ -125,10 +140,43 @@
     height: 100px;
     margin-top: 15px;
   }
-  .grid-container {
+  /* .grid-container {
     display: inline;
   }
   .grid-item {
     border-radius: 20%;
-  }
+  } */
+  .rate {
+  /* border: 1px solid #cccccc; */
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+.rate:not(:checked) > label:before { content: '★ '; }
+.rate > input:checked ~ label { color: #ffc700; }
+.rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label { color: #deb217; }
+.rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label { color: #c59b08; }
+
+/* .star-rating__input:focus ~ .star-rating__focus {
+  position: absolute;
+  top: -.25em;
+  right: -.25em;
+  bottom: -.25em;
+  left: -.25em;
+  outline: 0.25rem solid lightblue;
+} */
+
 </style>
