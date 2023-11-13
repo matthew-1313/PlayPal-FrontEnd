@@ -1,0 +1,117 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 500;
+    font-size: 1.15em;
+
+    color-scheme: light dark;
+    color: rgba(248, 248, 228, 0.87);
+    background-color: #242424;
+    align-content: center;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  button {
+    border-radius: 8px;
+    color: #242424;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: rgba(248, 248, 228, 0.87);
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  button:hover {
+    border-color: rgba(0, 0, 0, 0.87);
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    text-underline-offset:inherit
+  }
+
+  #grid-container {
+    padding-top: 10px;
+    display: grid;
+    max-width: 60%;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #grid-item {
+    max-width: 300px;
+    box-shadow: 1px 1px 5px 5px #77777738;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .fullGamesCard {
+    text-align: center;
+    width: 750px;
+    height: 600px;
+    border-radius: 10px;
+    background: rgba(94, 94, 94, 0.87);
+    border-top: 1px solid rgba(248, 248, 228, 0.87);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .fullGamesCard img {
+    width: 80%;
+  }
+
+  .miniGamesCard {
+    position: relative;
+    text-align: center;
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+    background: rgba(94, 94, 94, 0.87);
+    border-top: 1px solid rgba(248, 248, 228, 0.87);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .img-bx {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: translateY(30px) scale(0.5);
+  }
+
+  .img-bx img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: safe;
+    padding-bottom: 30px;
+  }
+
+  .content h3 {
+    color: rgba(248, 248, 228, 0.87);
+    font-size: 1.1em;
+    font-weight: bolder;
+  }
+
+  .content span {
+    font-size: 0.9em;
+    color: rgba(233, 233, 148, 0.87);
+    font-weight: bold;
+  }

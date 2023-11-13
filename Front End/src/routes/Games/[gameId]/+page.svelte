@@ -5,22 +5,30 @@
   import Navbar from "../../../lib/navbar.svelte";
   import GameReview from "../../GameReview/+page.svelte";
   import ReviewComponent from "../../ReviewComponent/+page.svelte";
-  import {db} from "../../../lib/firebase/firebase.client"
-  import {collection, query, where, getAggregateFromServer, average} from "firebase/firestore"
-
+  import { db } from "../../../lib/firebase/firebase.client";
+  import {
+    collection,
+    query,
+    where,
+    getAggregateFromServer,
+    average,
+  } from "firebase/firestore";
 
   let gameId = $page.params.gameId;
-  let game_name = ""
-  let game_img = ""
+  let game_name = "";
+  let game_img = "";
 
   async function fetchData(gameId) {
     //fetching the Playpal user rating average query from the Reviews collection where game_id is equal to param gameId
-    const gameReviewsCollection = collection(db, 'Reviews');
-    const gameTitleQuery = query(gameReviewsCollection, where('game_id', '==', gameId))
+    const gameReviewsCollection = collection(db, "Reviews");
+    const gameTitleQuery = query(
+      gameReviewsCollection,
+      where("game_id", "==", gameId)
+    );
     const snapshot = await getAggregateFromServer(gameTitleQuery, {
-      avgPlaypalUsersRating: average('user_game_rating')
+      avgPlaypalUsersRating: average("user_game_rating"),
     });
-    let ratingUsers = snapshot.data().avgPlaypalUsersRating
+    let ratingUsers = snapshot.data().avgPlaypalUsersRating;
 
     //fetching the game info from API
     const res = await getGameById(gameId);
@@ -28,10 +36,10 @@
 
     //constructing the data object for rendering
     if (res) {
-      game_name = data.name
-      game_img = data.image
+      game_name = data.name;
+      game_img = data.image;
 
-      data.playpal_rating = Math.round(ratingUsers*10) / 10 
+      data.playpal_rating = Math.round(ratingUsers * 10) / 10;
 
       return data;
     } else {
@@ -61,7 +69,9 @@
       | {parent.platform.name} |
     {/each}
     <p>
-      Metacritic: <span class="emphasis">{data.metacritic}</span> | Playpal users: <span class="emphasis">{data.playpal_rating} of 5 stars</span> average rating
+      Metacritic: <span class="emphasis">{data.metacritic}</span> | Playpal
+      users: <span class="emphasis">{data.playpal_rating} of 5 stars</span> average
+      rating
     </p>
     {#each data.genres as genre}
       | {genre.name} |
@@ -97,4 +107,20 @@
   .emphasis {
     font-weight: bold;
   }
+
+  /* button {
+    border-radius: 8px;
+    color: #242424;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: rgba(248, 248, 228, 0.87);
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  button:hover {
+    border-color: rgba(248, 248, 228, 0.87);
+  } */
 </style>
