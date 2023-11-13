@@ -53,6 +53,8 @@
 
 <Navbar />
 <h1>This is the Friends page</h1>
+<p>Search Friends</p>
+<button><a href="Friends/searchFriends">Search Here</a></button>
 <p>{errorMessage}</p>
 <p>Current Friends....</p>
 {#each myFriends as friend}
@@ -62,7 +64,7 @@
 </div>
 {/each}
 <br>
-<p>Add Friends</p>
+<p>Recommended Friends</p>
 {#each isNotFriend as user}
 <div>
   <h3>{user}</h3>
@@ -70,8 +72,4 @@
 </div>
 {/each}
 <br>
-<button><a href="Friends/searchFriends">Search Here</a></button>
-
-
-<p>Recommended Friends</p>
 

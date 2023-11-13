@@ -1,11 +1,14 @@
 <script>
-  import { getDocs, collection, addDoc, Timestamp } from "firebase/firestore";
+  import { getDocs, collection, addDoc, Timestamp,query,where,orderBy,getDoc,doc } from "firebase/firestore";
   import { db } from "../../lib/firebase/firebase.client";
   import { MyUser } from "../../lib/store";
   import { get } from "svelte/store";
   import { StoredUserInfo } from "../../lib/store";
 
   //gets the current gameId from the url params, and sets it as game_id to be sent off in submitReview
+  let connectUserBool = false;
+  let userToConnect = {}
+  let isFriends = false
   export let gameId;
   export let game_name;
   export let game_img;
@@ -15,6 +18,7 @@
 
   //const username = get(MyUser);
   const activeUser = get(StoredUserInfo);
+ 
   //these are the users final review/title to be sent off in submitReview
   let userReview = "";
   let userReviewTitle = "";
@@ -32,6 +36,24 @@
 
   async function submitReview() {
     //sends review
+    const reviewsRef = collection(db, "Reviews")
+    console.log(activeUser)
+    let ourUserDetails = await getDoc(doc(db,"Profiles",activeUser.username))
+    ourUserDetails = ourUserDetails.data()
+    const queriedReviews = query(reviewsRef, where("game_id", "==", gameId), orderBy("created_at", "desc"))
+    const querySnapshot = await getDocs(queriedReviews);
+      querySnapshot.forEach((doc) => {
+        let checkerUser = doc.data()
+        if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) && ourUserDetails.Friends.includes(checkerUser.username)){
+        userToConnect = {name : checkerUser.username, rating : userRating}
+        isFriends = true
+        connectUserBool = true
+        }else if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) ){
+          userToConnect = {name : checkerUser.username, rating : userRating}
+          isFriends = false
+          connectUserBool = true
+        }
+}); 
     const docRef = await addDoc(collection(db, "Reviews"), {
       username: activeUser.username,
       user_avatar: activeUser.avatar_url,
@@ -42,7 +64,7 @@
       created_at: Timestamp.fromDate(new Date(Date.now())),
       game_img: game_img,
       game_name: game_name,
-    });
+    })
     //resets data fields
     reviewField.value = "";
     userRating = 0;
@@ -121,7 +143,8 @@
     bind:value={newTitleValue}
     on:change={(event) => {
       userReviewTitle = event.target.value;
-    }}
+      connectUserBool = false
+          }}
   />
   <br />
   <h3>Review:</h3>
@@ -130,13 +153,20 @@
     bind:value={newReviewValue}
     on:change={(event) => {
       userReview = event.target.value;
+      connectUserBool = false
     }}
   />
   <br />
   <button on:click={submitReview}>Submit</button> |
   <button on:click={discardReview}>Discard</button>
 </form>
-
+{#if connectUserBool && !isFriends}
+<p>The User {userToConnect.name} also has rated this {userToConnect.rating} stars! </p>
+<button>Click here to add {userToConnect.name}!</button>
+{:else if connectUserBool && isFriends}
+<p>Your Friend {userToConnect.name} also has rated this {userToConnect.rating} stars!</p>
+<a href="/Friends"><button>Click Here to Message</button></a>
+{/if}
 <style>
   textarea {
     padding: 10px;

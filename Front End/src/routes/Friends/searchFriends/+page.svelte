@@ -1,7 +1,6 @@
 <script>
     import Navbar from "../../../lib/navbar.svelte"
     let isSearched = false
-    let isLoading = false
     let errorMessage = ""
     let searchTerm = ""
     let myFriends = []
@@ -12,16 +11,12 @@
     import { db } from "../../../lib/firebase/firebase.client";
     import { getDocs,collection,getDoc,doc, updateDoc } from "firebase/firestore";
    
-
-    MyUser.subscribe((value) =>{
-      myCurrentUser = value
-    })
-
-    async function CheckUserNames(event){
-      event.preventDefault()
-      const querySnapshot = await getDocs(collection(db,"Profiles"))
+//checks Data upon Button Press
+async function changeData(){
+  const querySnapshot = await getDocs(collection(db,"Profiles"))
       let ourUserDetails = await getDoc(doc(db,"Profiles","Jerry"))
       ourUserDetails = ourUserDetails.data()
+      dbFriends = []
       myFriends=[]
       isNotFriend=[]
       isSearched = true
@@ -44,6 +39,14 @@
             }
           }
         })
+}
+    MyUser.subscribe((value) =>{
+      myCurrentUser = value
+    })
+
+     function CheckUserNames(event){
+      event.preventDefault()
+      changeData()
     }
   
     async function ConnectUser(user){
@@ -51,7 +54,8 @@
     await updateDoc(myUserUpdate, {
       Friends: [user, ...dbFriends]
     })
-    CheckUserNames(e)
+    changeData()
+  
   }
 
 
@@ -66,7 +70,7 @@
     </label>
     <button>Submit</button>
   </form>
-  <!-- <p>Current Friends....</p> -->
+  {#key dbFriends} 
   {#if (myFriends.length > 0) || (isNotFriend.length > 0)}
 {#each myFriends as friend}
 <div>
@@ -75,7 +79,6 @@
 </div>
 {/each}
 <br>
-<p>Add Friends</p>
 {#each isNotFriend as user}
 <div>
   <h3>{user}</h3>
@@ -87,4 +90,6 @@
 {:else}
 <p>please enter a username to search</p>
 {/if}
+{/key}
+<br>
 <a href="/Friends"><button>go Back</button></a>
