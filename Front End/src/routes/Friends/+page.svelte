@@ -37,7 +37,9 @@
       if (ourUserDetails.Friends.includes(user.Username)){
      let myObject = {name : user.Username, isFriend : true}
      myFriends.push(myObject.name)
-      }else{
+      } else if (user.Username === myCurrentUser) {
+      console.log("working")
+      } else{
         let myObject = {name : user.Username, isFriend : false}
         isNotFriend.push(myObject.name)
       }
@@ -49,8 +51,9 @@
 async function ConnectUser(user){
   console.log(user)
   const myUserUpdate = doc(db, "Profiles", myCurrentUser);
+    console.log(myUserUpdate)
     await updateDoc(myUserUpdate, {
-      Friends: [...myFriends,{name: user.Username, isFriend: true}]
+      Friends: [user, ...myFriends]
     })
     loadUsers()
 
