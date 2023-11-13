@@ -17,24 +17,18 @@
   onMount(() =>{
   loadUsers()
   })
-  // let ourUser = []
+
+  //fetch All Users and Current Logged-in profiles from firebase to display page
   async function loadUsers(){
     const querySnapshot = await getDocs(collection(db,"Profiles"))
     let ourUserDetails = await getDoc(doc(db,"Profiles",myCurrentUser))
-    console.log(myCurrentUser)
     ourUserDetails = ourUserDetails.data()
     myFriends=[]
     isNotFriend=[]
-    // const unsubscribe = onSnapshot(getDoc(doc(db,"Profiles","Jerry")),(ourUserDetails) =>{  
-    //   ourUser = ourUserDetails.docs.map((field) =>{
-    //    return field.data()
-    //   })
-    // })
 
     querySnapshot.forEach((user) =>{
     user = user.data()
-    console.log(ourUserDetails)
-      if (ourUserDetails.Friends.includes(user.Username)){
+     if (ourUserDetails.Friends.includes(user.Username)){
      let myObject = {name : user.Username, isFriend : true}
      myFriends.push(myObject.name)
       } else if (user.Username === myCurrentUser) {
@@ -44,10 +38,9 @@
         isNotFriend.push(myObject.name)
       }
   })
-  // console.log(user, "returned user data")
-  // return () => unsubscribe()
     }
   
+  //patches selected user to Friends field of logged in user
 async function ConnectUser(user){
   console.log(user)
   const myUserUpdate = doc(db, "Profiles", myCurrentUser);

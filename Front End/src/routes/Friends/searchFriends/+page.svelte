@@ -1,6 +1,6 @@
 <script>
     import Navbar from "../../../lib/navbar.svelte"
-    let isSearching = false
+    let isSearched = false
     let isLoading = false
     let errorMessage = ""
     let searchTerm = ""
@@ -20,15 +20,16 @@
       ourUserDetails = ourUserDetails.data()
       myFriends=[]
       isNotFriend=[]
+      isSearched = true
       querySnapshot.forEach((user) =>{
       user = user.data()
       if (searchTerm.toLowerCase() === user.Username.toLowerCase()){
         if (ourUserDetails.Friends.includes(user.Username)){
        let myObject = {name : user.Username, isFriend : true}
-       myFriends.push(myObject)
+       myFriends.push(myObject.name)
         }else{
           let myObject = {name : user.Username, isFriend : false}
-        isNotFriend.push(myObject)
+        isNotFriend.push(myObject.name)
         }
       }
     })
@@ -45,11 +46,11 @@
     </label>
     <button>Submit</button>
   </form>
-  <p>Current Friends....</p>
+  <!-- <p>Current Friends....</p> -->
+  {#if (myFriends.length > 0) || (isNotFriend.length > 0)}
 {#each myFriends as friend}
 <div>
-  <h3>{friend.name}</h3>
-  <h3>{friend.isFriend}</h3>
+  <h3>{friend}</h3>
   <button>Message Here</button>
 </div>
 {/each}
@@ -57,9 +58,13 @@
 <p>Add Friends</p>
 {#each isNotFriend as user}
 <div>
-  <h3>{user.name}</h3>
-  <h3>{user.isFriend}</h3>
+  <h3>{user}</h3>
   <button>Add Friend</button>
 </div>
 {/each}
+{:else if isSearched}
+<p>Sorry unable to locate this username</p>
+{:else}
+<p>please enter a username to search</p>
+{/if}
 <a href="/Friends"><button>go Back</button></a>
