@@ -26,9 +26,9 @@
   let newTitleValue = "";
 
   //sets userRating based on 1-5 button clicks, to be sent off in submitReview
-  function setRating(num) {
-    userRating = num;
-  }
+  // function setRating(num) {
+  //   userRating = num;
+  // }
 
   async function submitReview() {
     //sends review
@@ -55,12 +55,31 @@
     userRating = 0;
     reviewTitle.value = "";
   }
+
+
 </script>
 
 <h3>Rate & Leave a review!</h3>
 
 <p>What would you rate this game?</p>
+
+<!-- star-rating code & css from https://www.creating-a-star-rating-widget-with-pure-html-css/ -->
 <div class="grid-container">
+<div class="rate">
+  <input type="radio" id="star5" name="rate" value="5" bind:group={userRating}/>
+  <label for="star5" title="5 stars">5 stars</label>
+  <input type="radio" id="star4" name="rate" value="4" bind:group={userRating}/>
+  <label for="star4" title="4 stars">4 stars</label>
+  <input type="radio" id="star3" name="rate" value="3" bind:group={userRating}/>
+  <label for="star3" title="3 star">3 stars</label>
+  <input type="radio" id="star2" name="rate" value="2" bind:group={userRating}/>
+  <label for="star2" title="2 star">2 stars</label>
+  <input type="radio" id="star1" name="rate" value="1" bind:group={userRating}/>
+  <label for="star1" title="1 star">1 star</label>
+</div>
+</div>
+
+<!-- <div class="grid-container">
   <button
     class="grid-item"
     on:click={() => {
@@ -92,7 +111,7 @@
       setRating(5);
     }}>5 Stars</button
   >
-</div>
+</div> -->
 <br />
 
 <form>
@@ -125,10 +144,34 @@
     height: 100px;
     margin-top: 15px;
   }
-  .grid-container {
+  /* .grid-container {
     display: inline;
-  }
-  .grid-item {
+    padding-bottom: 50px;
+  } */
+  /* .grid-item {
     border-radius: 20%;
-  }
+  } */
+  .rate {
+  /* border: 1px solid #cccccc; */
+  float: left;
+  padding: 0 10px;
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+.rate:not(:checked) > label:before { content: '★ '; }
+.rate > input:checked ~ label { color: #ffc700; }
+.rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label { color: #deb217; }
+.rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label { color: #c59b08; }
+
 </style>

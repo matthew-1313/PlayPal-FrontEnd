@@ -1,10 +1,11 @@
 <script>
   export let gameId
   gameId = gameId
-  import { collection, getDocs, query, where, orderBy, onSnapshot } from "firebase/firestore";
+  import { collection, getDocs, query, where, orderBy, onSnapshot, QueryDocumentSnapshot } from "firebase/firestore";
   import { db } from '../../lib/firebase/firebase.client'
   import { onMount } from "svelte";
   import { StoredUserInfo } from "../../lib/store";
+  import ReviewEdit from "../../lib/reviewEdit.svelte";
 
   StoredUserInfo.subscribe((value) => {
   })
@@ -23,10 +24,11 @@
     })
     return () => unsubscribe()
   })
-
+// console.log(gameReviews, "query")
 </script>
+<!-- <ReviewEdit {gameReviews} {gameId}/> -->
 
-<h3>Past Reviews:</h3>
+<h3>Other Playpal User Reviews:</h3>
 <div>
   {#each gameReviews as review}
     <div class="reviewCard">
