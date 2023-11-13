@@ -51,6 +51,7 @@
     await updateDoc(myUserUpdate, {
       Friends: [user, ...dbFriends]
     })
+    CheckUserNames(e)
   }
 
 
