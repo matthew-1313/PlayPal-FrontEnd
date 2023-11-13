@@ -53,7 +53,8 @@ function gameChecker(event){
     {/if}
     {#if !isLoading && $searchGameData.length > 0}
     <ol>
-        {#each $searchGameData as game}
+        {#each $searchGameData as game}#
+        <a href="/Games/{game.id}">
         <div id="gamesDiv">
         <li>Name :{game.name}</li>
         <p>Main Genre: {game.genre}</p>
@@ -62,7 +63,8 @@ function gameChecker(event){
         <p>User Rating : {game.rating}</p>
         <img alt="imageOf{game.name}" src={game.image}/>
         <p>Click here to view the game</p>
-    </div>
+        </div>
+        </a>
         {/each}
         <br>
 </ol>

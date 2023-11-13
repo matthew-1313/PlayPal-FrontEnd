@@ -7,8 +7,8 @@
   import { StoredUserInfo } from "../../lib/store";
   import ReviewEdit from "../../lib/reviewEdit.svelte";
 
-  StoredUserInfo.subscribe((value) => {
-  })
+StoredUserInfo.subscribe((value) => {
+})
 
 
   const reviewsRef = collection(db, "Reviews")

@@ -29,7 +29,8 @@
     const docRef = await setDoc(doc(db, "Profiles",username), {
     Username: username,
     Password: password,
-    Calendar: []
+    Calendar: [],
+    Friends : []
     });
   }
     $:if (username.length > 0) {
