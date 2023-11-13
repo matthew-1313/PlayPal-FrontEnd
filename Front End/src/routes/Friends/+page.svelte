@@ -32,7 +32,6 @@
      let myObject = {name : user.Username, isFriend : true}
      myFriends.push(myObject.name)
       } else if (user.Username === myCurrentUser) {
-      console.log("working")
       } else{
         let myObject = {name : user.Username, isFriend : false}
         isNotFriend.push(myObject.name)
@@ -41,10 +40,8 @@
     }
   
   //patches selected user to Friends field of logged in user
-async function ConnectUser(user){
-  console.log(user)
+  async function ConnectUser(user){
   const myUserUpdate = doc(db, "Profiles", myCurrentUser);
-    console.log(myUserUpdate)
     await updateDoc(myUserUpdate, {
       Friends: [user, ...myFriends]
     })
