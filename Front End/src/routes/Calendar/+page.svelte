@@ -27,12 +27,10 @@
   let options = {
         view: 'dayGridMonth',
         eventSources: [{events: function() {
-          console.log("Fetching...")
             return []
         }}
       ],
       datesSet : ((event) =>{
-          console.log(fullCalendar)
          addAllEvents(fullCalendar)
 
         })
