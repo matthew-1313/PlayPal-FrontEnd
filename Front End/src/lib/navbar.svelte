@@ -7,7 +7,7 @@
   //   import Messages from "../routes/Messages/+page.svelte";
 </script>
 
-<ul id="menu">
+<ul class="navbar" id="menu">
   <li><a href="/Home">Home</a></li>
   |
   <li><a href="/Profile">Profile</a></li>
