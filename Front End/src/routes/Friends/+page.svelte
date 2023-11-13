@@ -17,37 +17,40 @@
   onMount(() =>{
   loadUsers()
   })
-  let ourUser = []
- async function loadUsers(){
+  // let ourUser = []
+  async function loadUsers(){
     const querySnapshot = await getDocs(collection(db,"Profiles"))
-   // let ourUserDetails = await getDoc(doc(db,"Profiles",myCurrentUser))
-    //ourUserDetails = ourUserDetails.data()
+    let ourUserDetails = await getDoc(doc(db,"Profiles",myCurrentUser))
+    console.log(myCurrentUser)
+    ourUserDetails = ourUserDetails.data()
     myFriends=[]
     isNotFriend=[]
-    const unsubscribe = onSnapshot(getDoc(doc(db,"Profiles",myCurrentUser)),(ourUserDetails) =>{  
-      ourUser = ourUserDetails.docs.map((field) =>{
-       return field.data()
-      })
-    })
+    // const unsubscribe = onSnapshot(getDoc(doc(db,"Profiles","Jerry")),(ourUserDetails) =>{  
+    //   ourUser = ourUserDetails.docs.map((field) =>{
+    //    return field.data()
+    //   })
+    // })
 
     querySnapshot.forEach((user) =>{
     user = user.data()
+    console.log(ourUserDetails)
       if (ourUserDetails.Friends.includes(user.Username)){
      let myObject = {name : user.Username, isFriend : true}
-     myFriends.push(myObject)
+     myFriends.push(myObject.name)
       }else{
         let myObject = {name : user.Username, isFriend : false}
-        isNotFriend.push(myObject)
+        isNotFriend.push(myObject.name)
       }
   })
-  return () => unsubscribe()
+  // console.log(user, "returned user data")
+  // return () => unsubscribe()
     }
   
-async function ConnectUser(event,user){
-  event.preventDefault()
-  const myUserUpdate = doc(db, "Profiles", user);
+async function ConnectUser(user){
+  console.log(user)
+  const myUserUpdate = doc(db, "Profiles", myCurrentUser);
     await updateDoc(myUserUpdate, {
-      Friends : [...myFriends,user]
+      Friends: [...myFriends,{name: user.Username, isFriend: true}]
     })
     loadUsers()
 
@@ -61,7 +64,7 @@ async function ConnectUser(event,user){
 <p>Current Friends....</p>
 {#each myFriends as friend}
 <div>
-  <h3>{friend.name}</h3>
+  <h3>{friend}</h3>
   <button>Message Here</button>
 </div>
 {/each}
@@ -69,8 +72,8 @@ async function ConnectUser(event,user){
 <p>Add Friends</p>
 {#each isNotFriend as user}
 <div>
-  <h3>{user.name}</h3>
-  <button value={user.name} on:click={ConnectUser(user.name)}>Add Friend</button>
+  <h3>{user}</h3>
+  <button value={user} on:click={ConnectUser(user)}>Add Friend</button>
 </div>
 {/each}
 <br>
