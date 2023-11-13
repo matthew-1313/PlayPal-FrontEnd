@@ -3,10 +3,12 @@
   import Calendar from '@event-calendar/core';
   import DayGrid from '@event-calendar/day-grid';
   import { db } from "../../lib/firebase/firebase.client";
-  import { MyUser } from "../../lib/store";
-  import { getDoc,doc,updateDoc } from "firebase/firestore";
+  import { MyUser,getDocument } from "../../lib/store";
+  import { getDoc,doc,updateDoc,onSnapshot } from "firebase/firestore";
+  import '@event-calendar/core/index.css';
   import moment from 'moment';
-
+  import { deepEqual } from "../../lib/store";
+  import { onMount } from "svelte";
   let currentUser = ""
   let isAdding = false
   let startTime = ""
@@ -16,36 +18,44 @@
   let errorMessage = ""
   let fullCalendar = []
   let addToCalendar = {}
-  let isLoading = false
-
+  $: render = false
   MyUser.subscribe((value) => {
   currentUser = value
   })
-
-    let ec;
-    let plugins = [DayGrid];
-    let options = {
+  let ec;
+  let plugins = [DayGrid];
+  let options = {
         view: 'dayGridMonth',
         eventSources: [{events: function() {
           console.log("Fetching...")
-            return [];
-        }}]
+            return []
+        }}
+      ],
+      datesSet : ((event) =>{
+          console.log(fullCalendar)
+         addAllEvents(fullCalendar)
+
+        })
     };
-    function invokeMethod(allCalendarEvents) {
+
+    function addAllEvents(allCalendarEvents) {
       allCalendarEvents.forEach(eachItem => {
         ec.addEvent({start: `${eachItem.start}`, end: `${eachItem.end}`, title: `${eachItem.title}`});
       });
     }
+    function addSpecificEvent(Events){
+      const FinalEvent = Events[Events.length-1]
+      ec.addEvent({start: `${FinalEvent.start}`, end: `${FinalEvent.end}`, title: `${FinalEvent.title}`})
+    }
 
-  async function getDocument (coll, id) {
-  const snap = await getDoc(doc(db, coll, id))
-  if (snap.exists()){
-    console.log(snap.data())
-    return snap.data()
-   } else{
-    return Promise.reject(Error(`No such document: ${coll}.${id}`))
-   }
-}
+   onMount(async () => {
+   await getDocument('Profiles',currentUser).then((data) =>{
+    fullCalendar = data.Calendar
+    addAllEvents(fullCalendar)
+   })
+   }) 
+
+
 function isValidDate() {
   return !isNaN(Date.parse(eventDate))
 }
@@ -73,7 +83,7 @@ async function timeStampChecker(event){
       Calendar : fullCalendar
     })
     })
-    invokeMethod(fullCalendar)
+    addSpecificEvent(fullCalendar)
 
     
   }
@@ -101,7 +111,7 @@ isAdding = true})}>Add Event</button>
 <label for="EventDate">Date
   <input on:change={(event) =>{
     eventDate = event.target.value
-}} id="EventDate" value={eventDate} placeholder="YYYY-DD-MM">
+}} id="EventDate" value={eventDate} placeholder="YYYY-MM-DD">
 </label>
 <label for="GameTitle">Game Title
   <input on:change={(event) =>{
@@ -116,11 +126,8 @@ isAdding = true})}>Add Event</button>
   })}>Close Event</button>
   <p>{errorMessage}</p>
 {/if}
-<button on:click={invokeMethod}>Refetch events</button>
-{#if (!isLoading) }
+<button on:click={addAllEvents(fullCalendar)}>Fetch events</button>
 <Calendar bind:this={ec} plugins={plugins} options={options}/>
-{:else}
-<p>Loading...</p>
-{/if}
+
 
 

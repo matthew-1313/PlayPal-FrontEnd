@@ -22,7 +22,6 @@
   async function getDocument(coll, id) {
     const snap = await getDoc(doc(db, coll, id));
     if (snap.exists()) {
-      //console.log(snap.data().image);
       isLoading = false;
       return snap.data();
     } else {
