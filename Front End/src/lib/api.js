@@ -141,7 +141,7 @@ export const getGameById = (gameId) => {
       esrb_rating: data.esrb_rating,
       description: data.description,
       website: data.website,
-      playpal_rating: 5,
+      // playpal_rating: ""
     };
     return singleGameObj;
   });
