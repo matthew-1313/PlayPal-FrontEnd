@@ -123,12 +123,13 @@
 {/if}
 
 <style>
-  #Image {
-    display: flex;
-    flex-direction: row;
+  :root {
+    --avatar-size: 5rem;
   }
+
   img {
-    width: 198px;
-    max-height: 100%;
+    border-radius: 50%;
+    height: auto;
+    width: var(--avatar-size);
   }
 </style>

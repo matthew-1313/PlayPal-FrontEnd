@@ -4,6 +4,7 @@
   import { MyUser } from "../../lib/store";
   import { get } from "svelte/store";
   import { StoredUserInfo } from "../../lib/store";
+  import {converse} from '../../lib/converse'
   //gets the current gameId from the url params, and sets it as game_id to be sent off in submitReview
   let connectUserBool = false;
   let userToConnect = {}
@@ -65,16 +66,19 @@
 
     querySnapshot.forEach((doc) => {
       let checkerUser = doc.data()
-      if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) && ourUserDetails.Friends.includes(checkerUser.username)){
+      if ((checkerUser.user_game_rating === Number(userRating)) && (checkerUser.username !== activeUser.username) && ourUserDetails.Friends.includes(checkerUser.username)){
         userToConnect = {avatar_url: checkerUser.avatar_url,name : checkerUser.username, rating : userRating}
+        console.log("here",userToConnect)
         isFriends = true
         connectUserBool = true
-      }else if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) ){
+      }else if ((checkerUser.user_game_rating === Number(userRating)) && (checkerUser.username !== activeUser.username) ){
+        console.log("here",userToConnect)
         userToConnect = {avatar_url: checkerUser.avatar_url,name : checkerUser.username, rating : userRating}
         isFriends = false
         connectUserBool = true
       }
-}); 
+});
+
     const docRef = await addDoc(collection(db, "Reviews"), {
       username: activeUser.username,
       user_avatar: activeUser.avatar_url,
@@ -183,7 +187,7 @@
 <button on:click={changeToFriend}>Click here to add {userToConnect.name}!</button>
 {:else if connectUserBool && isFriends}
 <p>Your Friend {userToConnect.name} also has rated this {userToConnect.rating} stars!</p>
-<a href="/Friends"><button>Click Here to Message</button></a>
+<button on:click={() => converse({ id: userToConnect.name, name: userToConnect.name, photoUrl: userToConnect.avatar_url, role: "default" })}>Click Here to Message</button>
 {/if}
 <style>
 </style>
