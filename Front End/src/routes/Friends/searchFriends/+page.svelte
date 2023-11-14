@@ -11,10 +11,13 @@
     import { db } from "../../../lib/firebase/firebase.client";
     import { getDocs,collection,getDoc,doc, updateDoc } from "firebase/firestore";
    
+MyUser.subscribe((value) =>{
+  myCurrentUser = value
+})
 //checks Data upon Button Press
 async function changeData(){
   const querySnapshot = await getDocs(collection(db,"Profiles"))
-      let ourUserDetails = await getDoc(doc(db,"Profiles","Jerry"))
+      let ourUserDetails = await getDoc(doc(db,"Profiles",myCurrentUser))
       ourUserDetails = ourUserDetails.data()
       dbFriends = []
       myFriends=[]
@@ -39,6 +42,9 @@ async function changeData(){
             }
           }
         })
+        console.log(myFriends,"friends")
+        console.log(isNotFriend,"isNotFriends")
+        console.log(ourUserDetails.Friends)
 }
     MyUser.subscribe((value) =>{
       myCurrentUser = value
