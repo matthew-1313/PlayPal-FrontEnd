@@ -62,17 +62,18 @@
     ourUserDetails = ourUserDetails.data()
     const queriedReviews = query(reviewsRef, where("game_id", "==", gameId), orderBy("created_at", "desc"))
     const querySnapshot = await getDocs(queriedReviews);
-      querySnapshot.forEach((doc) => {
-        let checkerUser = doc.data()
-        if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) && ourUserDetails.Friends.includes(checkerUser.username)){
+
+    querySnapshot.forEach((doc) => {
+      let checkerUser = doc.data()
+      if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) && ourUserDetails.Friends.includes(checkerUser.username)){
         userToConnect = {avatar_url: checkerUser.avatar_url,name : checkerUser.username, rating : userRating}
         isFriends = true
         connectUserBool = true
-        }else if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) ){
-          userToConnect = {avatar_url: checkerUser.avatar_url,name : checkerUser.username, rating : userRating}
-          isFriends = false
-          connectUserBool = true
-        }
+      }else if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) ){
+        userToConnect = {avatar_url: checkerUser.avatar_url,name : checkerUser.username, rating : userRating}
+        isFriends = false
+        connectUserBool = true
+      }
 }); 
     const docRef = await addDoc(collection(db, "Reviews"), {
       username: activeUser.username,
@@ -80,7 +81,7 @@
       review_title: userReviewTitle,
       body: userReview,
       game_id: gameId,
-      user_game_rating: userRating,
+      user_game_rating: Number(userRating),
       created_at: Timestamp.fromDate(new Date(Date.now())),
       game_img: game_img,
       game_name: game_name,
@@ -98,6 +99,7 @@
     userRating = 0;
     reviewTitle.value = "";
   }
+
 </script>
 
 <h3>Your Rating:</h3>
@@ -109,7 +111,7 @@
       type="radio"
       id="star5"
       name="rate"
-      value="5"
+      value=5
       bind:group={userRating}
     />
     <label for="star5" title="5 stars">5 stars</label>
@@ -117,7 +119,7 @@
       type="radio"
       id="star4"
       name="rate"
-      value="4"      
+      value=4      
       bind:group={userRating}
 
     />
@@ -126,7 +128,7 @@
       type="radio"
       id="star3"
       name="rate"
-      value="3"
+      value=3
       bind:group={userRating}
     />
     <label for="star3" title="3 star">3 stars</label>
@@ -134,7 +136,7 @@
       type="radio"
       id="star2"
       name="rate"
-      value="2"
+      value=2
       bind:group={userRating}
     />
     <label for="star2" title="2 star">2 stars</label>
@@ -142,7 +144,7 @@
       type="radio"
       id="star1"
       name="rate"
-      value="1"
+      value=1
       bind:group={userRating}
     />
     <label for="star1" title="1 star">1 star</label>
