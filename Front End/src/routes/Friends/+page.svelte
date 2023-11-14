@@ -12,6 +12,7 @@
     onSnapshot,
   } from "firebase/firestore";
   import { onMount } from "svelte";
+  import { converse } from "../../lib/converse.js"
   import Talk from "talkjs";
   import { StoredUserInfo, currentChatSession } from "../../lib/store";
   import { get } from "svelte/store";
@@ -69,48 +70,7 @@
   }
   let popupEl;
 
-  async function converse(otherUser) {
-    const chatSession = get(currentChatSession);
 
-    if (Object.keys(chatSession).length) {
-      console.log(chatSession);
-      chatSession.destroy();
-    }
-
-    await Talk.ready;
-
-    const currentUser = new Talk.User({
-      id: $StoredUserInfo.username,
-      name: $StoredUserInfo.username,
-      avatar_url: $StoredUserInfo.avatar_url,
-      role: "default"
-    });
-
-    const userTwo = new Talk.User(otherUser);
-
-    const session = new Talk.Session({
-      appId: "tkzuhGNe",
-      me: currentUser,
-    });
-
-    currentChatSession.set(session);
-
-    const conversation = session.getOrCreateConversation(
-      Talk.oneOnOneId(currentUser, userTwo)
-    );
-
-    conversation.setParticipant(currentUser);
-    conversation.setParticipant(userTwo);
-
-    const popup = session.createPopup();
-    popup.select(conversation);
-    popup.mount(popupEl);
-    popup.show();
-  }
-
-  
-
- 
 </script>
 
 <Navbar />
