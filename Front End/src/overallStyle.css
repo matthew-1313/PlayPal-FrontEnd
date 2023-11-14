@@ -10,7 +10,7 @@
 
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    background-color: #363636;
     align-content: center;
 
     font-synthesis: none;
@@ -191,11 +191,12 @@
     width: 30em;
     height: 35em;
     border-radius: 10px;
-    color:#242424;
-    background: rgba(248, 248, 228, 0.87);
-    border-top: 1px solid rgba(248, 248, 228, 0.87);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 15px 25px rgba(236, 7, 7, 0.1);
+    color:rgba(248, 248, 228, 0.87);
+    background: #2c292c;
+    border-top: 1px solid rgba(231, 138, 32, 0.87);
+    border-right: 0.75px solid rgba(231, 138, 32, 0.87);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 25px rgba(163, 230, 109, 0.774);
   }
 
   .GamesCard img {
@@ -206,8 +207,9 @@
   }
 
   .GamesCard h3 {
-    color: #242424;
-    font-size: 1.8em;
+    color: rgba(231, 138, 32, 0.87);
+    font-size: 2em;
+    font-weight: 0.5em;
   }
 
   /* REVIEW PAGE */
@@ -257,6 +259,13 @@
     padding: 1em;;
     border: solid 1px rgba(248, 248, 228, 0.87);
     border-radius: 15px;
+    background: #2c292c;
+    border-top: 1px solid rgba(231, 138, 32, 0.87);
+    border-right: 0.75px solid rgba(231, 138, 32, 0.87);
     font-size: 1rem;
     max-width: 50%;
+    margin-bottom: 0.75rem;
+  }
+  .reviewCard h3 {
+    color:rgba(231, 138, 32, 0.87);
   }

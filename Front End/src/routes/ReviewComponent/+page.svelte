@@ -52,7 +52,7 @@
         </p>
       </div>
       <div>
-        <p>Title: {review.review_title}</p>
+        <h3>{review.review_title}</h3>
         <p>{review.body}</p>
       </div>
     </div>
