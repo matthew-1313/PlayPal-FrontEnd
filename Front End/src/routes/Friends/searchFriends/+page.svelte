@@ -1,15 +1,20 @@
 <script>
     import Navbar from "../../../lib/navbar.svelte"
+
+
     let isSearched = false
     let isLoading = false
     let errorMessage = ""
     let searchTerm = ""
     let myFriends = []
-    let dbFriends = []
+
+
     let isNotFriend = []
     let myCurrentUser = ""
     import { MyUser } from "../../../lib/store";
     import { db } from "../../../lib/firebase/firebase.client";
+
+
     import { getDocs,collection,getDoc,doc, updateDoc } from "firebase/firestore";
    
 
@@ -24,6 +29,7 @@
       ourUserDetails = ourUserDetails.data()
       myFriends=[]
       isNotFriend=[]
+ 
       isSearched = true
       querySnapshot.forEach((user) =>{
         user = user.data()
@@ -66,6 +72,7 @@
     </label>
     <button>Submit</button>
   </form>
+
   <!-- <p>Current Friends....</p> -->
   {#if (myFriends.length > 0) || (isNotFriend.length > 0)}
 {#each myFriends as friend}
@@ -78,6 +85,7 @@
 <p>Add Friends</p>
 {#each isNotFriend as user}
 <div>
+
   <h3>{user}</h3>
   <button value={user} on:click={ConnectUser(user)}>Add Friend</button>
 </div>
