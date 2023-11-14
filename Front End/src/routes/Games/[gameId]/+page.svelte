@@ -17,7 +17,6 @@
   let gameId = $page.params.gameId;
   let game_name = "";
   let game_img = "";
-
   async function fetchData(gameId) {
     //fetching the Playpal user rating average query from the Reviews collection where game_id is equal to param gameId
     const gameReviewsCollection = collection(db, "Reviews");
@@ -26,10 +25,10 @@
       where("game_id", "==", gameId)
     );
     const snapshot = await getAggregateFromServer(gameTitleQuery, {
-      avgPlaypalUsersRating: average("user_game_rating"),
+      avgUserGameRating: average("user_game_rating"),
     });
-    let ratingUsers = snapshot.data().avgPlaypalUsersRating;
-
+    let avgRatingPlaypalUsers = snapshot.data().avgUserGameRating;
+ 
     //fetching the game info from API
     const res = await getGameById(gameId);
     const data = await res;
@@ -39,8 +38,7 @@
       game_name = data.name;
       game_img = data.image;
 
-      data.playpal_rating = Math.round(ratingUsers * 10) / 10;
-
+      data.playpal_rating = Math.round(avgRatingPlaypalUsers * 10) / 10;
       return data;
     } else {
       throw new Error(data);
@@ -90,6 +88,7 @@
 {:catch error}
   <p>{error.message}</p>
 {/await}
+
 <br />
 <GameReview {gameId} {game_img} {game_name} />
 <ReviewComponent {gameId} />
