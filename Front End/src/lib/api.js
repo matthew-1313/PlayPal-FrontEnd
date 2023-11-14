@@ -117,7 +117,8 @@ export const getAllGames = () => {
         gamesObject.released = myResults[i].released;
         gamesObject.image = myResults[i].background_image;
         gamesObject.metacritic = myResults[i].metacritic;
-        gamesObject.genres = myResults[i].genres;
+        gamesObject.genres = condenseArray(myResults[i].genres);
+        gamesObject.rating = myResults[i].rating;
         gamesArray.push(gamesObject);
       }
       return gamesArray;

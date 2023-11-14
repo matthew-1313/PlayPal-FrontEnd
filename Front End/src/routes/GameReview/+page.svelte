@@ -77,67 +77,60 @@
     userRating = 0;
     reviewTitle.value = "";
   }
-
-
 </script>
 
-<h3>Rate & Leave a review!</h3>
-
-<p>What would you rate this game?</p>
+<h3>Your Rating:</h3>
 
 <!-- star-rating code & css from https://www.creating-a-star-rating-widget-with-pure-html-css/ -->
 <div class="grid-container">
-<div class="rate">
-  <input type="radio" id="star5" name="rate" value="5" bind:group={userRating}/>
-  <label for="star5" title="5 stars">5 stars</label>
-  <input type="radio" id="star4" name="rate" value="4" bind:group={userRating}/>
-  <label for="star4" title="4 stars">4 stars</label>
-  <input type="radio" id="star3" name="rate" value="3" bind:group={userRating}/>
-  <label for="star3" title="3 star">3 stars</label>
-  <input type="radio" id="star2" name="rate" value="2" bind:group={userRating}/>
-  <label for="star2" title="2 star">2 stars</label>
-  <input type="radio" id="star1" name="rate" value="1" bind:group={userRating}/>
-  <label for="star1" title="1 star">1 star</label>
+  <div class="rate">
+    <input
+      type="radio"
+      id="star5"
+      name="rate"
+      value="5"
+      bind:group={userRating}
+    />
+    <label for="star5" title="5 stars">5 stars</label>
+    <input
+      type="radio"
+      id="star4"
+      name="rate"
+      value="4"
+      bind:group={userRating}
+    />
+    <label for="star4" title="4 stars">4 stars</label>
+    <input
+      type="radio"
+      id="star3"
+      name="rate"
+      value="3"
+      bind:group={userRating}
+    />
+    <label for="star3" title="3 star">3 stars</label>
+    <input
+      type="radio"
+      id="star2"
+      name="rate"
+      value="2"
+      bind:group={userRating}
+    />
+    <label for="star2" title="2 star">2 stars</label>
+    <input
+      type="radio"
+      id="star1"
+      name="rate"
+      value="1"
+      bind:group={userRating}
+    />
+    <label for="star1" title="1 star">1 star</label>
+  </div>
+  <br />
 </div>
-</div>
-
-<!-- <div class="grid-container">
-  <button
-    class="grid-item"
-    on:click={() => {
-      setRating(1);
-    }}
-    >1 Star
-  </button>
-  <button
-    class="grid-item"
-    on:click={() => {
-      setRating(2);
-    }}>2 Stars</button
-  >
-  <button
-    class="grid-item"
-    on:click={() => {
-      setRating(3);
-    }}>3 Stars</button
-  >
-  <button
-    class="grid-item"
-    on:click={() => {
-      setRating(4);
-    }}>4 Stars</button
-  >
-  <button
-    class="grid-item"
-    on:click={() => {
-      setRating(5);
-    }}>5 Stars</button
-  >
-</div> -->
 <br />
 
 <form>
-  <h3>Review Title:</h3>
+  <h3>Your Review Title:</h3>
   <input
     bind:this={reviewTitle}
     bind:value={newTitleValue}
@@ -159,6 +152,7 @@
   <br />
   <button on:click={submitReview}>Submit</button> |
   <button on:click={discardReview}>Discard</button>
+
 </form>
 {#if connectUserBool && !isFriends}
 <p>The User {userToConnect.name} also has rated this {userToConnect.rating} stars! </p>
@@ -168,40 +162,4 @@
 <a href="/Friends"><button>Click Here to Message</button></a>
 {/if}
 <style>
-  textarea {
-    padding: 10px;
-    width: 50%;
-    height: 100px;
-    margin-top: 15px;
-  }
-  /* .grid-container {
-    display: inline;
-    padding-bottom: 50px;
-  } */
-  /* .grid-item {
-    border-radius: 20%;
-  } */
-  .rate {
-  /* border: 1px solid #cccccc; */
-  float: left;
-  padding: 0 10px;
-}
-.rate:not(:checked) > input {
-  position: absolute;
-  top: -9999px;
-}
-.rate:not(:checked) > label {
-  float: right;
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size: 30px;
-  color: #ccc;
-}
-.rate:not(:checked) > label:before { content: '★ '; }
-.rate > input:checked ~ label { color: #ffc700; }
-.rate:not(:checked) > label:hover, .rate:not(:checked) > label:hover ~ label { color: #deb217; }
-.rate > input:checked + label:hover, .rate > input:checked + label:hover ~ label, .rate > input:checked ~ label:hover, .rate > input:checked ~ label:hover ~ label, .rate > label:hover ~ input:checked ~ label { color: #c59b08; }
-
 </style>
