@@ -1,12 +1,15 @@
 /* global */
+
+
+
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 500;
-    font-size: 1.15em;
+    font-size: 1em;
 
     color-scheme: light dark;
-    color: rgba(248, 248, 228, 0.87);
+    color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
     align-content: center;
 
@@ -15,22 +18,24 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
-    margin: 2em;
+    margin: 0;
+    padding: 0;
   }
 
   button {
     border-radius: 8px;
-    color: #242424;
-    border: 1px solid transparent;
+    border: 0.2em solid transparent;
     padding: 0.6em 1.2em;
     font-weight: 500;
     font-family: inherit;
-    background-color: rgba(248, 248, 228, 0.87);
+    color: #242424;
+    background-color: rgba(231, 138, 32, 0.87);
     cursor: pointer;
     transition: border-color 0.25s;
   }
   button:hover {
-    border-color: rgba(0, 0, 0, 0.87);
+    background-color: rgba(255, 255, 255, 0.87);
+    border-color: rgba(248, 248, 228, 0.87);
   }
   
   a {
@@ -39,7 +44,18 @@
     text-underline-offset:inherit
   }
 
+  h1 {
+    color: rgba(248, 248, 228, 0.87);
+  }
+  h2 {
+    color: rgba(248, 248, 228, 0.87);
+  }
+  h3 {
+    color: rgba(248, 248, 228, 0.87);
+  }
+
   input {
+    width: 65%;
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
@@ -97,6 +113,10 @@
     transition: border-color 0.25s;
   }
 
+  nav {
+    margin: auto;
+  }
+
 
   /* header */
   .wrapper {
@@ -134,45 +154,60 @@
 
    /* navbar */
    .navbar {
+    max-width: 70vw;
     font-size: 1.16em;
-    margin: 2 auto;
     text-align: center;
     color: #242424;
-    background-color: rgba(248, 248, 228, 0.87);
+    background-color: rgba(231, 138, 32, 0.87);
   }
 
 
   /* game cards */
   #grid-container {
-    padding-top: 10px;
-    display: grid;
-    max-width: 60%;
+    margin: auto;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 90%;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
   }
 
   #grid-item {
-    max-width: 300px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
     box-shadow: 1px 1px 5px 5px #77777738;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
   }
 
   .GamesCard {
+    align-items: center;
+    justify-content: center;
+    font-size: 0.3em;
     text-align: center;
-    width: 750px;
-    height: 350px;
+    width: 30em;
+    height: 35em;
     border-radius: 10px;
-    background: rgba(94, 94, 94, 0.87);
+    color:#242424;
+    background: rgba(248, 248, 228, 0.87);
     border-top: 1px solid rgba(248, 248, 228, 0.87);
     backdrop-filter: blur(15px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 25px rgba(236, 7, 7, 0.1);
   }
 
   .GamesCard img {
-    width: 240px;
-    height: 135px;
+    max-height: 20em;
+    width: 25em;
+    height: 18em;
     object-fit: cover;
+  }
+
+  .GamesCard h3 {
+    color: #242424;
+    font-size: 1.8em;
   }
 
   /* REVIEW PAGE */
