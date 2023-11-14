@@ -63,24 +63,27 @@
 {:then data}
   <div>
     <img src={data.image} alt={data.name} />
-    <p><b>{data.name}</b></p>
-    <p>{data.released}</p>
+    <h2>{data.name}</h2>
+    <p>
+      PlayPal Average:
+      <b>{data.playpal_rating} Stars</b> | Metacritic:
+      <b>{data.metacritic}%</b>
+      <br />
+    </p>
+    <p>Released: {data.released}</p>
     {#each data.parent_platforms_arr as parent}
       | {parent.platform.name} |
     {/each}
     <p>
-      Metacritic: <span class="emphasis">{data.metacritic}</span> | Playpal
-      users: <span class="emphasis">{data.playpal_rating} of 5 stars</span> average
-      rating
+      {#each data.genres as genre}
+        | {genre.name} |
+      {/each}
     </p>
-    {#each data.genres as genre}
-      | {genre.name} |
-    {/each}
-    <p>{data.website}</p>
     <button on:click={showDescr}>Show/Hide Game Description</button>
     {#if visableDescr}
       <div id="game_description">
         {@html data.description}
+        <p>Website: {data.website}</p>
       </div>
     {/if}
   </div>
@@ -93,34 +96,11 @@
 
 <style>
   img {
-    max-width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
     height: auto;
-    align-items: center;
-    vertical-align: middle;
-    font-style: italic;
-    background-repeat: no-repeat;
-    background-size: cover;
-    shape-margin: 2rem;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 30px;
   }
-
-  .emphasis {
-    font-weight: bold;
-  }
-
-  /* button {
-    border-radius: 8px;
-    color: #242424;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: rgba(248, 248, 228, 0.87);
-    cursor: pointer;
-    transition: border-color 0.25s;
-  }
-  button:hover {
-    border-color: rgba(248, 248, 228, 0.87);
-  } */
 </style>

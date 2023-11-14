@@ -45,6 +45,7 @@
       username = event.target.value;
     }}
   />
+  <br />
   <label placeholder="Enter password here" for="password">Password :</label>
   <input
     {type}
@@ -57,10 +58,12 @@
     }}
   />
   <button type="button" on:click={() => (show_password = !show_password)}
-    >{show_password ? "Hide password" : "Show password"}</button
+    >{show_password ? "Hide" : "Show"}</button
   >
-  <button>Click here to proceed</button>
+  <br />
+  <br />
+  <button>Sign In</button>
 </form>
-
+<br />
 <a href="/SignUp"><button>Click here to SignUp </button></a>
 <p>{errorMessage}</p>
