@@ -1,39 +1,56 @@
 <script>
   import Navbar from "../../lib/navbar.svelte";
-  let isSearching = false
-  let isLoading = false
-  let errorMessage = ""
-  let myFriends = []
-  let isNotFriend = []
-  let myCurrentUser = ""
+
   import { MyUser } from "../../lib/store";
   import { db } from "../../lib/firebase/firebase.client";
-  import { getDocs,collection,getDoc,doc, updateDoc, onSnapshot } from "firebase/firestore";
+  import {
+    getDocs,
+    collection,
+    getDoc,
+    doc,
+    updateDoc,
+    onSnapshot,
+  } from "firebase/firestore";
   import { onMount } from "svelte";
-  MyUser.subscribe((value) =>{
-    myCurrentUser = value
-  })
+  import Talk from "talkjs";
+  import { StoredUserInfo, currentChatSession } from "../../lib/store";
+  import { get } from "svelte/store";
 
-  onMount(() =>{
-  loadUsers()
-  })
+  let isSearching = false;
+  let isLoading = false;
+  let errorMessage = "";
+  let myFriends = [];
+  let isNotFriend = [];
+  let myCurrentUser = "";
+  MyUser.subscribe((value) => {
+    myCurrentUser = value;
+  });
 
-  //fetch All Users and Current Logged-in profiles from firebase to display page
-  async function loadUsers(){
-    const querySnapshot = await getDocs(collection(db,"Profiles"))
-    let ourUserDetails = await getDoc(doc(db,"Profiles",myCurrentUser))
-    ourUserDetails = ourUserDetails.data()
-    myFriends=[]
-    isNotFriend=[]
+  onMount(() => {
+    loadUsers();
+  });
+  // let ourUser = []
+  async function loadUsers() {
+    const querySnapshot = await getDocs(collection(db, "Profiles"));
+    let ourUserDetails = await getDoc(doc(db, "Profiles", myCurrentUser));
+    console.log(myCurrentUser);
+    ourUserDetails = ourUserDetails.data();
+    myFriends = [];
+    isNotFriend = [];
+    // const unsubscribe = onSnapshot(getDoc(doc(db,"Profiles","Jerry")),(ourUserDetails) =>{
+    //   ourUser = ourUserDetails.docs.map((field) =>{
+    //    return field.data()
+    //   })
+    // })
 
     querySnapshot.forEach((user) =>{
     user = user.data()
      if (ourUserDetails.Friends.includes(user.Username)){
-     let myObject = {name : user.Username, isFriend : true, avatar: user.image}
+     let myObject = {name : user.Username, isFriend : true, avatar_url: user.image}
      myFriends.push(myObject)
       } else if (user.Username === myCurrentUser) {
       } else{
-        let myObject = {name : user.Username, isFriend : false, avatar: user.image}
+        let myObject = {name : user.Username, isFriend : false, avatar_url: user.image}
         isNotFriend.push(myObject)
       }
   })
@@ -49,9 +66,51 @@
       Friends: [user, ...mapArray]
     })
     loadUsers()
+  }
+  let popupEl;
 
-}
+  async function converse(otherUser) {
+    const chatSession = get(currentChatSession);
 
+    if (Object.keys(chatSession).length) {
+      console.log(chatSession);
+      chatSession.destroy();
+    }
+
+    await Talk.ready;
+
+    const currentUser = new Talk.User({
+      id: $StoredUserInfo.username,
+      name: $StoredUserInfo.username,
+      avatar_url: $StoredUserInfo.avatar_url,
+      role: "default"
+    });
+
+    const userTwo = new Talk.User(otherUser);
+
+    const session = new Talk.Session({
+      appId: "tkzuhGNe",
+      me: currentUser,
+    });
+
+    currentChatSession.set(session);
+
+    const conversation = session.getOrCreateConversation(
+      Talk.oneOnOneId(currentUser, userTwo)
+    );
+
+    conversation.setParticipant(currentUser);
+    conversation.setParticipant(userTwo);
+
+    const popup = session.createPopup();
+    popup.select(conversation);
+    popup.mount(popupEl);
+    popup.show();
+  }
+
+  
+
+ 
 </script>
 
 <Navbar />
@@ -63,8 +122,8 @@
 {#each myFriends as friend}
 <div>
   <h3>{friend.name}</h3>
-  <img src={friend.avatar} alt={friend.name} />
-  <button>Message Here</button>
+  <img src={friend.avatar_url} alt={friend.name} />
+  <button on:click={() => converse({ id: friend.name, name: friend.name, photoUrl: friend.avatar_url, role: "default" })} >Message Here</button>
 </div>
 {/each}
 <br>
@@ -72,11 +131,14 @@
 {#each isNotFriend as user}
 <div>
   <h3>{user.name}</h3>
-  <img src={user.avatar} alt={user.name} />
+  <img src={user.avatar_url} alt={user.name} />
   <button value={user.name} on:click={ConnectUser(user.name)}>Add Friend</button>
 </div>
 {/each}
 <br>
+
+<div bind:this={popupEl} />
+
 
 <style>
   :root {

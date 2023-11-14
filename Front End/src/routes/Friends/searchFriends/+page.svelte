@@ -1,5 +1,9 @@
 <script>
     import Navbar from "../../../lib/navbar.svelte"
+    import { MyUser } from "../../../lib/store";
+    import { db } from "../../../lib/firebase/firebase.client";
+    import { getDocs,collection,getDoc,doc, updateDoc } from "firebase/firestore";
+
     let isSearched = false
     let errorMessage = ""
     let searchTerm = ""
@@ -7,9 +11,6 @@
     let dbFriends = []
     let isNotFriend = []
     let myCurrentUser = ""
-    import { MyUser } from "../../../lib/store";
-    import { db } from "../../../lib/firebase/firebase.client";
-    import { getDocs,collection,getDoc,doc, updateDoc } from "firebase/firestore";
 
 
 MyUser.subscribe((value) =>{
@@ -23,6 +24,7 @@ async function changeData(){
       dbFriends = []
       myFriends=[]
       isNotFriend=[]
+ 
       isSearched = true
       querySnapshot.forEach((user) =>{
         user = user.data()
@@ -43,9 +45,6 @@ async function changeData(){
             }
           }
         })
-        console.log(myFriends,"friends")
-        console.log(isNotFriend,"isNotFriends")
-        console.log(ourUserDetails.Friends)
 }
     MyUser.subscribe((value) =>{
       myCurrentUser = value
@@ -81,7 +80,10 @@ async function changeData(){
     </label>
     <button>Submit</button>
   </form>
+
   {#key dbFriends} 
+
+  <!-- <p>Current Friends....</p> -->
   {#if (myFriends.length > 0) || (isNotFriend.length > 0)}
 {#each myFriends as friend}
 <div>

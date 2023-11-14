@@ -11,6 +11,7 @@ export const gamesSortedData = writable([]);
 export const gameCategories = writable([]);
 export const gamesDataHome = writable([]);
 export const searchGameData = writable([]);
+export const currentChatSession = writable({})
 export async function getDocument (coll, id) {
   const snap = await getDoc(doc(db, coll, id))
   if (snap.exists()){
