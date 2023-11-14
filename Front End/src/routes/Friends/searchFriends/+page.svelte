@@ -1,39 +1,66 @@
 <script>
     import Navbar from "../../../lib/navbar.svelte"
-    let isSearching = false
+
+
+    let isSearched = false
     let isLoading = false
     let errorMessage = ""
     let searchTerm = ""
     let myFriends = []
+
+
     let isNotFriend = []
     let myCurrentUser = ""
     import { MyUser } from "../../../lib/store";
     import { db } from "../../../lib/firebase/firebase.client";
-    import { getDocs,collection,getDoc,doc } from "firebase/firestore";
+
+
+    import { getDocs,collection,getDoc,doc, updateDoc } from "firebase/firestore";
+   
+
     MyUser.subscribe((value) =>{
       myCurrentUser = value
     })
-   async function CheckUserNames(event){
+
+    async function CheckUserNames(event){
       event.preventDefault()
       const querySnapshot = await getDocs(collection(db,"Profiles"))
       let ourUserDetails = await getDoc(doc(db,"Profiles","Jerry"))
       ourUserDetails = ourUserDetails.data()
       myFriends=[]
       isNotFriend=[]
+ 
+      isSearched = true
       querySnapshot.forEach((user) =>{
-      user = user.data()
-      if (searchTerm.toLowerCase() === user.Username.toLowerCase()){
-        if (ourUserDetails.Friends.includes(user.Username)){
-       let myObject = {name : user.Username, isFriend : true}
-       myFriends.push(myObject)
-        }else{
-          let myObject = {name : user.Username, isFriend : false}
-        isNotFriend.push(myObject)
-        }
-      }
-    })
-      }
+        user = user.data()
+        if (searchTerm.toLowerCase() === user.Username.toLowerCase()){
+          if (ourUserDetails.Friends.includes(user.Username)){
+            let myObject = {name : user.Username, isFriend : true}
+              myFriends.push(myObject.name)
+              dbFriends.push(myObject.name)
+          } else {
+            let myObject = {name : user.Username, isFriend : true}
+              isNotFriend.push(myObject.name)
+          }
+            
+          } else {
+            if (ourUserDetails.Friends.includes(user.Username)){
+              let myObject = {name : user.Username, isFriend : false}
+                dbFriends.push(myObject.name)
+            }
+          }
+        })
+    }
   
+    async function ConnectUser(user){
+    const myUserUpdate = doc(db, "Profiles", myCurrentUser);
+    await updateDoc(myUserUpdate, {
+      Friends: [user, ...dbFriends]
+    })
+    CheckUserNames(e)
+  }
+
+
   </script>
   <Navbar />
 <h1>Searching Friends</h1>
@@ -45,11 +72,12 @@
     </label>
     <button>Submit</button>
   </form>
-  <p>Current Friends....</p>
+
+  <!-- <p>Current Friends....</p> -->
+  {#if (myFriends.length > 0) || (isNotFriend.length > 0)}
 {#each myFriends as friend}
 <div>
-  <h3>{friend.name}</h3>
-  <h3>{friend.isFriend}</h3>
+  <h3>{friend}</h3>
   <button>Message Here</button>
 </div>
 {/each}
@@ -57,9 +85,14 @@
 <p>Add Friends</p>
 {#each isNotFriend as user}
 <div>
-  <h3>{user.name}</h3>
-  <h3>{user.isFriend}</h3>
-  <button>Add Friend</button>
+
+  <h3>{user}</h3>
+  <button value={user} on:click={ConnectUser(user)}>Add Friend</button>
 </div>
 {/each}
+{:else if isSearched}
+<p>Sorry unable to locate this username</p>
+{:else}
+<p>please enter a username to search</p>
+{/if}
 <a href="/Friends"><button>go Back</button></a>

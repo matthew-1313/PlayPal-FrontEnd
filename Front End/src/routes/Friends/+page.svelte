@@ -1,5 +1,6 @@
 <script>
   import Navbar from "../../lib/navbar.svelte";
+
   import { MyUser } from "../../lib/store";
   import { db } from "../../lib/firebase/firebase.client";
   import {
@@ -109,6 +110,8 @@
   }
 
   
+
+ 
 </script>
 
 <Navbar />
@@ -116,6 +119,7 @@
 <p>{errorMessage}</p>
 <p>Current Friends....</p>
 {#each myFriends as friend}
+
   <div>
     <h3>{friend.name}</h3>
     <p>{friend.avatar_url}</p>
