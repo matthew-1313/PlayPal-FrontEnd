@@ -29,12 +29,12 @@
     querySnapshot.forEach((user) =>{
     user = user.data()
      if (ourUserDetails.Friends.includes(user.Username)){
-     let myObject = {name : user.Username, isFriend : true}
-     myFriends.push(myObject.name)
+     let myObject = {name : user.Username, isFriend : true, avatar: user.image}
+     myFriends.push(myObject)
       } else if (user.Username === myCurrentUser) {
       } else{
-        let myObject = {name : user.Username, isFriend : false}
-        isNotFriend.push(myObject.name)
+        let myObject = {name : user.Username, isFriend : false, avatar: user.image}
+        isNotFriend.push(myObject)
       }
   })
     }
@@ -42,8 +42,11 @@
   //patches selected user to Friends field of logged in user
   async function ConnectUser(user){
   const myUserUpdate = doc(db, "Profiles", myCurrentUser);
+  const mapArray = myFriends.map((friend)=> {
+      return friend.name
+    })
     await updateDoc(myUserUpdate, {
-      Friends: [user, ...myFriends]
+      Friends: [user, ...mapArray]
     })
     loadUsers()
 
@@ -59,7 +62,8 @@
 <p>Current Friends....</p>
 {#each myFriends as friend}
 <div>
-  <h3>{friend}</h3>
+  <h3>{friend.name}</h3>
+  <img src={friend.avatar} alt={friend.name} />
   <button>Message Here</button>
 </div>
 {/each}
@@ -67,9 +71,21 @@
 <p>Recommended Friends</p>
 {#each isNotFriend as user}
 <div>
-  <h3>{user}</h3>
-  <button value={user} on:click={ConnectUser(user)}>Add Friend</button>
+  <h3>{user.name}</h3>
+  <img src={user.avatar} alt={user.name} />
+  <button value={user.name} on:click={ConnectUser(user.name)}>Add Friend</button>
 </div>
 {/each}
 <br>
 
+<style>
+  :root {
+    --avatar-size: 5rem;
+  }
+
+  img {
+    border-radius: 50%;
+    height: auto;
+    width: var(--avatar-size);
+  }
+</style>
