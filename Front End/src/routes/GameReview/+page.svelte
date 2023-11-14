@@ -4,7 +4,6 @@
   import { MyUser } from "../../lib/store";
   import { get } from "svelte/store";
   import { StoredUserInfo } from "../../lib/store";
-
   //gets the current gameId from the url params, and sets it as game_id to be sent off in submitReview
   let connectUserBool = false;
   let userToConnect = {}
@@ -58,12 +57,12 @@
   async function submitReview(event) {
     //sends review
     event.preventDefault()
-
     const reviewsRef = collection(db, "Reviews")
     let ourUserDetails = await getDoc(doc(db,"Profiles",activeUser.username))
     ourUserDetails = ourUserDetails.data()
     const queriedReviews = query(reviewsRef, where("game_id", "==", gameId), orderBy("created_at", "desc"))
     const querySnapshot = await getDocs(queriedReviews);
+
     querySnapshot.forEach((doc) => {
       let checkerUser = doc.data()
       if ((checkerUser.user_game_rating === userRating) && (checkerUser.username !== activeUser.username) && ourUserDetails.Friends.includes(checkerUser.username)){
