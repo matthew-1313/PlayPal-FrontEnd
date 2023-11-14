@@ -23,21 +23,36 @@
   let myFriends = [];
   let isNotFriend = [];
   let myCurrentUser = "";
+  let friendsToAdd = [];
+
   MyUser.subscribe((value) => {
     myCurrentUser = value;
   });
 
+
   onMount(() => {
     loadUsers();
   });
+
+  function stagedFriend(friend) {
+    friendsToAdd.push(friend)
+    console.log(friend)
+  }
+
+  function createGroupChat() {
+    for (let friend of friendsToAdd){
+      
+    }
+  }
+
   // let ourUser = []
   async function loadUsers() {
     const querySnapshot = await getDocs(collection(db, "Profiles"));
     let ourUserDetails = await getDoc(doc(db, "Profiles", myCurrentUser));
-    console.log(myCurrentUser);
     ourUserDetails = ourUserDetails.data();
     myFriends = [];
     isNotFriend = [];
+    
     // const unsubscribe = onSnapshot(getDoc(doc(db,"Profiles","Jerry")),(ourUserDetails) =>{
     //   ourUser = ourUserDetails.docs.map((field) =>{
     //    return field.data()
@@ -87,6 +102,22 @@
 </div>
 {/each}
 <br>
+
+<div>
+  <h2>Create Group Chat:</h2>
+  <ul>
+    {#each myFriends as Friend}
+      <li>
+        <p>{Friend.name}</p>
+        <button on:click={() => stagedFriend({id: Friend.name, name: Friend.name, photoUrl: Friend.avatar_url})}>Add</button>
+        <button>Remove</button>
+      </li>
+      {/each}
+  </ul>
+  <button on:click={() => createGroupChat()}>Create Group</button>
+</div>
+<br>
+
 <p>Recommended Friends</p>
 {#each isNotFriend as user}
 <div>

@@ -82,8 +82,6 @@ async function timeStampChecker(event){
     })
     })
     addSpecificEvent(fullCalendar)
-
-    
   }
 }
 
