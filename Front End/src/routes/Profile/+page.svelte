@@ -1,10 +1,10 @@
 <script>
   import Navbar from "../../lib/navbar.svelte";
-  import { getContext } from "svelte";
+  import { onMount } from "svelte";
   import { MyUser } from "../../lib/store";
   import { db } from "../../lib/firebase/firebase.client";
   import { StoredUserInfo } from "../../lib/store";
-  import { updateDoc, getDoc, collection, doc } from "firebase/firestore";
+  import { onSnapshot, updateDoc, getDoc, collection, doc,query,where,orderBy } from "firebase/firestore";
   let isLoading = true;
   let user = "";
   $: bio = "";
@@ -19,7 +19,26 @@
   });
   $: areStatsChanging = false;
 
-  async function getDocument(coll, id) {
+  const reviewsRef = collection(db, "Reviews");
+  const userReviews = query(
+    reviewsRef,
+    where("username", "==", user),
+    orderBy("created_at", "desc")
+  ); 
+ // console.log(reviewsRef)
+
+ let myReviews = [];
+
+onMount(async () => {
+  const unsubscribe = onSnapshot(userReviews, (querySnapshot) => {
+    myReviews = querySnapshot.docs.map((review) => {
+      return review.data();
+    });
+  });
+  return () => unsubscribe();
+});
+
+async function getDocument(coll, id) {
     const snap = await getDoc(doc(db, coll, id));
     if (snap.exists()) {
       isLoading = false;
@@ -73,15 +92,38 @@
       alt="user profile"
     />
   </div>
-  <p>Please see a list of your reviewed games below:</p>
-
   <button
-    on:click={(event) => {
-      event.preventDefault();
-      isLoading = false;
-      areStatsChanging = true;
-    }}>Change Information</button
-  >
+  on:click={(event) => {
+    event.preventDefault();
+    isLoading = false;
+    areStatsChanging = true;
+  }}>Change Information</button
+>
+<h3>All your reviews:</h3>
+<p>Click on any review to be taken to the game</p>
+
+  <div>
+    {#each myReviews as review}
+    <a href= '/Games/{review.game_id}'>
+      <div class="reviewCard">
+        <div>    
+          <h2>{review.game_name}</h2>
+          <p>
+            <img src={review.user_avatar} alt={review.username} />
+            {review.username} | <b>User Rating:</b>
+            {review.user_game_rating} | <b>Reviewed at:</b>
+            {review.created_at.toDate().toDateString()}
+          </p>
+        </div>
+        <div>
+          <h3>{review.review_title}</h3>
+          <p>{review.body}</p>
+        </div>
+      </div>
+    </a>
+    {/each}
+  </div>
+
 {:else if isLoading}
   <p>Loading...</p>
 {:else}
