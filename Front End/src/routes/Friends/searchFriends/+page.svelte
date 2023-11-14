@@ -3,6 +3,7 @@
     import { MyUser } from "../../../lib/store";
     import { db } from "../../../lib/firebase/firebase.client";
     import { getDocs,collection,getDoc,doc, updateDoc } from "firebase/firestore";
+    import { converse } from '../../../lib/converse.js'
 
     let isSearched = false
     let errorMessage = ""
@@ -89,7 +90,7 @@ async function changeData(){
 <div>
   <h3>{friend.name}</h3>
   <img src={friend.avatar} alt={friend.name}>
-  <button>Message Here</button>
+  <button on:click={() => converse({id: friend.name, name: friend.name, photoURL: friend.avatar})}>Message Here</button>
 </div>
 {/each}
 <br>
