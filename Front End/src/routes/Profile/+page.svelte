@@ -239,7 +239,7 @@ async function getDocument(coll, id) {
   height: 250px;
   width: 250px;
   margin-top: 10px;
-  border: solid black;
+  border: solid orange;
 }
 
 .profile-user, .profile-bio {
