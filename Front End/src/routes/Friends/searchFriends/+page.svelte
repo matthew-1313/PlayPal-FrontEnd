@@ -4,7 +4,6 @@
     import { db } from "../../../lib/firebase/firebase.client";
     import { getDocs,collection,getDoc,doc, updateDoc } from "firebase/firestore";
     import { converse } from '../../../lib/converse.js'
-
     let isSearched = false
     let errorMessage = ""
     let searchTerm = ""
@@ -61,7 +60,6 @@ async function changeData(){
     const mapArray = dbFriends.map((friend)=> {
       return friend.name
     })
-    console.log(user)
     await updateDoc(myUserUpdate, {
       Friends: [user, ...mapArray]
     })
@@ -87,7 +85,7 @@ async function changeData(){
   <!-- <p>Current Friends....</p> -->
   {#if (myFriends.length > 0) || (isNotFriend.length > 0)}
 {#each myFriends as friend}
-<div>
+<div class="FriendsDiv">
   <h3>{friend.name}</h3>
   <img src={friend.avatar} alt={friend.name}>
   <button on:click={() => converse({id: friend.name, name: friend.name, photoURL: friend.avatar})}>Message Here</button>
@@ -95,7 +93,7 @@ async function changeData(){
 {/each}
 <br>
 {#each isNotFriend as user}
-<div>
+<div class="FriendsDiv">
   <h3>{user.name}</h3>
   <img src={user.avatar} alt={user.name} />
   <button value={user.name} on:click={ConnectUser(user.name)}>Add Friend</button>
