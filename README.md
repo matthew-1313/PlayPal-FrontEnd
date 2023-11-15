@@ -1,15 +1,15 @@
 # PLAYPAL - A Games Review and Gamer Connection App
 
 
-Project Background
+## Project Background
 
-This app was created with the objective of using new technologies and frameworks that the team was not exposed to in the Northcoders bootcamp. The team was given 8 days to design and develop a working application using the new technologies/framework chosen by the team. 
+This app was created with the objective of using new technologies and frameworks that we, the team, were not exposed to in the Northcoders bootcamp. We were given 8 days to design and develop a working application using the new technologies/framework we selected. 
 
 
-Acknowledgements
+## Acknowledgements
 The team would like to express their gratitude and thanks to the mentors and leads at Northcoders whom provided their expertise and guidance over the course of this project.  
 
-Northcoders Mentors (August 2023)
+#### Northcoders Mentors (August 2023)
 <ul>
 <li>Alice Yang</li>
 <li>Mitch Wyatt</li>
@@ -22,7 +22,8 @@ Northcoders Mentors (August 2023)
 </ul>
 
 ## Table Of Contents
-- [Project Description] (#project-description)
+------
+  Project Description
   Purpose
   Features
   Technologies/Frameworks
@@ -36,25 +37,30 @@ Credits
   The Team
   Links to TalkJS, Calendar, Firebase, Svelte, RAWG io
 
-
+--------
 
 ## Project Description
 
 ### Purpose
 This project was created to connect video gamers with other video gamers with similar gaming interests.
 
-#### Features
+### Features
 The app allows a user to review a game. Upon submitting a review, the app will suggest other app users with a similar rating to connect with. Once connected, the app allows the user to use the in-app messaging system to directly communicate with the other user. Additionally, the app contains a calendar feature that allows users to make meeting requests and coordinate playing/meet up schedules. 
 
 ### Technologies/Frameworks
 The app was created using Svelte for the front end, Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
 
+### Challenges
+We faced a number of challenges during the course of the is project. 
+<ul>
+<li>Team dynamic - getting used to work together and swapping our coding teams.</li>
+<li>Github version control - first time working in a group more than 2 and figuring out how to create features and minimise the number of merging conflicts.</li>
+<li>No relation database implementation - we were trained to use PostgreSQL and initial tried a same approach to Firebase. We quickly learned that we not the intended utilisation of the tech.</li>
+<li>Svelte - Having a React background from the bootcamp, we had to relearn how to adjust our app's file structure, utilisation of Svelte stores and how to trigger page/component rerenders</li>
+<li>User authentication - While Firebase has this feature we decided not incorporate it into our application as it is email-based - a feature our application does not use. Consequently, we have an issue in maintaining a user info store across our application.</li>
 
-## The Team
+## Project Team Members
 <table>
-<tr>
-<td> Project Team 5 Members</td>
-</tr>
 <tr>
 <td>Sam Woodall</td>
 <td>https://github.com/swoody2527</td>
