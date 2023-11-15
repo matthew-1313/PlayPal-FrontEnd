@@ -113,7 +113,6 @@ async function getDocument(coll, id) {
         </div>
         <div class="user-review">
           <p>{review.review_title}</p>
-          <hr />
           <div>{review.body}</div>
         </div>
       </div>
