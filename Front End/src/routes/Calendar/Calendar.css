@@ -31,7 +31,7 @@
     --ec-bg-event-opacity: 0.3;
     /* Days */
     --ec-list-day-bg-color: var(--ec-bg-color, var(--ec-bg-fallback-color));
-    --ec-today-bg-color: rgba(231, 138, 32, 0.336);
+    --ec-today-bg-color: var(--pp-accent);
     --ec-highlight-color: rgba(188, 232, 241, .3);
     /* Popup */
     --ec-popup-bg-color: var(--ec-bg-color, var(--ec-bg-fallback-color));
