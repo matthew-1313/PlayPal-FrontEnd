@@ -20,7 +20,7 @@
   let fullCalendar = [];
   let addToCalendar = {};
   let friendAddToCalendar = {};
-  $: render = false;
+  $:render = false;
   MyUser.subscribe((value) => {
     currentUser = value;
   });
@@ -114,6 +114,11 @@
           });
         });
       addSpecificEvent(fullCalendar);
+      friendName =""
+        startTime=""
+        endTime=""
+        eventDate=""
+        gameTitle=""
     } else if (myFriendChecker){
       errorMessage = "";
       addToCalendar = {
@@ -137,6 +142,7 @@
         start: `${eventDate} ${startTime}`,
         end: `${eventDate} ${endTime}`,
         title: `${gameTitle} with ${currentUser}`,
+        
       };
       await getDocument("Profiles", friendName)
         .then((data) => {
