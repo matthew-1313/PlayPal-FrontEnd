@@ -25,8 +25,8 @@
     --ec-button-active-border-color: var(--ec-color-700);
     --ec-button-active-text-color: var(--ec-button-text-color);
     /* Events */
-    --ec-event-bg-color: rgba(231, 138, 32, 0.87);
-    --ec-event-text-color: #242424;
+    --ec-event-bg-color: var(--pp-accent);
+    --ec-event-text-color:var(--pp-text-dark);
     --ec-bg-event-color: var(--ec-color-500);
     --ec-bg-event-opacity: 0.3;
     /* Days */
@@ -136,7 +136,7 @@
   }
   .ec-button:not(:disabled) {
     color: #363636;
-    background-color: rgba(231, 138, 32, 0.87);
+    background-color: var(--pp-accent);
     cursor: pointer;
   }
   .ec-button:not(:disabled):hover, .ec-button.ec-active {
