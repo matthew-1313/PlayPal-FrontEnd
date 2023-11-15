@@ -8,24 +8,20 @@
 </script>
 
 <nav class="navbar">
-  <ul class="navbar-inner" id="menu">
+  <ul class="navbar-inner" id="navmenu">
     <li><a href="/Home">Home</a></li>
-    |
+
     <li><a href="/Profile">Profile</a></li>
-    |
+
     <li><a href="/Calendar">Calendar</a></li>
-    |
+
     <li><a href="/Friends">Friends</a></li>
-    |
+
     <li><a href="/Games">Games</a></li>
-    |
+
     <li><a href="/Messages">Messages</a></li>
   </ul>
 </nav>
 
 <style>
-  #menu li {
-    display: inline-block;
-    justify-content: center;
-  }
 </style>

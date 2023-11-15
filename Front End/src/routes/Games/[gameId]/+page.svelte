@@ -62,8 +62,13 @@
   <p>loading</p>
 {:then data}
   <div>
-    <img src={data.image} alt={data.name} />
-    <h2>{data.name}</h2>
+    <div class="singleGamePage-frame">
+      <div class="singleGamePage-gameTitle">
+        <h2>{data.name}</h2>
+      </div>
+      <div class="singleGamePage-fade" />
+      <img src={data.image} alt={data.name} />
+    </div>
     <p>
       PlayPal Average:
       <b>{data.playpal_rating} Stars</b> | Metacritic:
@@ -95,12 +100,4 @@
 <ReviewComponent {gameId} />
 
 <style>
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    height: auto;
-    border-radius: 30px;
-  }
 </style>

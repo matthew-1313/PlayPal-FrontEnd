@@ -1,11 +1,15 @@
 /* global */
 
+
+/* rgb(54, 54, 54) */
+
 :root {
-  
+
   /* PlayPal Theme Colours: */
   --pp-main: rgba(248, 248, 228, 0.87);
-  --pp-dark: #2c292c;
-  --pp-accent: rgba(231, 138, 32, 0.87);
+  --pp-dark: #292b2c;
+  --pp-accent: #8a7447;
+  --pp-background: rgb(54, 54, 54);
   /* PlayPal Text Colours: */
   --pp-text-light: rgba(255, 255, 255, 0.87);
   --pp-text-dark: #242424;
@@ -18,7 +22,7 @@
 
     color-scheme: light dark;
     color: var(--pp-text-light);
-    background-color: #363636;
+    background-color: var(--pp-background);
     align-content: center;
 
     font-synthesis: none;
@@ -154,20 +158,43 @@
       black 53%,
       var(--text-color) 65%
     );
-    background: linear-gradient(177deg, black 53%, var(--text-color) 65%);
+    background: linear-gradient(177deg, black 53%, var(--pp-accent) 65%);
     background-clip: text;
     -webkit-background-clip: text;
     transform: translateX(-0.02em);
   }
 
    /* navbar */
-   .navbar {
-    max-width: 70vw;
+   #navmenu {
     padding: 0;
-    font-size: 1.16em;
+  }
+  #navmenu li {
+    padding: auto;
+    margin: auto;
+    display: inline-flex;
+    justify-content: center;
+  }
+  .navbar {
+    max-width: 80vw;
+    padding: 0;
     text-align: center;
+    color: var(--pp-accent);
+    border-radius: 10px;
+  }
+  .navbar-inner {
+    padding: auto;
+    font-size: 2vmin;
+  }
+  .navbar a {
+    font-size: 1.16em;
+    padding: 0.9em;
+    float: inherit;
+  }
+  .navbar a:hover {
     color: var(--pp-text-dark);
+    box-shadow: 0 0 25px var(--pp-accent);
     background-color: var(--pp-accent);
+    border-radius: 30px;
   }
 
 
@@ -205,7 +232,7 @@
     border-top: 1px solid var(--pp-accent);
     border-right: 0.75px solid var(--pp-accent);
     backdrop-filter: blur(10px);
-    box-shadow: 0 15px 25px rgba(163, 230, 109, 0.774);
+    box-shadow: 0 15px 25px rgba(248, 0, 0, 0.774);
   }
 
   .GamesCard img {
@@ -222,6 +249,61 @@
   }
 
   /* REVIEW PAGE */
+  /* singleGamePage */
+  .singleGamePage-frame {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 70rem;
+    border-radius: 30px;
+    position: relative;
+  }
+
+  .singleGamePage-gameTitle {
+    display: block;
+    place-content: center;
+    z-index: 1;
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+  }
+  .singleGamePage-gameTitle h2 {
+    position: relative;
+    font-size: 5vmin;
+    transform: translateY(50%);
+    place-self: center;
+    color: var(--pp-accent);
+  }
+
+  .singleGamePage-fade {
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    position: absolute;
+    background: -webkit-linear-gradient(
+      bottom,
+      var(--pp-background) 15%,
+      rgba(9, 240, 9, 0) 80%,
+      rgba(199, 199, 199, 0.671) 100%
+    );
+  }
+
+  .singleGamePage-frame img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 30px;
+    object-fit: scale-down;
+  }
+
+
   /* star rating */
   .rate {
     /* border: 1px solid #cccccc; */
