@@ -45,7 +45,9 @@
 </script>
 
 <Navbar />
-<h1>Welcome!</h1>
+<div id="HomePage">
+<h2>Home</h2>
 <!-- <h1>Hi {user}</h1> -->
-
+<label><a href="/Games/Search"><button>Click here to Search for any title</button></a> </label>
+</div>
 <GamesCardHome />

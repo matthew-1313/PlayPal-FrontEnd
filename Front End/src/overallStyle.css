@@ -235,10 +235,10 @@
   .GamesCard {
     align-items: center;
     justify-content: center;
-    font-size: 0.3em;
+    font-size: 0.5em;
     text-align: center;
-    width: 30em;
-    height: 35em;
+    width: 45em;
+    height: 55em;
     border-radius: 10px;
     color: var(--pp-main);
     background: var(--pp-dark);
@@ -247,17 +247,20 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 15px 25px rgba(248, 0, 0, 0.774);
   }
-
+.GamesCard p{
+  font-size: 1rem;
+}
   .GamesCard img {
-    max-height: 20em;
-    width: 25em;
-    height: 18em;
+    max-height: 30em;
+    width: 35em;
+    height: 28em;
     object-fit: cover;
+    border-radius: 12px;
   }
 
   .GamesCard h3 {
-    color: var(--pp-accent);
-    font-size: 2em;
+    color: rgba(231, 138, 32, 0.87);
+    font-size: 3em;
     font-weight: 0.5em;
   }
 
@@ -371,7 +374,74 @@
     margin-bottom: 0.75rem;
   }
   .reviewCard h3 {
-    color: var(--pp-accent);
+color:rgba(231, 138, 32, 0.87);
+  }
+
+  .reviewCard-Profile img {
+    max-width: 18px;
+    border-radius: 50%;
+    vertical-align: centre;
+  }
+  .reviewCard-Profile {
+    padding: 1em;;
+    border: solid 1px rgba(248, 248, 228, 0.87);
+    border-radius: 15px;
+    background: #2c292c;
+    border-top: 1px solid rgba(231, 138, 32, 0.87);
+    border-right: 0.75px solid rgba(231, 138, 32, 0.87);
+    font-size: 1rem;
+    max-width: 50%;
+    margin-bottom: 0.75rem;
+  }
+  .reviewCard-Profile span {
+    color:rgba(231, 138, 32, 0.87);
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .info-review-details {
+    font-size: .7rem;
+  }
+
+  .user-review {
+    background-color: #57565644;
+    border-radius: 5px;
+    padding: 0px 5px;
+    /* display: flex; */
+    justify-content: flex-start;
+    /* align-items: baseline; */
+  }
+
+  .user-review p {
+    color:rgba(231, 138, 32, 0.87);
+    font-weight: bold;
+    font-size: .75rem;
+    margin: 0px;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc4f;
+    margin: 1em 0;
+    padding: 0;
+}
+
+  #Bio{
+    width: 30rem;
+  }
+
+  .CalendarForm{
+    width: 25%;
+    margin: 0.7rem;
+  }
+  #BioArea{
+      display: flex;
+      align-items: center;
+
+  }
+
+color: var(--pp-accent);
   }
 
 /* old colours

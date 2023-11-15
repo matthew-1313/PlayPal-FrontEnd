@@ -79,8 +79,6 @@ async function getDocument(coll, id) {
 </script>
 
 <Navbar />
-<h1>This is the Profile page for {user}</h1>
-
 {#if !areStatsChanging && !isLoading}
   <p>Username : {user}</p>
   <p>Bio: {bio || ""}</p>
@@ -105,19 +103,18 @@ async function getDocument(coll, id) {
   <div>
     {#each myReviews as review}
     <a href= '/Games/{review.game_id}'>
-      <div class="reviewCard">
+      <div class="reviewCard-Profile">
         <div>    
-          <h2>{review.game_name}</h2>
-          <p>
-            <img src={review.user_avatar} alt={review.username} />
-            {review.username} | <b>User Rating:</b>
-            {review.user_game_rating} | <b>Reviewed at:</b>
+          <span>{review.game_name}</span>
+          <p class="info-review-details">
+            {review.user_game_rating} stars | <b>Reviewed at:</b>
             {review.created_at.toDate().toDateString()}
           </p>
         </div>
-        <div>
-          <h3>{review.review_title}</h3>
-          <p>{review.body}</p>
+        <div class="user-review">
+          <p>{review.review_title}</p>
+          <hr />
+          <div>{review.body}</div>
         </div>
       </div>
     </a>
@@ -128,20 +125,30 @@ async function getDocument(coll, id) {
   <p>Loading...</p>
 {:else}
   <form on:submit={submitData}>
-    <p>I am User {user}</p>
-    <label
-      >Bio <textarea
-        on:change={(event) => {
-          event.preventDefault();
-          errorMessage = "";
-          checkBio = event.target.value;
-        }}
-        value={checkBio}
-        placeholder="Type Bio here"
-      /></label
-    >
-    <label
-      >Avatar Url: <input
+    <div id="BioArea" class="sect-BioUpdate">
+      <div id="bioheader">
+        <b>Your Bio:</b>
+      </div>
+    <div>
+      <div id="box-myBio">
+      <textarea id="Bio"
+          on:change={(event) => {
+            event.preventDefault();
+            errorMessage = "";
+            checkBio = event.target.value;
+          }}
+          value={checkBio}
+          placeholder="Type Bio here"
+      />
+      </div>
+      </div>
+    </div>
+    <div class="sect-Avatar">
+      <div>
+      Avatar link:
+      </div>
+      <div>
+      <input
         placeholder="Type Url Here"
         on:change={(event) => {
           event.preventDefault();
@@ -149,9 +156,12 @@ async function getDocument(coll, id) {
           checkImage = event.target.value;
         }}
         value={checkImage}
-      /></label
-    >
+      />
+      </div>
+      <div id="btn-submit">
     <button>Click Here to Submit Changes</button>
+    </div> 
+    </div>
   </form>
   <p>{errorMessage}</p>
 
@@ -174,4 +184,42 @@ async function getDocument(coll, id) {
     height: auto;
     width: var(--avatar-size);
   }
+
+  textarea{
+    max-width: 60%;
+  }
+
+  .sect-BioUpdate {
+    display: flex;
+    flex-direction: column;
+    flex-flow:column;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+  #box-myBio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+
+  .sect-Avatar {
+    display: flex;
+    flex-direction: column;
+    flex-flow:column;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+
+  .sect-Avatar button {
+    max-width: 60%;
+    margin: 25px;
+  }
+
+ 
+
 </style>

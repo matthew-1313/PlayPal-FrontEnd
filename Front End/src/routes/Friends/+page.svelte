@@ -140,6 +140,7 @@
 <Navbar />
 <h1>Friends</h1>
 <p>{errorMessage}</p>
+
 <section class="current-friends-container">
   <h2 class="current-friends-header">Current Friends</h2>
   <div class="current-friends-card-container">
