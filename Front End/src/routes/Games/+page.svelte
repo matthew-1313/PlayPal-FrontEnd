@@ -60,7 +60,7 @@
   </div>
 {#if !isLoading}
   <main>
-    <div id="ShowCardTop">
+    <div id="SortingSection">
       <label>Search by Category:</label>
       <select
         bind:value={currentId}
@@ -78,7 +78,6 @@
           >
         {/each}
       </select>
-      <div>
       | Sort by:
       <button
         id="changeRating"
@@ -90,11 +89,10 @@
         }}>{RatingChange[!ratingSelect]}</button
       >
       </div>
-      <div>
+      <div id="Ptag">
       <p>
         Currently showing games sorted by {RatingChange[ratingSelect]}
       </p>
-      </div>
       </div>
       <div id="grid-container">
         {#each $gamesSortedData as game}
@@ -131,10 +129,17 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 10px;
   }
-  #ShowCardTop{
+  #SortingSection{
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
+  #Ptag{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
 </style>
