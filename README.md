@@ -1,13 +1,82 @@
-# PlayPal-FrontEnd
-
-This is the start of our FE repo for Playpal
+# PLAYPAL - A Games Review and Gamer Connection App
 
 
----
-What to Include in your README
-1. Project's Title
+Project Background
 
-This is the name of the project. It describes the whole project in one sentence, and helps people understand what the main goal and aim of the project is.
+This app was created with the objective of using new technologies and frameworks that the team was not exposed to in the Northcoders bootcamp. The team was given 8 days to design and develop a working application using the new technologies/framework. 
+
+
+Table Of Contents
+Project Description
+  Purpose
+  Features
+  Technologies/Frameworks
+  Challenges
+  Future considerations 
+
+How to install & run
+
+Credits
+  Acknowledgements
+  Team Members
+  Links to TalkJS, Calendar, Firebase, Svelte, RAWG io
+
+
+
+Project Description
+
+Purpose
+This project was created to connect video gamers with other video gamers with similar gaming interests.
+
+Features
+The app allows a user to review a game. Upon submitting a review, the app will suggest other app users with a similar rating to connect with. Once connected, the app allows the user to use the in-app messaging system to directly communicate with the other user. Additionally, the app contains a calendar feature that allows users to make meeting requests and coordinate playing/meet up schedules. 
+
+Technologies/Frameworks
+The app was created using Svelte for the front end, Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
+
+
+Acknowledgements
+The team would like to express their gratitude and thanks to the mentors and leads at Nortcoders whom provided their expertise and guidance over the course of this project.  
+
+Northcoders Mentors (August 2023)
+Alice Yang
+Mitch ?
+Rayhann Ugharadar
+Kev Morel - Section Lead
+Jim Stevenson
+David Bartlet - Cohort Lead
+Rose Mullen - Cohort Lead
+
+
+Project Team 5
+<table>
+<tr>
+<td> Members</td>
+<td> Github</td>
+<tr>
+<td>Sam Woodall</td>
+<td>https://github.com/swoody2527</td>
+</tr>
+<tr>
+<td>Daniel Wong</td>
+<td>https://github.com/s08Reild</td>
+</tr>
+<tr>
+<td>Daniel Mohammadian</td>
+<td>https://github.com/Danmoham</td>
+</tr>
+<tr>
+<td>Matthew Mathieson</td>
+<td>https://github.com/matthew-131</td>
+</tr>
+<tr>
+<td>Emory Brock /td>
+<td>https://github.com/EmoryBrock</td>
+</tr>
+</table>
+
+
+
 2. Project Description
 
 This is an important component of your project that many new developers often overlook.
