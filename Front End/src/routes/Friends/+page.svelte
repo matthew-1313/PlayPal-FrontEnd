@@ -145,6 +145,7 @@
   <div>
     <h4>{friend.name}</h4>
     <img src={friend.avatar_url} alt={friend.name} />
+    {#if !isAddingFriendsToGroup}
     <button
       on:click={() =>
         converse({
@@ -154,7 +155,7 @@
           role: "default",
         })}>Message Here</button
     >
-    {#if isAddingFriendsToGroup}
+    {:else}
       {#if friendsToAdd.map((friendToAdd) =>  friendToAdd.name).includes(friend.name)}
       <p>Friend Added</p>
         <button on:click={unstageFriend({
