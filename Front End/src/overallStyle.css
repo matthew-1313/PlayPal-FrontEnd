@@ -197,6 +197,35 @@
     border-radius: 30px;
   }
 
+  /* signin page */
+  .imageBox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  .imageBox img {
+    display: block;
+    width: 100%;
+  }
+  .imageBox p {
+    margin: 1rem;
+  }
+  .imageBox button {
+    font-size: 3vmin;
+  }
+  .imageBoxTextarea {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    padding: 1rem 1rem;
+    padding-bottom: 2rem;
+    border-radius: 30px;
+    font-size: 3vmin;
+    text-align: center;
+  }
+
 
   /* game cards */
   #grid-container {
