@@ -15,9 +15,11 @@
   let eventDate = "";
   let endTime = "";
   let gameTitle = "";
+  let friendName = ""
   let errorMessage = "";
   let fullCalendar = [];
   let addToCalendar = {};
+  let friendAddToCalendar = {};
   $: render = false;
   MyUser.subscribe((value) => {
     currentUser = value;
@@ -37,6 +39,7 @@
       addAllEvents(fullCalendar);
     },
   };
+  const myUserUpdate = doc(db, "Profiles", currentUser);
 
   function addAllEvents(allCalendarEvents) {
     allCalendarEvents.forEach((eachItem) => {
@@ -46,6 +49,7 @@
         title: `${eachItem.title}`,
       });
     });
+ 
   }
   function addSpecificEvent(Events) {
     const FinalEvent = Events[Events.length - 1];
@@ -54,6 +58,7 @@
       end: `${FinalEvent.end}`,
       title: `${FinalEvent.title}`,
     });
+    errorMessage="Your Entry has been succesfully Added!"
   }
 
   onMount(async () => {
@@ -74,22 +79,31 @@
     );
   }
 
+  async function checkUserHasFriend(userFriend){
+       return await getDocument('Profiles',currentUser)
+        .then((data) =>{
+          return (data.Friends.includes(userFriend))
+        })
+
+
+  }
+
   async function timeStampChecker(event) {
     event.preventDefault();
+    const myFriendChecker = await checkUserHasFriend(friendName)
     if (!isValidDate()) {
       errorMessage = "Please enter a valid date in the format DD-MM-YY";
     } else if (!isValidTime()) {
       errorMessage = "Please enter valid times in the format HH:MM";
     } else if (gameTitle.split(" ").join("").length === 0) {
       errorMessage = "Please enter a game title";
-    } else {
+    }else if (friendName.split(" ").join("").length === 0){
       errorMessage = "";
       addToCalendar = {
         start: `${eventDate} ${startTime}`,
         end: `${eventDate} ${endTime}`,
         title: `${gameTitle}`,
       };
-      const myUserUpdate = doc(db, "Profiles", currentUser);
       await getDocument("Profiles", currentUser)
         .then((data) => {
           fullCalendar = [...data.Calendar, addToCalendar];
@@ -100,6 +114,47 @@
           });
         });
       addSpecificEvent(fullCalendar);
+    } else if (myFriendChecker){
+      errorMessage = "";
+      addToCalendar = {
+        start: `${eventDate} ${startTime}`,
+        end: `${eventDate} ${endTime}`,
+        title: `${gameTitle} with ${friendName}`,
+      };
+      await getDocument("Profiles", currentUser)
+        .then((data) => {
+          fullCalendar = [...data.Calendar, addToCalendar];
+        })
+        .then(() => {
+          updateDoc(myUserUpdate, {
+            Calendar: fullCalendar,
+          });
+        });
+        addSpecificEvent(fullCalendar);
+        const myFriendUpdate = doc(db, "Profiles", friendName);
+        errorMessage = "";
+        addToCalendar = {
+        start: `${eventDate} ${startTime}`,
+        end: `${eventDate} ${endTime}`,
+        title: `${gameTitle} with ${currentUser}`,
+      };
+      await getDocument("Profiles", friendName)
+        .then((data) => {
+          fullCalendar = [...data.Calendar, addToCalendar];
+        })
+        .then(() => {
+          updateDoc(myFriendUpdate, {
+            Calendar: fullCalendar,
+          });
+        });
+        friendName =""
+        startTime=""
+        endTime=""
+        eventDate=""
+        gameTitle=""
+        errorMessage = "Entry added on yours and your friends Calendar!"
+    }else{
+      errorMessage ="The name you have typed is not a current friend! Go to the friends tab and search to add as a friend!" 
     }
   }
 </script>
@@ -121,10 +176,11 @@
       <input
         on:change={(event) => {
           startTime = event.target.value;
+          errorMessage=""
         }}
         id="StartTime"
-        value={startTime}
-        placeholder="HH:MM"
+        bind:value={startTime}
+        placeholder="HH:MM*"
       />
     </label>
     <label for="EndTime"
@@ -132,10 +188,11 @@
       <input
         on:change={(event) => {
           endTime = event.target.value;
+          errorMessage=""
         }}
         id="EndTime"
-        value={endTime}
-        placeholder="HH:MM"
+        bind:value={endTime}
+        placeholder="HH:MM*"
       />
     </label>
     <label for="EventDate"
@@ -143,10 +200,11 @@
       <input
         on:change={(event) => {
           eventDate = event.target.value;
+          errorMessage=""
         }}
         id="EventDate"
-        value={eventDate}
-        placeholder="YYYY-MM-DD"
+        bind:value={eventDate}
+        placeholder="YYYY-MM-DD*"
       />
     </label>
     <label for="GameTitle"
@@ -154,12 +212,21 @@
       <input
         on:change={(event) => {
           gameTitle = event.target.value;
+          errorMessage=""
         }}
         id="GameTitle"
-        value={gameTitle}
-        placeholder="Enter game here"
+        bind:value={gameTitle}
+        placeholder="Enter game here*"
       />
     </label>
+    <label for="friendName">Friend Name<input on:change={(event) =>{
+      friendName = event.target.value
+      errorMessage=""
+    }}
+    id="friendName"
+    bind:value={friendName}
+    placeholder="Enter Friend Name if applicable"
+    ></label>
     <button>Submit</button>
   </form>
 
