@@ -206,6 +206,7 @@
     width: 35em;
     height: 28em;
     object-fit: cover;
+    border-radius: 12px;
   }
 
   .GamesCard h3 {
@@ -271,6 +272,57 @@
   .reviewCard h3 {
     color:rgba(231, 138, 32, 0.87);
   }
+
+  .reviewCard-Profile img {
+    max-width: 18px;
+    border-radius: 50%;
+    vertical-align: centre;
+  }
+  .reviewCard-Profile {
+    padding: 1em;;
+    border: solid 1px rgba(248, 248, 228, 0.87);
+    border-radius: 15px;
+    background: #2c292c;
+    border-top: 1px solid rgba(231, 138, 32, 0.87);
+    border-right: 0.75px solid rgba(231, 138, 32, 0.87);
+    font-size: 1rem;
+    max-width: 50%;
+    margin-bottom: 0.75rem;
+  }
+  .reviewCard-Profile span {
+    color:rgba(231, 138, 32, 0.87);
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .info-review-details {
+    font-size: .7rem;
+  }
+
+  .user-review {
+    background-color: #57565644;
+    border-radius: 5px;
+    padding: 0px 5px;
+    /* display: flex; */
+    justify-content: flex-start;
+    /* align-items: baseline; */
+  }
+
+  .user-review p {
+    color:rgba(231, 138, 32, 0.87);
+    font-weight: bold;
+    font-size: .75rem;
+    margin: 0px;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc4f;
+    margin: 1em 0;
+    padding: 0;
+}
+
   #Bio{
     width: 30rem;
   }
