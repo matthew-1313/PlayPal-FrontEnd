@@ -23,7 +23,7 @@ The team would like to express their gratitude and thanks to the mentors and lea
 
 ## Table Of Contents
 ------
-  Project Description
+  Project Description (#challenges)
   Purpose
   Features
   Technologies/Frameworks
