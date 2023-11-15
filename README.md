@@ -1,5 +1,4 @@
-# PLAYPAL - A Games Review and Gamer Connection App
-
+# PLAYPAL - A Gamer Review & Connection App
 
 ## Project Background
 
@@ -58,6 +57,10 @@ We faced a number of challenges during the course of the is project.
 <li>No relation database implementation - we were trained to use PostgreSQL and initial tried a same approach to Firebase. We quickly learned that we not the intended utilisation of the tech.</li>
 <li>Svelte - Having a React background from the bootcamp, we had to relearn how to adjust our app's file structure, utilisation of Svelte stores and how to trigger page/component rerenders</li>
 <li>User authentication - While Firebase has this feature we decided not incorporate it into our application as it is email-based - a feature our application does not use. Consequently, we have an issue in maintaining a user info store across our application.</li>
+
+### Features
+Here are some features for future considerations
+
 
 ## Project Team Members
 <table>
