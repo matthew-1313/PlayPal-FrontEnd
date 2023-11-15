@@ -46,8 +46,15 @@
 
 <Navbar />
 <div id="HomePage">
-<h2>Home</h2>
+  <div>
 <!-- <h1>Hi {user}</h1> -->
 <label><a href="/Games/Search"><button>Click here to Search for any title</button></a> </label>
-</div>
 <GamesCardHome />
+
+</div>
+</div>
+<style>
+  #HomePage{
+    text-align: center;
+  }
+</style>
