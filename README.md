@@ -3,11 +3,26 @@
 
 Project Background
 
-This app was created with the objective of using new technologies and frameworks that the team was not exposed to in the Northcoders bootcamp. The team was given 8 days to design and develop a working application using the new technologies/framework. 
+This app was created with the objective of using new technologies and frameworks that the team was not exposed to in the Northcoders bootcamp. The team was given 8 days to design and develop a working application using the new technologies/framework chosen by the team. 
 
 
-Table Of Contents
-Project Description
+Acknowledgements
+The team would like to express their gratitude and thanks to the mentors and leads at Northcoders whom provided their expertise and guidance over the course of this project.  
+
+Northcoders Mentors (August 2023)
+<ul>
+<li>Alice Yang</li>
+<li>Mitch Wyatt</li>
+<li>Rayhann Ugharadar</li>
+<li>Kev Morel - Section Lead</li>
+<li>Niamh Smith</li>
+<li>Jim Stevenson</li>
+<li>David Bartlet - Cohort Lead</li>
+<li>Rose Mullan - Cohort Lead</li>
+</ul>
+
+## Table Of Contents
+- [Project Description] (#project-description)
   Purpose
   Features
   Technologies/Frameworks
@@ -18,41 +33,28 @@ How to install & run
 
 Credits
   Acknowledgements
-  Team Members
+  The Team
   Links to TalkJS, Calendar, Firebase, Svelte, RAWG io
 
 
 
-Project Description
+## Project Description
 
-Purpose
+### Purpose
 This project was created to connect video gamers with other video gamers with similar gaming interests.
 
-Features
+#### Features
 The app allows a user to review a game. Upon submitting a review, the app will suggest other app users with a similar rating to connect with. Once connected, the app allows the user to use the in-app messaging system to directly communicate with the other user. Additionally, the app contains a calendar feature that allows users to make meeting requests and coordinate playing/meet up schedules. 
 
-Technologies/Frameworks
+### Technologies/Frameworks
 The app was created using Svelte for the front end, Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
 
 
-Acknowledgements
-The team would like to express their gratitude and thanks to the mentors and leads at Nortcoders whom provided their expertise and guidance over the course of this project.  
-
-Northcoders Mentors (August 2023)
-Alice Yang
-Mitch ?
-Rayhann Ugharadar
-Kev Morel - Section Lead
-Jim Stevenson
-David Bartlet - Cohort Lead
-Rose Mullen - Cohort Lead
-
-
-Project Team 5
+## The Team
 <table>
 <tr>
-<td> Members</td>
-<td> Github</td>
+<td> Project Team 5 Members</td>
+</tr>
 <tr>
 <td>Sam Woodall</td>
 <td>https://github.com/swoody2527</td>
@@ -70,8 +72,33 @@ Project Team 5
 <td>https://github.com/matthew-131</td>
 </tr>
 <tr>
-<td>Emory Brock /td>
+<td>Emory Brock </td>
 <td>https://github.com/EmoryBrock</td>
+</tr>
+</table>
+
+
+## For more information on the tech used
+<table>
+<tr>
+<td>Svelte</td>
+<td>https://svelte.dev/</td>
+</tr>
+<tr>
+<td>Firebase</td>
+<td>https://firebase.google.com/</td>
+</tr>
+<tr>
+<td>RAWG API</td>
+<td>https://rawg.io</td>
+</tr>
+<tr>
+<td>Calender</td>
+<td>https://github.com/vkurko/calendar</td>
+</tr>
+<tr>
+<td>TalkJS</td>
+<td>https://talkjs.com/</td>
 </tr>
 </table>
 
