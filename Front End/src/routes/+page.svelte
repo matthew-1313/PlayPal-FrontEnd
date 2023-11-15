@@ -4,16 +4,29 @@
   import Games from "./Games/+page.svelte";
   import Home from "./Home/+page.svelte";
   import gameId from "./Games/[gameId]/+page.svelte";
+  // import signinbacker from "src/signinbacker.png";
   import { Router, Link, Route } from "svelte-routing";
   export const name = "Hello";
   export let url = "";
 </script>
 
+<div class="imageBox">
+  <div class="imageBoxTextarea">
+    <p>Welcome Back!</p>
+    <a href="/SignIn"><button>Log In</button></a>
+    <br />
+    <br />
+    <p>New Here?</p>
+    <a href="/SignUp"><button>Sign Up</button></a>
+  </div>
+  <img
+    src="https://ih1.redbubble.net/image.214457447.5767/flat,750x1000,075,t.jpg"
+    alt="collection of gamecards"
+  />
+</div>
+
 <Router {url}>
   <div>
-    <p>Please click one of the below to continue</p>
-    <a href="/SignUp"><button>Sign Up</button></a>
-    <a href="/SignIn"><button>Log In</button></a>
     <div>
       <Route path="/SignUp" component={SignUp} />
       <Route path="/SignIn" component={SignIn} />
@@ -23,3 +36,6 @@
     </div>
   </div>
 </Router>
+
+<style>
+</style>
