@@ -67,10 +67,11 @@ h1 {
 
 .search-friends-container {
     text-align: center;
+    margin: 30px;
 }
 
 .search-friends-container button {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .groupchat-container {
