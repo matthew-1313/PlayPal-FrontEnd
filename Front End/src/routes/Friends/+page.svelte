@@ -16,6 +16,7 @@
   import Talk from "talkjs";
   import { StoredUserInfo, currentChatSession } from "../../lib/store";
   import { get } from "svelte/store";
+  import "./friends.css";
 
   let isSearching = false;
   let isLoading = false;
@@ -39,8 +40,9 @@
   }
 
   function unstageFriend(friend) {
-    friendsToAdd = friendsToAdd.filter(friendToAdd => friendToAdd.name !== friend.name)
-    
+    friendsToAdd = friendsToAdd.filter(
+      (friendToAdd) => friendToAdd.name !== friend.name
+    );
   }
 
   function createGroupChat() {
@@ -82,8 +84,8 @@
     popup.mount(popupEl);
     popup.show();
 
-    friendsToAdd = []
-    isAddingFriendsToGroup = false
+    friendsToAdd = [];
+    isAddingFriendsToGroup = false;
   }
 
   // let ourUser = []
@@ -136,32 +138,38 @@
 </script>
 
 <Navbar />
-<h1>This is the Friends page</h1>
-<p>Search Friends</p>
-<button><a href="Friends/searchFriends">Search Here</a></button>
+<h1>Friends</h1>
 <p>{errorMessage}</p>
-<h3>Current Friends</h3>
-{#each myFriends as friend}
-  <div>
-    <h4>{friend.name}</h4>
-    <img src={friend.avatar_url} alt={friend.name} />
-    <button
-      on:click={() =>
-        converse({
-          id: friend.name,
-          name: friend.name,
-          photoUrl: friend.avatar_url,
-          role: "default",
-        })}>Message Here</button
-    >
-    {#if isAddingFriendsToGroup}
-      {#if friendsToAdd.map((friendToAdd) =>  friendToAdd.name).includes(friend.name)}
-      <p>Friend Added</p>
-        <button on:click={unstageFriend({
-          id: friend.name,
-          name: friend.name,
-          photoUrl: friend.avatar_url,
-        })}>Remove</button>
+<section class="current-friends-container">
+  <h2 class="current-friends-header">Current Friends</h2>
+  <div class="current-friends-card-container">
+  {#each myFriends as friend}
+    <div class="current-friend-card">
+      <img class="avatar-img" src={friend.avatar_url} alt={friend.name} />
+      <div class="friend-name-container">
+        <p class="friend-name">{friend.name}</p>
+      </div>
+      {#if !isAddingFriendsToGroup}
+        <button class="message-button"
+          on:click={() =>
+            converse({
+              id: friend.name,
+              name: friend.name,
+              photoUrl: friend.avatar_url,
+              role: "default",
+            })}>Send Message</button
+        >
+      {:else if friendsToAdd
+        .map((friendToAdd) => friendToAdd.name)
+        .includes(friend.name)}
+        <p>Friend Added</p>
+        <button
+          on:click={unstageFriend({
+            id: friend.name,
+            name: friend.name,
+            photoUrl: friend.avatar_url,
+          })}>Remove</button
+        >
       {:else}
         <button
           on:click={() =>
@@ -172,48 +180,54 @@
             })}>Add</button
         >
       {/if}
-    {/if}
-  </div>
-{/each}
+    </div>
+  {/each}
+</div>
+</section>
 <br />
 
-<div>
-  <h2>Create Group Chat:</h2>
+<div class="groupchat-container">
   {#if !isAddingFriendsToGroup}
-  <button on:click={() => (isAddingFriendsToGroup = true)}>Add Friends</button>
+    <button on:click={() => (isAddingFriendsToGroup = true)}>Start Group</button
+    >
   {:else}
-  <button on:click={() => (isAddingFriendsToGroup = false)}>Stop Adding</button>
+    <button on:click={() => (isAddingFriendsToGroup = false)}
+      >Stop Group</button
+    >
   {/if}
   {#if friendsToAdd.length < 2}
-  <button title="Groups must have at least 3 participants" style="background-color: gray; color: black;" disabled=true>Create Group</button>
-  {:else }
-  <button on:click={() => createGroupChat()}>Create Group</button>
+    <button
+      title="Groups must have at least 3 participants"
+      style="background-color: gray; color: black;"
+      disabled="true">Create Group</button
+    >
+  {:else}
+    <button on:click={() => createGroupChat()}>Create Group</button>
   {/if}
 </div>
 <br />
+<div class="search-friends-container">
+  <button><a href="Friends/searchFriends">Search Friends</a></button>
+</div>
 
+<div class="recommended-friends-container">
 <p>Recommended Friends</p>
+<div class="recommended-friends-card-container">
 {#each isNotFriend as user}
-  <div>
+  <div class="recommended-friends-card">
     <h3>{user.name}</h3>
-    <img src={user.avatar_url} alt={user.name} />
+    <img class="avatar-img" src={user.avatar_url} alt={user.name} />
     <button value={user.name} on:click={ConnectUser(user.name)}
       >Add Friend</button
     >
   </div>
 {/each}
+</div>
 <br />
+</div>
 
 <div bind:this={popupEl} />
 
 <style>
-  :root {
-    --avatar-size: 5rem;
-  }
 
-  img {
-    border-radius: 50%;
-    height: auto;
-    width: var(--avatar-size);
-  }
 </style>
