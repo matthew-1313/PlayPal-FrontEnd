@@ -1,0 +1,84 @@
+.current-friends-container, .recommended-friends-container {
+    background-color: black;
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 10px 10px 15px black;
+}
+
+h1 {
+    text-align: center;
+}
+
+.current-friends-card-container, .recommended-friends-card-container {
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+}
+
+.current-friend-card, .recommended-friends-card {
+    background-color: var(--pp-dark);
+    margin: 15px;
+    width: 200px;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-shadow: 10px 10px 15px var(--pp-accent);
+}
+
+.current-friends-header {
+    padding: 5px;
+    margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.avatar-img {
+    height: 175px;
+    width: 175px;
+    border-radius: 50%;
+    border: solid rgb(0, 0, 0);
+}
+
+.friend-name {
+    font-size: 30px;
+    text-shadow: 2px 2px 15px green;
+}
+
+.friend-name-container {
+    width: 150px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+.search-friends-container {
+    text-align: center;
+}
+
+.search-friends-container button {
+    font-size: 30px;
+}
+
+.groupchat-container {
+    display: flex;
+    justify-content: center;
+}
+
+.groupchat-container button {
+    font-size: 20px;
+    margin: 20px;
+}
