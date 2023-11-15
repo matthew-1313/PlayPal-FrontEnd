@@ -52,12 +52,16 @@
 </script>
 
 <Navbar />
+<div id="TopGamesPage">
 <h1>This is the Games page</h1>
-<label><a href="/Games/Search"><button>Search for a Title</button></a> </label>
+</div>
+<div id="TopGamesPageBtn">
+  <a href="/Games/Search"><button>Search for a Title</button></a>
+  </div>
 {#if !isLoading}
   <main>
-    <label
-      >Search by Category:
+    <div id="ShowCardTop">
+      <label>Search by Category:</label>
       <select
         bind:value={currentId}
         on:change={(event) => {
@@ -74,6 +78,7 @@
           >
         {/each}
       </select>
+      <div>
       | Sort by:
       <button
         id="changeRating"
@@ -84,9 +89,13 @@
           changeTopic();
         }}>{RatingChange[!ratingSelect]}</button
       >
+      </div>
+      <div>
       <p>
         Currently showing games sorted by {RatingChange[ratingSelect]}
       </p>
+      </div>
+      </div>
       <div id="grid-container">
         {#each $gamesSortedData as game}
           <div class="GamesCard" id="grid-item">
@@ -105,7 +114,6 @@
         {/each}
         <br />
       </div>
-    </label>
   </main>
 {:else}
   <div>
@@ -114,4 +122,19 @@
 {/if}
 
 <style>
+  #TopGamesPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  #TopGamesPageBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  #ShowCardTop{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 </style>
