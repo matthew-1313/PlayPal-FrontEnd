@@ -1,5 +1,8 @@
 /* global */
-
+ body {
+  margin: 0;
+  padding: 0;
+ }
 
 /* rgb(54, 54, 54) */
 
@@ -134,6 +137,8 @@
   .wrapper {
     --background-color: black;
     display: grid;
+    width: auto;
+    height: auto;
     place-content: center;
     background-color: var(--background-color);
     min-height: 10vh;
@@ -175,10 +180,11 @@
     justify-content: center;
   }
   .navbar {
+    background-color: var(--pp-accent);
     max-width: 80vw;
     padding: 0;
     text-align: center;
-    color: var(--pp-accent);
+    color: var(black);
     border-radius: 10px;
   }
   .navbar-inner {
