@@ -186,10 +186,10 @@
   .GamesCard {
     align-items: center;
     justify-content: center;
-    font-size: 0.3em;
+    font-size: 0.5em;
     text-align: center;
-    width: 30em;
-    height: 35em;
+    width: 45em;
+    height: 55em;
     border-radius: 10px;
     color:rgba(248, 248, 228, 0.87);
     background: #2c292c;
@@ -198,17 +198,19 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 15px 25px rgba(163, 230, 109, 0.774);
   }
-
+.GamesCard p{
+  font-size: 1rem;
+}
   .GamesCard img {
-    max-height: 20em;
-    width: 25em;
-    height: 18em;
+    max-height: 30em;
+    width: 35em;
+    height: 28em;
     object-fit: cover;
   }
 
   .GamesCard h3 {
     color: rgba(231, 138, 32, 0.87);
-    font-size: 2em;
+    font-size: 3em;
     font-weight: 0.5em;
   }
 
@@ -268,4 +270,17 @@
   }
   .reviewCard h3 {
     color:rgba(231, 138, 32, 0.87);
+  }
+  #Bio{
+    width: 30rem;
+  }
+
+  .CalendarForm{
+    width: 25%;
+    margin: 0.7rem;
+  }
+  #BioArea{
+      display: flex;
+      align-items: center;
+
   }

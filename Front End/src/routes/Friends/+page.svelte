@@ -79,6 +79,7 @@
 <button><a href="Friends/searchFriends">Search Here</a></button>
 <p>{errorMessage}</p>
 <p>Current Friends....</p>
+<div  class="FriendsDiv">
 {#each myFriends as friend}
 <div>
   <h3>{friend.name}</h3>
@@ -86,10 +87,11 @@
   <button on:click={() => converse({ id: friend.name, name: friend.name, photoUrl: friend.avatar_url, role: "default" })} >Message Here</button>
 </div>
 {/each}
+</div>
 <br>
 <p>Recommended Friends</p>
 {#each isNotFriend as user}
-<div>
+<div class="FriendsDiv">
   <h3>{user.name}</h3>
   <img src={user.avatar_url} alt={user.name} />
   <button value={user.name} on:click={ConnectUser(user.name)}>Add Friend</button>

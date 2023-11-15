@@ -40,8 +40,7 @@
 
 <form on:submit={gameChecker}>
   <label for="search"
-    >Search Here for a Game:
-    <br />
+    >Search Here for a Game: 
     <input
       on:change={(event) => {
         event.preventDefault();
@@ -49,7 +48,7 @@
         searchTerm = event.target.value;
       }}
       id="search"
-      placeholder="Search Title Here"
+      placeholder="Game Title"
       value={searchTerm}
     />
   </label>

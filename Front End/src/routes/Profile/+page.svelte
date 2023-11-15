@@ -128,9 +128,8 @@ async function getDocument(coll, id) {
   <p>Loading...</p>
 {:else}
   <form on:submit={submitData}>
-    <p>I am User {user}</p>
-    <label
-      >Bio <textarea
+    <div id="BioArea">
+    <label>Bio <textarea id="Bio"
         on:change={(event) => {
           event.preventDefault();
           errorMessage = "";
@@ -140,6 +139,7 @@ async function getDocument(coll, id) {
         placeholder="Type Bio here"
       /></label
     >
+    </div>
     <label
       >Avatar Url: <input
         placeholder="Type Url Here"

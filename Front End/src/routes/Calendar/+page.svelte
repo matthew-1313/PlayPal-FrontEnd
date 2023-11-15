@@ -179,7 +179,7 @@
   <form on:submit={timeStampChecker}>
     <label for="StartTime"
       >Start Time
-      <input
+      <input class="CalendarForm"
         on:change={(event) => {
           startTime = event.target.value;
           errorMessage=""
@@ -191,7 +191,7 @@
     </label>
     <label for="EndTime"
       >End Time
-      <input
+      <input class="CalendarForm"
         on:change={(event) => {
           endTime = event.target.value;
           errorMessage=""
@@ -203,7 +203,7 @@
     </label>
     <label for="EventDate"
       >Date
-      <input
+      <input class="CalendarForm"
         on:change={(event) => {
           eventDate = event.target.value;
           errorMessage=""
@@ -215,7 +215,7 @@
     </label>
     <label for="GameTitle"
       >Game Title
-      <input
+      <input class="CalendarForm"
         on:change={(event) => {
           gameTitle = event.target.value;
           errorMessage=""
@@ -225,7 +225,7 @@
         placeholder="Enter game here*"
       />
     </label>
-    <label for="friendName">Friend Name<input on:change={(event) =>{
+    <label for="friendName">Friend Name<input class="CalendarForm" on:change={(event) =>{
       friendName = event.target.value
       errorMessage=""
     }}
