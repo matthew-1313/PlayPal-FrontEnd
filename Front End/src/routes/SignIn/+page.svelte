@@ -19,6 +19,7 @@
       const myUser = user.data();
       if (username === myUser.Username && password === myUser.Password) {
         isHere = true;
+        errorMessage = ""
         $MyUser = myUser.Username;
         StoredUserInfo.set({
           username: myUser.Username,
@@ -66,4 +67,6 @@
 </form>
 <br />
 <a href="/SignUp"><button>Click here to SignUp </button></a>
+{#if errorMessage}
 <p>{errorMessage}</p>
+{/if}
