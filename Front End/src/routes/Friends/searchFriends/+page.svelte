@@ -1,4 +1,5 @@
 <script>
+
   import Navbar from "../../../lib/navbar.svelte";
   import { MyUser } from "../../../lib/store";
   import { db } from "../../../lib/firebase/firebase.client";
@@ -77,7 +78,7 @@
     const mapArray = dbFriends.map((friend) => {
       return friend.name;
     });
-    console.log(user);
+  
     await updateDoc(myUserUpdate, {
       Friends: [user, ...mapArray],
     });
@@ -102,6 +103,7 @@
     </label>
     <button>Search</button>
   </form>
+
 
   {#key dbFriends}
     <!-- <p>Current Friends....</p> -->

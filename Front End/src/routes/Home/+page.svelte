@@ -45,12 +45,16 @@
 </script>
 
 <Navbar />
-<h1>This is the home page</h1>
+<div id="HomePage">
+  <div>
 <!-- <h1>Hi {user}</h1> -->
-<p>Insert search bar here</p>
-
-<p>user connections online status here</p>
-
-<p>show upcoming events here</p>
-
+<label><a href="/Games/Search"><button>Click here to Search for any title</button></a> </label>
 <GamesCardHome />
+
+</div>
+</div>
+<style>
+  #HomePage{
+    text-align: center;
+  }
+</style>

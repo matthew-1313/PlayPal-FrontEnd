@@ -140,6 +140,9 @@
 <Navbar />
 <h1>Friends</h1>
 <p>{errorMessage}</p>
+<div class="search-friends-container">
+  <button><a href="Friends/searchFriends">Search Friends</a></button>
+</div>
 <section class="current-friends-container">
   <h2 class="current-friends-header">Current Friends</h2>
   <div class="current-friends-card-container">
@@ -208,9 +211,7 @@
   {/if}
 </div>
 <br />
-<div class="search-friends-container">
-  <button><a href="Friends/searchFriends">Search Friends</a></button>
-</div>
+
 
 <div class="recommended-friends-container">
 <h2 class="recommended-friends-header">Recommended Friends</h2>

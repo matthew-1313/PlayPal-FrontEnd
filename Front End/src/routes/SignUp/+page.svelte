@@ -49,7 +49,7 @@
             errorMessage = `This Username has been taken, please try again.`
         }else{
             errorMessage = ""
-            correctMessage = "this has now been added to the DB"
+            correctMessage = `${username} has now been created! Please click Login to proceed`
             StartProfile = true
             addToDataBase()
         }
@@ -77,12 +77,10 @@
         }}>
     </label>
     <button type="button" on:click="{ () => show_password = !show_password }">{show_password ? 'Hide passwords' : 'Show passwords'}</button>
-    <button>Click here to proceed</button>
+    <button>Submit</button>
 </form>
 <a href="/SignIn"><button>Click to Log in</button></a>
 <p>{errorMessage}</p>
 {#if (StartProfile)}
 <p>{correctMessage}</p>
-<ToProfile/>
-
 {/if}
