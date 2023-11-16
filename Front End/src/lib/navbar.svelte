@@ -24,4 +24,8 @@
 </nav>
 
 <style>
+  a{
+    font-family: 'Impacted', sans-serif;
+
+  }
 </style>

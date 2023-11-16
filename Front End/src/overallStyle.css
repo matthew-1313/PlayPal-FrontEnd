@@ -18,9 +18,8 @@ body {
   /* PlayPal Text Colours: */
   --pp-text-light: rgba(255, 255, 255, 0.87);
   --pp-text-dark: #242424;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
-
-  font-family: 'Impacted', sans-serif;
   line-height: 1.5;
     font-weight: 500;
     font-size: 1em;
@@ -49,6 +48,7 @@ body {
     background-color: var(--pp-accent);
     cursor: pointer;
     transition: border-color 0.25s;
+    font-family: 'Impacted', sans-serif;
   }
   button:hover {
     background-color: var(--pp-text-light);
@@ -63,12 +63,20 @@ body {
 
   h1 {
     color: var(--pp-main);
+    font-family: 'Impacted', sans-serif;
   }
   h2 {
     color: var(--pp-main);
+    font-family: 'Impacted', sans-serif;
+
   }
   h3 {
     color: var(--pp-main);
+    font-family: 'Impacted', sans-serif;
+
+  }
+  h4{
+    font-family: 'Impacted', sans-serif;
   }
 
   input {
