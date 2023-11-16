@@ -279,6 +279,10 @@
     color: var(--pp-accent);
   }
 
+  #__talkjs_launcher {
+    background-color: var(--pp-accent);
+  }
+
 /* old colours
   --pp-main: rgba(248, 248, 228, 0.87);
 --pp-dark: #2c292c;
