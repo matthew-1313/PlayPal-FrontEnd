@@ -1,6 +1,7 @@
 .current-friends-container, .recommended-friends-container {
-    background-color: black;
+    /* background-color: black; */
     border-radius: 15px;
+    border: solid black;
     padding: 10px;
     margin-left: 10px;
     margin-right: 10px;
@@ -18,14 +19,18 @@ h1 {
     margin-right: 10px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     overflow: auto;
 }
 
 .current-friend-card, .recommended-friends-card {
     background-color: var(--pp-dark);
     margin: 15px;
-    width: 200px;
+    width: 150px;
     border-radius: 10px;
+    border: solid 1px var(--pp-main);
+    border-top: 1px solid var(--pp-accent);
+    border-right: 0.75px solid var(--pp-accent);
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -34,10 +39,10 @@ h1 {
     align-items: center;
     white-space: nowrap;
     text-overflow: ellipsis;
-    box-shadow: 10px 10px 15px var(--pp-accent);
+    box-shadow: 4px 6px 15px black;
 }
 
-.current-friends-header {
+.current-friends-header, .recommended-friends-header {
     padding: 5px;
     margin: 0;
     margin-left: 10px;
@@ -46,15 +51,17 @@ h1 {
 }
 
 .avatar-img {
-    height: 175px;
-    width: 175px;
+    height: 125px;
+    width: 125px;
     border-radius: 50%;
     border: solid rgb(0, 0, 0);
+    box-shadow: 4px 6px 15px black;
 }
 
 .friend-name {
     font-size: 30px;
-    text-shadow: 2px 2px 15px green;
+    margin: 20px;
+    /* text-shadow: 2px 2px 15px green; */
 }
 
 .friend-name-container {
@@ -71,7 +78,9 @@ h1 {
 }
 
 .search-friends-container button {
-    font-size: 20px;
+    font-size: 30px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 15px black;
 }
 
 .groupchat-container {
@@ -82,4 +91,5 @@ h1 {
 .groupchat-container button {
     font-size: 20px;
     margin: 20px;
+    box-shadow: 5px 5px 15px black;
 }
