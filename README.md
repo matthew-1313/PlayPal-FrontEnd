@@ -16,7 +16,7 @@ This application was created with the objective of using new technologies and fr
 
 [How to install & run the project](#how-to-install-and-run-the-project)
 
-[How to use Playpal]()
+[How to use Playpal](#how-to-navigate-playpal)
 
 [Credits](#credits)
  - [Acknowledgements](#acknowledgements)
@@ -36,6 +36,15 @@ The app allows a user to review a game. Upon submitting a review, the app will s
 
 ### Technologies/Frameworks
 The app was created using Svelte for the front end, Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
+
+Svelte (front end framework)
+Moment (package time)
+Axios (routing)
+TalkJS (plugin)
+Calender (plugin)
+Firebase (back end framework)
+Game API
+
 
 ### Challenges
 We faced a number of challenges during the course of the is project. 
@@ -62,28 +71,82 @@ To run tour application locally, you will need to clone our repo:
 ```
 git clone https://github.com/matthew-1313/PlayPal-FrontEnd.git
 ```
-
 Once cloned, navigate to the "Front End" folder inside the project folder and  install the necessary dependencies:
 
-SvelteKit
 
 ```
 npm install
+
+```
+
+This should update your local repo with all the dependencies needed to run the application.
+
+A possible error that you may encounter a peer dependency error.  To solve this enter the following:
+
+```
+npm install --legacy-peers-deps
+```
+
+You are now ready to move onto creating an .ENV file.  In case you are still missing dependencies, we have listed the individual ones below:
+
+_Axios_
+```
 npm i axios
-npm install --save svelte-navigator
-npm install svelte-spa-router
-npm install --save firebase
-npm install talkjs --save
-npm install moment --save
-npm i check-password-strength --save
+```
+
+_Calendar_
+```
 npm install --save-dev @event-calendar/core
 npm install --save-dev @event-calendar/time-grid
 npm install --save-dev @event-calendar/day-grid
 ```
 
-If you are working on a project that a user needs to install or run locally in a machine like a "POS", you should include the steps required to install your project and also the required dependencies if any.
+_Check Password Strength_
+```
+npm i check-password-strength --save
+```
 
-Provide a step-by-step description of how to get the development environment set and running.
+_Firebase_
+```
+npm install --save firebase
+```
+
+_Moment_
+```
+npm install moment --save
+```
+
+_Svelte_
+```
+npm i -D @sveltejs/adapter-node
+npm install --save svelte-navigator
+npm install svelte-spa-router
+```
+
+_TalkJS_
+```
+npm install talkjs --save
+```
+With the dependencies installed, you are now ready to create the .ENV file for your local application. Place this file in the first level and copy the below text block into it. This will allow you to connect to the Firebase database for the application.
+
+```
+VITE_APIKEY=AIzaSyCJqSOlwwuLPMnvuJ9edAEXlE_bJlfWWbQ
+VITE_AUTH_DOMAIN=playpal-723dd.firebaseapp.com
+VITE_PROJECT_ID=playpal-723dd
+VITE_STORAGE_BUCKET=playpal-723dd.appspot.com
+VITE_MESSAGING_SENDER_ID=434887247433
+VITE_APP_ID=1:434887247433:web:636503bb15e5009e51e198
+```
+
+Now to start the application, confirm that you have navigated in your terminal to the Front End folder. There you will enter the following prompt
+
+```
+npm run dev
+```
+
+Follow the prompts to view the application in a web browser.
+
+## How to navigate Playpal
 
 ## Credits
 ### Acknowledgements
