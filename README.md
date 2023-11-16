@@ -149,6 +149,9 @@ npm run dev
 Follow the prompts to view the application in a web browser.
 
 ## How to navigate Playpal
+### Sign up / Log in
+
+
 
 ## Credits
 ### Acknowledgements
@@ -195,30 +198,30 @@ The team would like to express their gratitude and thanks to the mentors and lea
 <table>
 <tr>
 <td>Axios</td>
-<td>[https://axios-http.com/]</td>
+<td>https://axios-http.com/</td>
 </tr>
 <td>Calender</td>
-<td>[https://github.com/vkurko/calendar]</td>
+<td>https://github.com/vkurko/calendar</td>
 </tr>
 <tr>
 <td>Firebase</td>
-<td>[https://firebase.google.com/]</td>
+<td>https://firebase.google.com/</td>
 </tr>
 <tr>
 <td>Moment</td>
-<td>[https://momentjs.com]</td>
+<td>https://momentjs.com</td>
 </tr>
 <tr>
 <td>RAWG.io</td>
-<td>[https://rawg.io]</td>
+<td>https://rawg.io</td>
 </tr>
 <tr>
 <td>Svelte</td>
-<td>[https://svelte.dev/]</td>
+<td>https://svelte.dev/</td>
 </tr>
 <tr>
 <td>TalkJS</td>
-<td>[https://talkjs.com/]</td>
+<td>https://talkjs.com/</td>
 </tr>
 </table>
 
