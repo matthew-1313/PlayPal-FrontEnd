@@ -36,12 +36,12 @@
 
 <div class="backImage">
   <img
-    src="https://ih1.redbubble.net/image.214457447.5767/flat,750x1000,075,t.jpg"
+    src="https://wallpapercave.com/wp/wp12288455.jpg"
     alt="collection of gamecards"
   />
   <div class="blackbox" />
   <div class="scalable">
-    <h2 class="signInHead">Sign In</h2>
+    <h2 class="signInHead">.</h2>
     <form class="signInBlock" on:submit={CheckWithFireBase}>
       <div class="signInInner">
         <label for="username">Username: </label>
@@ -95,6 +95,7 @@
   .signInHead {
     position: relative;
     text-align: center;
+    color: black;
   }
   .signInBlock {
     display: flex;
