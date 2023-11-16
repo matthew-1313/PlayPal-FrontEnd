@@ -11,7 +11,6 @@
     console.log(gameReviews)
 </script>
 
-
 <h3>Your Review of this title:</h3>
 <!-- <div>
     <div class="userReviewCard">

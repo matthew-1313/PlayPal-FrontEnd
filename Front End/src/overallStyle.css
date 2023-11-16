@@ -1,5 +1,10 @@
 /* global */
+@import url('https://fonts.cdnfonts.com/css/impacted');
 
+body {
+  margin: 0;
+  padding: 0;
+ }
 
 /* rgb(54, 54, 54) */
 
@@ -15,8 +20,8 @@
   --pp-text-dark: #242424;
 
 
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+  font-family: 'Impacted', sans-serif;
+  line-height: 1.5;
     font-weight: 500;
     font-size: 1em;
 
@@ -134,6 +139,8 @@
   .wrapper {
     --background-color: black;
     display: grid;
+    width: auto;
+    height: auto;
     place-content: center;
     background-color: var(--background-color);
     min-height: 10vh;
@@ -167,34 +174,71 @@
    /* navbar */
    #navmenu {
     padding: 0;
+    margin: 0;
   }
+  
   #navmenu li {
     padding: auto;
     margin: auto;
     display: inline-flex;
     justify-content: center;
   }
+  
   .navbar {
-    max-width: 80vw;
+    border-top: solid var(--pp-accent);
+    background-color: black;
     padding: 0;
     text-align: center;
-    color: var(--pp-accent);
-    border-radius: 10px;
+    color: var(black);
   }
+  
   .navbar-inner {
     padding: auto;
     font-size: 2vmin;
   }
+  
   .navbar a {
     font-size: 1.16em;
     padding: 0.9em;
     float: inherit;
+    color: var(--pp-accent);
   }
+  
   .navbar a:hover {
-    color: var(--pp-text-dark);
-    box-shadow: 0 0 25px var(--pp-accent);
-    background-color: var(--pp-accent);
+    color: var(--pp-accent);
+    /* box-shadow: 0 0 25px var(--pp-accent); */
+    /* background-color: var(--pp-accent); */
+    border-radius: 20px;
+    text-shadow: 0.7px 0.7px var(--pp-accent);
+  }
+
+  /* signin page */
+  .imageBox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  .imageBox img {
+    display: block;
+    width: 100%;
+  }
+  .imageBox p {
+    margin: 1rem;
+  }
+  .imageBox button {
+    font-size: 3vmin;
+  }
+  .imageBoxTextarea {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    padding: 1rem 1rem;
+    padding-bottom: 2rem;
     border-radius: 30px;
+    font-size: 3vmin;
+    text-align: center;
   }
 
 
