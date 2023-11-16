@@ -98,8 +98,8 @@ async function getDocument(coll, id) {
   }}>Update Profile</button
 >
 </div>
-<h3>All your reviews:</h3>
-<p>Click on any review to be taken to the game</p>
+<h3>Your reviews:</h3>
+<p>Click on a review to view game</p>
 
   <div class="reviews-container">
     {#each myReviews as review}
@@ -161,17 +161,17 @@ async function getDocument(coll, id) {
       <div id="btn-submit">
     <button>Click Here to Submit Changes</button>
     </div> 
-    </div>
-  </form>
-  <p>{errorMessage}</p>
-
-  <button
+    <button class="back-btn"
     on:click={(event) => {
       event.preventDefault();
       areStatsChanging = false;
       isLoading = false;
-    }}>Click Here to Go Back</button
+    }}>Back</button
   >
+    </div>
+  </form>
+  <p>{errorMessage}</p>
+
 {/if}
 
 <style>
@@ -239,7 +239,10 @@ async function getDocument(coll, id) {
   height: 250px;
   width: 250px;
   margin-top: 10px;
-  border: solid orange;
+  border: solid 1px rgba(248, 248, 228, 0.87);
+  border-top: 1px solid rgba(231, 138, 32, 0.87);
+  border-right: 0.75px solid rgba(231, 138, 32, 0.87);
+  box-shadow: 0px 5px 10px 5px black;
 }
 
 .profile-user, .profile-bio {
@@ -252,6 +255,10 @@ async function getDocument(coll, id) {
   width: 200px;
   height: 60px;
   margin-top: 20px;
+}
+
+.back-btn {
+  align-self: center;
 }
 
 </style>
