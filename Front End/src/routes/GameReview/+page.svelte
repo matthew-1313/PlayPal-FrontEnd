@@ -106,6 +106,7 @@
 
 </script>
 
+<div class="game-review-form-container">
 <h3>Your Rating:</h3>
 
 <!-- star-rating code & css from https://www.creating-a-star-rating-widget-with-pure-html-css/ -->
@@ -159,7 +160,7 @@
 
 <form>
   <h3>Your Review Title:</h3>
-  <input
+  <input class="review-title-form"
     bind:this={reviewTitle}
     bind:value={newTitleValue}
     on:change={(event) => {
@@ -169,7 +170,7 @@
   />
   <br />
   <h3>Review:</h3>
-  <textarea
+  <textarea class="review-body-form"
     bind:this={reviewField}
     bind:value={newReviewValue}
     on:change={(event) => {
@@ -182,6 +183,7 @@
   <button on:click={discardReview}>Discard</button>
 
 </form>
+</div>
 {#if connectUserBool && !isFriends}
 <p>The User {userToConnect.name} also has rated this {userToConnect.rating} stars! </p>
 <button on:click={changeToFriend}>Click here to add {userToConnect.name}!</button>
@@ -190,4 +192,21 @@
 <button on:click={() => converse({ id: userToConnect.name, name: userToConnect.name, photoUrl: userToConnect.avatar_url, role: "default" })}>Click Here to Message</button>
 {/if}
 <style>
+
+  .game-review-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: solid rgba(0, 0, 0, 0.229);
+    margin: 50px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.67);
+  }
+
+  .review-body-form {
+    resize: none;
+    width: 700px
+
+  }
 </style>

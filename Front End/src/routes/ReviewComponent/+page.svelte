@@ -38,7 +38,7 @@
 </script>
 
 <!-- <ReviewEdit {gameReviews} {gameId}/> -->
-
+<div class="review-section-container">
 <h3>Other Playpal User Reviews:</h3>
 <div>
   {#each gameReviews as review}
@@ -58,6 +58,13 @@
     </div>
   {/each}
 </div>
+</div>
 
 <style>
+  .review-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 </style>

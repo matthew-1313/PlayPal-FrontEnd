@@ -67,6 +67,7 @@
       <div class="singleGamePage-fade" />
       <img src={data.image} alt={data.name} />
     </div>
+    <div class="game-information-container">
     <p>
       PlayPal Average:
       <b>{data.playpal_rating} Stars</b> | Metacritic:
@@ -90,6 +91,7 @@
       </div>
     {/if}
   </div>
+</div>
 {:catch error}
   <p>{error.message}</p>
 {/await}
@@ -99,4 +101,11 @@
 <ReviewComponent {gameId} />
 
 <style>
+
+  .game-information-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+  }
 </style>
