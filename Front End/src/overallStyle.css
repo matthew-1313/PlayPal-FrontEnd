@@ -1,5 +1,7 @@
 /* global */
- body {
+@import url('https://fonts.cdnfonts.com/css/impacted');
+
+body {
   margin: 0;
   padding: 0;
  }
@@ -18,8 +20,8 @@
   --pp-text-dark: #242424;
 
 
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+  font-family: 'Impacted', sans-serif;
+  line-height: 1.5;
     font-weight: 500;
     font-size: 1em;
 
@@ -470,8 +472,6 @@ color:rgba(231, 138, 32, 0.87);
 
   }
 
-color: var(--pp-accent);
-  }
 
 /* old colours
   --pp-main: rgba(248, 248, 228, 0.87);
