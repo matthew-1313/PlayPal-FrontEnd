@@ -1,11 +1,11 @@
 .current-friends-container, .recommended-friends-container {
     /* background-color: black; */
     border-radius: 15px;
-    border: solid black;
+    border: solid rgba(0, 0, 0, 0.229);
     padding: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    box-shadow: 10px 10px 15px black;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.67);
 }
 
 h1 {
