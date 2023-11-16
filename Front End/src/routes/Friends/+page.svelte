@@ -194,30 +194,32 @@
     <button on:click={() => (isAddingFriendsToGroup = true)}>Start Group</button
     >
   {:else}
-    <button on:click={() => (isAddingFriendsToGroup = false)}
-      >Stop Group</button
+    <button on:click={() => {
+      friendsToAdd = []
+      isAddingFriendsToGroup = false}}
+      >Stop Group Chat</button
     >
   {/if}
   {#if friendsToAdd.length < 2}
     <button
       title="Groups must have at least 3 participants"
       style="background-color: gray; color: black;"
-      disabled="true">Create Group</button
+      disabled="true">Create Group Chat</button
     >
   {:else}
-    <button on:click={() => createGroupChat()}>Create Group</button>
+    <button on:click={() => createGroupChat()}>Create Group Chat</button>
   {/if}
 </div>
 <br />
 
 
 <div class="recommended-friends-container">
-<p>Recommended Friends</p>
+<h2 class="recommended-friends-header">Recommended Friends</h2>
 <div class="recommended-friends-card-container">
 {#each isNotFriend as user}
   <div class="recommended-friends-card">
-    <h3>{user.name}</h3>
     <img class="avatar-img" src={user.avatar_url} alt={user.name} />
+    <h3 class="friend-name">{user.name}</h3>
     <button value={user.name} on:click={ConnectUser(user.name)}
       >Add Friend</button
     >
