@@ -421,7 +421,7 @@ color: var(--pp-accent);
     border-top: 1px solid var(--pp-accent);
     border-right: 0.75px solid var(--pp-accent);
     font-size: 1rem;
-    max-width: 50%;
+    /* max-width: 50%; */
     margin-bottom: 0.75rem;
   }
   .reviewCard-Profile span {
