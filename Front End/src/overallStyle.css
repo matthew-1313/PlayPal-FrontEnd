@@ -447,17 +447,9 @@ color:rgba(231, 138, 32, 0.87);
     color:rgba(231, 138, 32, 0.87);
     font-weight: bold;
     font-size: .75rem;
-    margin: 0px;
+    margin: auto;
   }
 
-  hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #cccccc4f;
-    margin: 1em 0;
-    padding: 0;
-}
 
   #Bio{
     width: 30rem;
