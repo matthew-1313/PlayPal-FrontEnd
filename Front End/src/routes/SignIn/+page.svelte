@@ -82,7 +82,7 @@
     <div class="notAMember">
       <div class="notAMemberInner">
         <p>Not a member yet?</p>
-        <a href="/SignUp"><button class="notAMemberbutton">SignUp</button></a>
+        <a href="/SignUp"><button class="notAMemberbutton">Sign Up</button></a>
       </div>
     </div>
   </div>
@@ -115,18 +115,31 @@
   }
   .signInBlock input {
     width: 40%;
+    margin: 10px;
+    height: 40px;
+    width: 300px;
+    font-size: 30px;
+  }
+
+  .signInBlock label {
+    font-size: 25px;
   }
   .signInButton {
+    margin-top: 0;
+    font-size: 30px;
     position: absolute;
-    top: 140%;
+    top: 125%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
   .notAMember {
+    font-size: 50px;
     display: flex;
     position: relative;
     align-items: center;
+    color: white;
+    text-shadow: 20px 20px 20px 15px #000000;
   }
   .notAMemberInner {
     padding: auto;
@@ -136,10 +149,13 @@
     position: relative;
   }
   .notAMemberbutton {
+    font-size: 30px;
+    margin-top: 20px;
     position: absolute;
-    top: 140%;
+    top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
+    align-items: center;
   }
 
   .backImage {
@@ -162,7 +178,9 @@
     background-color: #000000;
     font-size: 3vmin;
     text-align: center;
+    opacity: 0.2;
   }
+
 
   .scalable {
     scale: 80%;
