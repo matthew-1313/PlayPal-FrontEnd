@@ -249,7 +249,7 @@ async function getDocument(coll, id) {
 
 .profile-user {
   font-size: 30px;
-  color: orange;
+color: var(--pp-accent);
   margin: 10px;
 }
 
