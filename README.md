@@ -5,38 +5,22 @@
 This app was created with the objective of using new technologies and frameworks that we, the team, were not exposed to in the Northcoders bootcamp. We were given 8 days to design and develop a working application using the new technologies/framework we selected. 
 
 
-## Acknowledgements
-The team would like to express their gratitude and thanks to the mentors and leads at Northcoders whom provided their expertise and guidance over the course of this project.  
-
-#### Northcoders Mentors (August 2023)
-<ul>
-<li>Alice Yang</li>
-<li>Mitch Wyatt</li>
-<li>Rayhann Ugharadar</li>
-<li>Kev Morel - Section Lead</li>
-<li>Niamh Smith</li>
-<li>Jim Stevenson</li>
-<li>David Bartlet - Cohort Lead</li>
-<li>Rose Mullan - Cohort Lead</li>
-</ul>
 
 ## Table Of Contents
-------
-  Project Description (#challenges)
-  Purpose
-  Features
-  Technologies/Frameworks
-  Challenges
-  Future considerations 
 
-How to install & run
+  [Project Description](#project-description)
+    - [Purpose](#purpose)
+    - [Features](#features)
+    - [Technologies/Frameworks](#technologiesframeworks)
+    - [Challenges](#challenges)
+    - [Future considerations](#future-considerations)
+  [How to install & run]
+  [How to use Playpal]
+  [Credits]
+    - [Acknowledgements](#acknowledgements)
+    - [The Team](#project-team-members)
+  [Links](#links)
 
-Credits
-  Acknowledgements
-  The Team
-  Links to TalkJS, Calendar, Firebase, Svelte, RAWG io
-
---------
 
 ## Project Description
 
@@ -52,15 +36,34 @@ The app was created using Svelte for the front end, Firebase for a non-relationa
 ### Challenges
 We faced a number of challenges during the course of the is project. 
 <ul>
-<li>Team dynamic - getting used to work together and swapping our coding teams.</li>
-<li>Github version control - first time working in a group more than 2 and figuring out how to create features and minimise the number of merging conflicts.</li>
-<li>No relation database implementation - we were trained to use PostgreSQL and initial tried a same approach to Firebase. We quickly learned that we not the intended utilisation of the tech.</li>
-<li>Svelte - Having a React background from the bootcamp, we had to relearn how to adjust our app's file structure, utilisation of Svelte stores and how to trigger page/component rerenders</li>
-<li>User authentication - While Firebase has this feature we decided not incorporate it into our application as it is email-based - a feature our application does not use. Consequently, we have an issue in maintaining a user info store across our application.</li>
+<li>Coding pairs - getting used to work together while swapping our coding pairs</li>
+<li>Github version control - first time working in a group with more than 2 people and figuring out how to create application features while minimising the number of merging conflicts.</li>
+<li>Non-relational database implementation - we learned to use PostgreSQL in the bootcamp and initially approached Firebase in a similar manner. We quickly learned that this is not the intended utilisation of the tech and had to change our implementation of it.</li>
+<li>Svelte - Having a React background from the bootcamp, we had to re-train ourselves to utilise the strengths of Svelte. We had to adjust our application's file structure, the utilisation of Svelte stores and how to trigger page/component re-renders</li>
+<li>User authentication - While Firebase has this capability we decided not to incorporate it into our application as it is email-based - a feature our application does not use. Consequently, we encountered issues in maintaining and accessing a user info store across our application.</li>
+<li>Documentation - we encountered the value of having well written documentation that allowed us to incorporate features quickly with a solid understanding of how it works</li> 
 
-### Features
-Here are some features for future considerations
+### Future Considerations
+Here are some features for future considerations:
+<ul>
+<li> Incorporate AI for game recommendations</li>
+<li> Adding a user's game type interests to their profile to allow for a more sophisticated matching algorithm</li>
+</ul>
 
+## Acknowledgements
+The team would like to express their gratitude and thanks to the mentors and leads at Northcoders whom provided their expertise and guidance over the course of this project.  
+
+#### Northcoders Mentors (August 2023)
+<ul>
+<li>Alice Yang</li>
+<li>Mitch Wyatt</li>
+<li>Rayhann Ugharadar</li>
+<li>Kev Morel - Section Lead</li>
+<li>Niamh Smith</li>
+<li>Jim Stevenson</li>
+<li>David Bartlet - Cohort Lead</li>
+<li>Rose Mullan - Cohort Lead</li>
+</ul>
 
 ## Project Team Members
 <table>
@@ -87,7 +90,7 @@ Here are some features for future considerations
 </table>
 
 
-## For more information on the tech used
+## Links
 <table>
 <tr>
 <td>Svelte</td>
@@ -113,21 +116,8 @@ Here are some features for future considerations
 
 
 
-2. Project Description
 
-This is an important component of your project that many new developers often overlook.
 
-Your description is an extremely important aspect of your project. A well-crafted description allows you to show off your work to other developers as well as potential employers.
-
-The quality of a README description often differentiates a good project from a bad project. A good one takes advantage of the opportunity to explain and showcase:
-
-    What your application does,
-    Why you used the technologies you used,
-    Some of the challenges you faced and features you hope to implement in the future.
-
-3. Table of Contents (Optional)
-
-If your README is very long, you might want to add a table of contents to make it easy for users to navigate to different sections easily. It will make it easier for readers to move around the project with ease.
 4. How to Install and Run the Project
 
 If you are working on a project that a user needs to install or run locally in a machine like a "POS", you should include the steps required to install your project and also the required dependencies if any.
