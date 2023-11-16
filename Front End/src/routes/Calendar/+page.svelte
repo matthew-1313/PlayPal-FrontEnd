@@ -176,6 +176,7 @@
     }}>Add Event</button
   >
 {:else}
+<div class="calender-event-form">
   <form on:submit={timeStampChecker}>
     <label for="StartTime"
       >Start Time
@@ -242,7 +243,14 @@
       isAdding = false;
     }}>Close Event</button
   >
+</div>
   <p>{errorMessage}</p>
 {/if}
 <button on:click={addAllEvents(fullCalendar)}>Fetch events</button>
 <Calendar bind:this={ec} {plugins} {options} />
+
+<style>
+
+
+
+</style>

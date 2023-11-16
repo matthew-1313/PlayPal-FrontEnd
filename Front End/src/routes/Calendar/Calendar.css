@@ -587,3 +587,11 @@
   .ec-resizing-x {
     cursor: ew-resize !important;
   }
+
+  .calender-event-form {
+    background-color: rgb(103, 105, 108);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
