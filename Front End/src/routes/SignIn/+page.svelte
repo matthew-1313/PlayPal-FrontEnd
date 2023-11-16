@@ -41,7 +41,7 @@
   />
   <div class="blackbox" />
   <div class="scalable">
-    <h2 class="signInHead">Sign In</h2>
+    <h2 class="signInHead">.</h2>
     <form class="signInBlock" on:submit={CheckWithFireBase}>
       <div class="signInInner">
         <label for="username">Username: </label>
@@ -95,6 +95,7 @@
   .signInHead {
     position: relative;
     text-align: center;
+    color: black;
   }
   .signInBlock {
     display: flex;

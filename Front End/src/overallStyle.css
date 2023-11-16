@@ -205,11 +205,10 @@ body {
   }
   
   .navbar a:hover {
-    color: var(--pp-accent);
+    color: var(--pp-main);
     /* box-shadow: 0 0 25px var(--pp-accent); */
     /* background-color: var(--pp-accent); */
     border-radius: 20px;
-    text-shadow: 0.7px 0.7px var(--pp-accent);
   }
 
   /* signin page */
