@@ -86,10 +86,10 @@ async function getDocument(coll, id) {
         "https://icon-library.com/images/default-user-icon/default-user-icon-9.jpg"}
       alt="user profile"
     />
-  <h3>Username</h3>
-  <p class="profile-user">{user}</p>
-  <h3>Bio</h3>
-  <p class="profile-bio">{bio || ""}</p>
+  <h3 class="profile-user">Username</h3>
+  <h3 >{user}</h3>
+  <h3 class="profile-user">Bio</h3>
+  <h3 >{bio || ""}</h3>
   <button class="update-profile-btn"
   on:click={(event) => {
     event.preventDefault();
