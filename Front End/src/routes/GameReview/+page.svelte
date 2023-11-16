@@ -185,11 +185,15 @@
 </form>
 </div>
 {#if connectUserBool && !isFriends}
+<div class="centerFriend">
 <p>The User {userToConnect.name} also has rated this {userToConnect.rating} stars! </p>
 <button on:click={changeToFriend}>Click here to add {userToConnect.name}!</button>
+</div>
 {:else if connectUserBool && isFriends}
+<div class="centerFriend">
 <p>Your Friend {userToConnect.name} also has rated this {userToConnect.rating} stars!</p>
 <button on:click={() => converse({ id: userToConnect.name, name: userToConnect.name, photoUrl: userToConnect.avatar_url, role: "default" })}>Click Here to Message</button>
+</div>
 {/if}
 <style>
 
@@ -208,5 +212,11 @@
     resize: none;
     width: 700px
 
+  }
+
+  .centerFriend{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>
