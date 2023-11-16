@@ -9,16 +9,16 @@ This app was created with the objective of using new technologies and frameworks
 ## Table Of Contents
 
 [Project Description](#project-description)
-- [Purpose](#purpose)
-- [Features](#features)
-- [Technologies/Frameworks](#technologiesframeworks)
-- [Challenges](#challenges)
-- [Future considerations](#future-considerations)
+ - [Purpose](#purpose)
+ - [Features](#features)
+ - [Technologies/Frameworks](#technologiesframeworks)
+ - [Challenges](#challenges)
+ - [Future considerations](#future-considerations)
 [How to install & run]
 [How to use Playpal]
 [Credits]
-- [Acknowledgements](#acknowledgements)
-- [The Team](#project-team-members)
+ - [Acknowledgements](#acknowledgements)
+ - [The Team](#project-team-members)
 [Links](#links)
 
 
@@ -41,7 +41,7 @@ We faced a number of challenges during the course of the is project.
 <li>Non-relational database implementation - we learned to use PostgreSQL in the bootcamp and initially approached Firebase in a similar manner. We quickly learned that this is not the intended utilisation of the tech and had to change our implementation of it.</li>
 <li>Svelte - Having a React background from the bootcamp, we had to re-train ourselves to utilise the strengths of Svelte. We had to adjust our application's file structure, the utilisation of Svelte stores and how to trigger page/component re-renders</li>
 <li>User authentication - While Firebase has this capability we decided not to incorporate it into our application as it is email-based - a feature our application does not use. Consequently, we encountered issues in maintaining and accessing a user info store across our application.</li>
-<li>Documentation - we encountered the value of having well written documentation that allowed us to incorporate features quickly with a solid understanding of how it works.</li> 
+<li>Documentation - we encountered the value of having well written documentation that allowed us to incorporate features quickly with a solid understanding of how it works.</li></ul>
 
 ### Future Considerations
 Here are some features for future considerations:
