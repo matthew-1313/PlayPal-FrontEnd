@@ -80,27 +80,28 @@ async function getDocument(coll, id) {
 
 <Navbar />
 {#if !areStatsChanging && !isLoading}
-  <p>Username : {user}</p>
-  <p>Bio: {bio || ""}</p>
-  <div id="Image">
-    <p>Avatar:</p>
-    <img
+<div class="user-information-container">
+    <img class="profile-page-avatar"
       src={image ||
         "https://icon-library.com/images/default-user-icon/default-user-icon-9.jpg"}
       alt="user profile"
     />
-  </div>
-  <button
+  <h3>Username</h3>
+  <p class="profile-user">{user}</p>
+  <h3>Bio</h3>
+  <p class="profile-bio">{bio || ""}</p>
+  <button class="update-profile-btn"
   on:click={(event) => {
     event.preventDefault();
     isLoading = false;
     areStatsChanging = true;
-  }}>Change Information</button
+  }}>Update Profile</button
 >
-<h3>All your reviews:</h3>
-<p>Click on any review to be taken to the game</p>
+</div>
+<h3>Your reviews:</h3>
+<p>Click on a review to view game</p>
 
-  <div>
+  <div class="reviews-container">
     {#each myReviews as review}
     <a href= '/Games/{review.game_id}'>
       <div class="reviewCard-Profile">
@@ -113,7 +114,6 @@ async function getDocument(coll, id) {
         </div>
         <div class="user-review">
           <p>{review.review_title}</p>
-          <hr />
           <div>{review.body}</div>
         </div>
       </div>
@@ -161,17 +161,17 @@ async function getDocument(coll, id) {
       <div id="btn-submit">
     <button>Click Here to Submit Changes</button>
     </div> 
-    </div>
-  </form>
-  <p>{errorMessage}</p>
-
-  <button
+    <button class="back-btn"
     on:click={(event) => {
       event.preventDefault();
       areStatsChanging = false;
       isLoading = false;
-    }}>Click Here to Go Back</button
+    }}>Back</button
   >
+    </div>
+  </form>
+  <p>{errorMessage}</p>
+
 {/if}
 
 <style>
@@ -220,6 +220,45 @@ async function getDocument(coll, id) {
     margin: 25px;
   }
 
- 
+ .user-information-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ .reviews-container {
+  display: flex;
+  flex-direction: column;
+ }
+ h3 {
+  font-size: 40px;
+  margin: 0;
+ }
+
+.profile-page-avatar {
+  height: 250px;
+  width: 250px;
+  margin-top: 10px;
+  border: solid 1px rgba(248, 248, 228, 0.87);
+  border-top: 1px solid rgba(231, 138, 32, 0.87);
+  border-right: 0.75px solid rgba(231, 138, 32, 0.87);
+  box-shadow: 0px 5px 10px 5px black;
+}
+
+.profile-user, .profile-bio {
+  font-size: 30px;
+  color: orange;
+  margin: 0;
+}
+
+.update-profile-btn {
+  width: 200px;
+  height: 60px;
+  margin-top: 20px;
+}
+
+.back-btn {
+  align-self: center;
+}
 
 </style>
