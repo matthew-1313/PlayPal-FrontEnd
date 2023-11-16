@@ -249,6 +249,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     max-width: 90%;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
@@ -290,7 +291,7 @@ body {
   }
 
   .GamesCard h3 {
-    color: rgba(231, 138, 32, 0.87);
+    color: var(--pp-accent);
     font-size: 3em;
     font-weight: 0.5em;
   }
@@ -472,6 +473,7 @@ color:rgba(231, 138, 32, 0.87);
 
   }
 
+/*color: var(--pp-accent); */
 
 /* old colours
   --pp-main: rgba(248, 248, 228, 0.87);

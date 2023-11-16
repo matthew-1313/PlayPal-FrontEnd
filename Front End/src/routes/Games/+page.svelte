@@ -52,41 +52,48 @@
 </script>
 
 <Navbar />
-<h1>This is the Games page</h1>
-<label><a href="/Games/Search"><button>Search for a Title</button></a> </label>
+
 {#if !isLoading}
+<div id="SortingSection">
+  <select name="drinks" required
+    bind:value={gameCategories[currentId]}
+    on:change={(event) => {
+      event.preventDefault();
+      topic = event.target.value.toLowerCase();
+      isLoading = true;
+      changeTopic();
+    }}
+  >
+  <option value="" disabled selected >Choose your category</option>
+  {#each $gameCategories as category}
+      <option value={category.id} key={category.name}
+        >{category.name}</option
+      >
+    {/each}
+  </select>
+  <button
+    id="changeRating"
+    on:click={(event) => {
+      event.preventDefault();
+      ratingSelect = !ratingSelect;
+      isLoading = true;
+      changeTopic();
+    }}>Sort by: {RatingChange[!ratingSelect]}</button
+  >
+  </div>
+<div id="TopGamesPage">
+  <h1>Welcome to Games!</h1>
+  </div>
+  <div id="TopGamesPageBtn">
+    <a href="/Games/Search"><button>Click Here To Search For A Title</button></a>
+    </div>
   <main>
-    <label
-      >Search by Category:
-      <select
-        bind:value={currentId}
-        on:change={(event) => {
-          event.preventDefault();
-          topic = event.target.value.toLowerCase();
-          isLoading = true;
-          changeTopic();
-        }}
-      >
-        <option value="" disabled selected>Select your option</option>
-        {#each $gameCategories as category}
-          <option value={category.id} key={category.name}
-            >{category.name}</option
-          >
-        {/each}
-      </select>
-      | Sort by:
-      <button
-        id="changeRating"
-        on:click={(event) => {
-          event.preventDefault();
-          ratingSelect = !ratingSelect;
-          isLoading = true;
-          changeTopic();
-        }}>{RatingChange[!ratingSelect]}</button
-      >
+   
+      <div id="Ptag">
       <p>
         Currently showing games sorted by {RatingChange[ratingSelect]}
       </p>
+      </div>
       <div id="grid-container">
         {#each $gamesSortedData as game}
           <div class="GamesCard" id="grid-item">
@@ -105,7 +112,6 @@
         {/each}
         <br />
       </div>
-    </label>
   </main>
 {:else}
   <div>
@@ -114,4 +120,29 @@
 {/if}
 
 <style>
+  #TopGamesPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  #TopGamesPageBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  #Ptag{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  #changeRating{
+    margin: 20px;
+  }
+
+
 </style>
