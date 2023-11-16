@@ -89,7 +89,7 @@ async function getDocument(coll, id) {
   <h3 class="profile-user">Username</h3>
   <h3 >{user}</h3>
   <h3 class="profile-user">Bio</h3>
-  <h3 >{bio || ""}</h3>
+  <h3 class="profile-bio" >{bio || ""}</h3>
   <button class="update-profile-btn"
   on:click={(event) => {
     event.preventDefault();
@@ -98,6 +98,7 @@ async function getDocument(coll, id) {
   }}>Update Profile</button
 >
 </div>
+<div class="profile-reviews-container">
 <h3>Your reviews:</h3>
 <p>Click on a review to view game</p>
 
@@ -120,6 +121,7 @@ async function getDocument(coll, id) {
     </a>
     {/each}
   </div>
+</div>
 
 {:else if isLoading}
   <p>Loading...</p>
@@ -245,10 +247,14 @@ async function getDocument(coll, id) {
   box-shadow: 0px 5px 10px 5px black;
 }
 
-.profile-user, .profile-bio {
+.profile-user {
   font-size: 30px;
   color: orange;
-  margin: 0;
+  margin: 10px;
+}
+
+.profile-bio {
+  margin: 10px;
 }
 
 .update-profile-btn {
@@ -261,4 +267,13 @@ async function getDocument(coll, id) {
   align-self: center;
 }
 
+.profile-reviews-container {
+  margin-top: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid rgba(0, 0, 0, 0.229);
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.67);
+}
 </style>
