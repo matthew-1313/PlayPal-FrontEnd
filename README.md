@@ -35,15 +35,18 @@ This project was created to connect video gamers with other video gamers with si
 The app allows a user to review a game. Upon submitting a review, the app will suggest other app users with a similar rating to connect with. Once connected, the app allows the user to use the in-app messaging system to directly communicate with the other user. Additionally, the app contains a calendar feature that allows users to make meeting requests and coordinate playing/meet up schedules. 
 
 ### Technologies/Frameworks
-The app was created using Svelte for the front end, Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
+The app was created using the following frameworks and plugins: Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
 
-Svelte (front end framework)
-Moment (package time)
-Axios (routing)
-TalkJS (plugin)
-Calender (plugin)
-Firebase (back end framework)
-Game API
+<ul>
+<li>Axios</li>
+<li>Calendar by Valdmir Kurko</li>
+<li>Firebase</li>
+<li>Moment</li>
+<li>Svelte</li>
+<li>TalkJS</li>
+</ul>
+
+The game information used in the application is supplied by RAWG.io.
 
 
 ### Challenges
@@ -76,7 +79,6 @@ Once cloned, navigate to the "Front End" folder inside the project folder and  i
 
 ```
 npm install
-
 ```
 
 This should update your local repo with all the dependencies needed to run the application.
@@ -192,24 +194,31 @@ The team would like to express their gratitude and thanks to the mentors and lea
 ## Links
 <table>
 <tr>
-<td>Svelte</td>
-<td>https://svelte.dev/</td>
+<td>Axios</td>
+<td>[https://axios-http.com/]</td>
+</tr>
+<td>Calender</td>
+<td>[https://github.com/vkurko/calendar]</td>
 </tr>
 <tr>
 <td>Firebase</td>
-<td>https://firebase.google.com/</td>
+<td>[https://firebase.google.com/]</td>
 </tr>
 <tr>
-<td>RAWG API</td>
-<td>https://rawg.io</td>
+<td>Moment</td>
+<td>[https://momentjs.com]</td>
 </tr>
 <tr>
-<td>Calender</td>
-<td>https://github.com/vkurko/calendar</td>
+<td>RAWG.io</td>
+<td>[https://rawg.io]</td>
+</tr>
+<tr>
+<td>Svelte</td>
+<td>[https://svelte.dev/]</td>
 </tr>
 <tr>
 <td>TalkJS</td>
-<td>https://talkjs.com/</td>
+<td>[https://talkjs.com/]</td>
 </tr>
 </table>
 
