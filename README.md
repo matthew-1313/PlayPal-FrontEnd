@@ -2,7 +2,7 @@
 
 ## Project Background
 
-This application was created with the objective of using new technologies and frameworks that we, the team, were not exposed to in the Northcoders bootcamp. We were given 8 days to design and develop a working application using the new technologies/framework we selected. 
+This application was created with the objective of using new technologies and frameworks that we, the team, were not exposed to in the Northcoders bootcamp. We were given 8 days to design and develop a working application using the new technologies/framework that we selected. 
 
 ------
 ## Table Of Contents
@@ -15,6 +15,8 @@ This application was created with the objective of using new technologies and fr
  - [Future considerations](#future-considerations)
 
 [How to install & run the project](#how-to-install-and-run-the-project)
+
+[How to use Playpal](#how-to-navigate-playpal)
  - [Home](#home-page)
  - [Search Game](#search-game)
  - [Profile](#profile)
@@ -22,8 +24,6 @@ This application was created with the objective of using new technologies and fr
  - [Games](#games)
  - [Friends](#friends)
  - [Messages](#messages)
-
-[How to use Playpal](#how-to-navigate-playpal)
 
 [Credits](#credits)
  - [Acknowledgements](#acknowledgements)
@@ -36,16 +36,16 @@ This application was created with the objective of using new technologies and fr
 ## Project Description
 
 ### Purpose
-This project was created to connect video gamers with other video gamers with similar gaming interests.
+Playpal was created to connect video gamers with other video gamers with similar gaming interests while also being a gaming information resource.
 
 ### Features
-The app allows a user to review a game. Upon submitting a review, the app will suggest other app users with a similar rating to connect with. Once connected, the app allows the user to use the in-app messaging system to directly communicate with the other user. Additionally, the app contains a calendar feature that allows users to make meeting requests and coordinate playing/meet up schedules. 
+Playpal allows a user to review a game. Upon submitting a review, Playpal will suggest other users with a similar rating to connect with. Once connected, Playpal allows the user to use the in-app messaging system to directly communicate with the other user. Additionally, Playpal contains a calendar feature that allows users to make meeting requests and coordinate playing/meet up schedules. 
 
 ### Technologies/Frameworks
-The app was created using the following frameworks and plugins: Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
+Playpal was created using the following frameworks and plugins: Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
 
 <ul>
-<li>Axios</li>
+<li>Axios[^1]</li>
 <li>Calendar by Valdmir Kurko</li>
 <li>Firebase</li>
 <li>Moment</li>
@@ -53,13 +53,14 @@ The app was created using the following frameworks and plugins: Firebase for a n
 <li>TalkJS</li>
 </ul>
 
-The game information used in the application is supplied by RAWG.io.
+The game information used in Playpal is supplied by RAWG.io.
+
+More information on the above can be found in our [Links](#links).
 
 
 ### Challenges
-We faced a number of challenges during the course of the is project. 
+We faced a number of challenges during the course of this project. 
 <ul>
-<li>Coding pairs - getting used to work together while swapping our coding pairs</li>
 <li>Github version control - first time working in a group with more than 2 people and figuring out how to create application features while minimising the number of merging conflicts.</li>
 <li>Non-relational database implementation - we learned to use PostgreSQL in the bootcamp and initially approached Firebase in a similar manner. We quickly learned that this is not the intended utilisation of the tech and had to change our implementation of it.</li>
 <li>Svelte - Having a React background from the bootcamp, we had to re-train ourselves to utilise the strengths of Svelte. We had to adjust our application's file structure, the utilisation of Svelte stores and how to trigger page/component re-renders</li>
@@ -136,7 +137,7 @@ _TalkJS_
 ```
 npm install talkjs --save
 ```
-With the dependencies installed, you are now ready to create the .ENV file for your local application. Place this file in the first level and copy the below text block into it. This will allow you to connect to the Firebase database for the application.
+With the dependencies installed, you are now ready to create the .env file for your local application. Place this file in the first level of the Front End folder and copy the below text block into it. This will allow you to connect to the Firebase database and API for Playpal.
 
 ```
 VITE_APIKEY=AIzaSyCJqSOlwwuLPMnvuJ9edAEXlE_bJlfWWbQ
@@ -164,7 +165,7 @@ For a new user, the user will select Sign Up. On this screen, the user will need
 For a returning user, the user will select Sign In. On this screen the user will need to provide their username and password credentials and click on the Click Here to Proceed button.  From here, Playpal will navigate the user to the Home page.
 
 ### Home page
-On the Home page the user will have the ability to navigate across the entire site using the navigation bar.  Additionaly the user can search for a game title by clicking on the "Click hear to Search for any title" button. Below this is a List of Recommended Games with game title cards showing the following information:
+On the Home page the user will have the ability to navigate across the entire site using the navigation bar.  Additionally the user can search for a game title by clicking on the "Click hear to Search for any title" button. Below this is a List of Recommended Games with game title cards showing the following information:
 
 <ul>
 <li>Game name</li>
@@ -178,7 +179,7 @@ Each game card is clickable and will take the user to a page with more informati
 
 ### Search Game
 
-To look for a particular game, the user can enter the game title into the search bar and click Submit. Playpal will return a list of games related to the title searched. The user can (as on the home page) click the game card to be taken to a page with more information about the game.
+To look for a particular game, the user can enter the game title into the search bar and click "Submit". Playpal will return a list of games related to the title searched. The user can (as on the home page) click the game card to be taken to a page with more information about the game.
 
 ### Profile
 
