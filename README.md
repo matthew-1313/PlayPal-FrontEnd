@@ -150,8 +150,54 @@ Follow the prompts to view the application in a web browser.
 
 ## How to navigate Playpal
 ### Sign up / Log in
+When first accessing Playpal, the user will be asked to Sign In or Sign Up via the buttons provided.
 
+For a new user, the user will select Sign Up. On this screen, the user will need to provide a username and password.  Both of these have validation checks. Upon completion, the user will click on "Click Here to Proceed". Playpal will then redirect the user to the sign in page and the process will be the same as an existing user.
 
+For a returning user, the user will select Sign In. On this screen the user will need to provide their username and password credentials and click on the Click Here to Proceed button.  From here, Playpal will navigate the user to the Home page.
+
+### Home page
+On the Home page the user will have the ability to navigate across the entire site using the navigation bar.  Additionaly the user can search for a game title by clicking on the "Click hear to Search for any title" button. Below this is a List of Recommended Games with game title cards showing the following information:
+
+<ul>
+<li>Game name</li>
+<li>Game image</li>
+<li>Game genre(s)</li>
+<li>Game metacritic rating</li>
+<li>Game playpal rating</li>
+</ul>
+
+Each game card is clickable and will take the user to a page with more information and reviews for that game.
+
+### Search Game
+
+To look for a particular game, the user can enter the game title into the search bar and click Submit. Playpal will return a list of games related to the title searched. The user can (as on the home page) click the game card to be taken to a page with more information about the game.
+
+### Profile
+
+This page will display the user's avatar, username and bio. There is an Update Profile section where the user can update their avatar (by supplying a link) and bio text. Below this is a section that will display all the reviews the user has submitted on to Playpal. Each of these review cards is clickable and will take the user to the specific game title page.
+
+### Calendar
+This page contains a calendar showing all the meeting/events for a user.  The user is able to add new events by clicking the "Add Event". The user will then be prompted to enter the following:
+
+<ul>
+<li>Start time</li>
+<li>End time</li>
+<li>Date</li>
+<li>Game Title</li>
+<li>Friend Name (optional)</li>
+</ul>
+
+Please note that if a Friend Name (other user's username) is provided, the event will show up on both the user's and the friend's calendars.
+
+### Games
+On this page, the user can browse game titles. To do this, a user can search for a particular game title, sort the showing game titles by using the drop down menu.
+
+### Friends
+On this page, the user will see a section listing all their current Friends (other Playpal users that the user has connected with) and another below listing all the Playpal users.  From this page, a user can add other users as friends, message friends and create group chats with multiple friends.
+
+### Messages
+On this page, the user can message their friends and any chat groups that the user is apart of.  The functionality is similar to most of chat applications like Whatsapp.  In addition to realtime chats, a user can send attachments, voice messages and react to messages via and emojis.
 
 ## Credits
 ### Acknowledgements
@@ -162,11 +208,13 @@ The team would like to express their gratitude and thanks to the mentors and lea
 <li>Alice Yang</li>
 <li>Mitch Wyatt</li>
 <li>Rayhann Ugharadar</li>
-<li>Kev Morel - Section Lead</li>
 <li>Niamh Smith</li>
-<li>Jim Stevenson</li>
+<li>Poonam Rajput</li>
+<li>Kev Morel - Section Lead</li>
 <li>David Bartlet - Cohort Lead</li>
+<li>Liam Duncan - Cohort Lead</li>
 <li>Rose Mullan - Cohort Lead</li>
+<li>Jim Stevenson - Cohort Lead</li>
 </ul>
 
 ### Project Team Members
