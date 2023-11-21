@@ -15,6 +15,13 @@ This application was created with the objective of using new technologies and fr
  - [Future considerations](#future-considerations)
 
 [How to install & run the project](#how-to-install-and-run-the-project)
+ - [Home](#home-page)
+ - [Search Game](#search-game)
+ - [Profile](#profile)
+ - [Calendar](#calendar)
+ - [Games](#games)
+ - [Friends](#friends)
+ - [Messages](#messages)
 
 [How to use Playpal](#how-to-navigate-playpal)
 
@@ -275,10 +282,4 @@ The team would like to express their gratitude and thanks to the mentors and lea
 
 
 
-5. How to Use the Project
-
-Provide instructions and examples so users/contributors can use the project. This will make it easy for them in case they encounter a problem – they will always have a place to reference what is expected.
-
-You can also make use of visual aids by including materials like screenshots to show examples of the running project and also the structure and design principles used in your project.
-
-Also if your project will require authentication like passwords or usernames, this is a good section to include the credentials.
+Readme version 1.0
