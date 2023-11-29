@@ -1,53 +1,286 @@
-# PlayPal-FrontEnd
+# PLAYPAL - A Gamer Review & Connection App
 
-This is the start of our FE repo for Playpal
+## Project Background
+
+This application was created with the objective of using new technologies and frameworks that we, the team, were not exposed to in the Northcoders bootcamp. We were given 8 days to design and develop a working application using the new technologies/framework that we selected. 
+
+------
+## Table Of Contents
+
+[Project Description](#project-description)
+ - [Purpose](#purpose)
+ - [Features](#features)
+ - [Technologies/Frameworks](#technologiesframeworks)
+ - [Challenges](#challenges)
+ - [Future considerations](#future-considerations)
+
+[How to install & run the project](#how-to-install-and-run-the-project)
+
+[How to use Playpal](#how-to-navigate-playpal)
+ - [Home](#home-page)
+ - [Search Game](#search-game)
+ - [Profile](#profile)
+ - [Calendar](#calendar)
+ - [Games](#games)
+ - [Friends](#friends)
+ - [Messages](#messages)
+
+[Credits](#credits)
+ - [Acknowledgements](#acknowledgements)
+ - [The Team](#project-team-members)
+
+[Links](#links)
 
 
----
-What to Include in your README
-1. Project's Title
+------
+## Project Description
 
-This is the name of the project. It describes the whole project in one sentence, and helps people understand what the main goal and aim of the project is.
-2. Project Description
+### Purpose
+Playpal was created to connect video gamers with other video gamers with similar gaming interests while also being a gaming information resource.
 
-This is an important component of your project that many new developers often overlook.
+### Features
+Playpal allows a user to review a game. Upon submitting a review, Playpal will suggest other users with a similar rating to connect with. Once connected, Playpal allows the user to use the in-app messaging system to directly communicate with the other user. Additionally, Playpal contains a calendar feature that allows users to make meeting requests and coordinate playing/meet up schedules. 
 
-Your description is an extremely important aspect of your project. A well-crafted description allows you to show off your work to other developers as well as potential employers.
+### Technologies/Frameworks
+Playpal was created using the following frameworks and plugins: Firebase for a non-relational back end solution and RAWG API [https://rawg.io/] for the gaming information.  TalkJS [https://talkjs.com/] was used for the messaging component and Calendar developed by Vladmir Kurko [https://github.com/vkurko/calendar].
 
-The quality of a README description often differentiates a good project from a bad project. A good one takes advantage of the opportunity to explain and showcase:
+<ul>
+<li>Axios[^1]</li>
+<li>Calendar by Valdmir Kurko</li>
+<li>Firebase</li>
+<li>Moment</li>
+<li>Svelte</li>
+<li>TalkJS</li>
+</ul>
 
-    What your application does,
-    Why you used the technologies you used,
-    Some of the challenges you faced and features you hope to implement in the future.
+The game information used in Playpal is supplied by RAWG.io.
 
-3. Table of Contents (Optional)
+More information on the above can be found in our [Links](#links).
 
-If your README is very long, you might want to add a table of contents to make it easy for users to navigate to different sections easily. It will make it easier for readers to move around the project with ease.
-4. How to Install and Run the Project
 
-If you are working on a project that a user needs to install or run locally in a machine like a "POS", you should include the steps required to install your project and also the required dependencies if any.
+### Challenges
+We faced a number of challenges during the course of this project. 
+<ul>
+<li>Github version control - first time working in a group with more than 2 people and figuring out how to create application features while minimising the number of merging conflicts.</li>
+<li>Non-relational database implementation - we learned to use PostgreSQL in the bootcamp and initially approached Firebase in a similar manner. We quickly learned that this is not the intended utilisation of the tech and had to change our implementation of it.</li>
+<li>Svelte - Having a React background from the bootcamp, we had to re-train ourselves to utilise the strengths of Svelte. We had to adjust our application's file structure, the utilisation of Svelte stores and how to trigger page/component re-renders</li>
+<li>User authentication - While Firebase has this capability we decided not to incorporate it into our application as it is email-based - a feature our application does not use. Consequently, we encountered issues in maintaining and accessing a user info store across our application.</li>
+<li>Documentation - we encountered the value of having well written documentation that allowed us to incorporate features quickly with a solid understanding of how it works.</li>
+</ul>
 
-Provide a step-by-step description of how to get the development environment set and running.
-5. How to Use the Project
+### Future Considerations
+Here are some features for future considerations:
+<ul>
+<li> Incorporate AI for game recommendations</li>
+<li> Adding a user's game type interests to their profile to allow for a more sophisticated matching algorithm</li>
+</ul>
 
-Provide instructions and examples so users/contributors can use the project. This will make it easy for them in case they encounter a problem – they will always have a place to reference what is expected.
+## How to Install and Run the Project
 
-You can also make use of visual aids by including materials like screenshots to show examples of the running project and also the structure and design principles used in your project.
+To run tour application locally, you will need to clone our repo:
 
-Also if your project will require authentication like passwords or usernames, this is a good section to include the credentials.
-6. Include Credits
+```
+git clone https://github.com/matthew-1313/PlayPal-FrontEnd.git
+```
+Once cloned, navigate to the "Front End" folder inside the project folder and  install the necessary dependencies:
 
-If you worked on the project as a team or an organization, list your collaborators/team members. You should also include links to their GitHub profiles and social media too.
 
-Also, if you followed tutorials or referenced a certain material that might help the user to build that particular project, include links to those here as well.
+```
+npm install
+```
 
-This is just a way to show your appreciation and also to help others get a first hand copy of the project.
-7. Add a License
+This should update your local repo with all the dependencies needed to run the application.
 
-For most README files, this is usually considered the last part. It lets other developers know what they can and cannot do with your project.
+A possible error that you may encounter a peer dependency error.  To solve this enter the following:
 
-We have different types of licenses depending on the kind of project you are working on. Depending on the one you will choose it will determine the contributions your project gets.
+```
+npm install --legacy-peers-deps
+```
 
-The most common one is the GPL License which allows other to make modification to your code and use it for commercial purposes. If you need help choosing a license, use check out this link: https://choosealicense.com/
+You are now ready to move onto creating an .ENV file.  In case you are still missing dependencies, we have listed the individual ones below:
 
-Up to this point what we have covered are the minimum requirements for a good README. But you might also want to consider adding the following sections to make it more eye catching and interactive.
+_Axios_
+```
+npm i axios
+```
+
+_Calendar_
+```
+npm install --save-dev @event-calendar/core
+npm install --save-dev @event-calendar/time-grid
+npm install --save-dev @event-calendar/day-grid
+```
+
+_Check Password Strength_
+```
+npm i check-password-strength --save
+```
+
+_Firebase_
+```
+npm install --save firebase
+```
+
+_Moment_
+```
+npm install moment --save
+```
+
+_Svelte_
+```
+npm i -D @sveltejs/adapter-node
+npm install --save svelte-navigator
+npm install svelte-spa-router
+```
+
+_TalkJS_
+```
+npm install talkjs --save
+```
+With the dependencies installed, you are now ready to create the .env file for your local application. Place this file in the first level of the Front End folder and copy the below text block into it. This will allow you to connect to the Firebase database and API for Playpal.
+
+```
+VITE_APIKEY=AIzaSyCJqSOlwwuLPMnvuJ9edAEXlE_bJlfWWbQ
+VITE_AUTH_DOMAIN=playpal-723dd.firebaseapp.com
+VITE_PROJECT_ID=playpal-723dd
+VITE_STORAGE_BUCKET=playpal-723dd.appspot.com
+VITE_MESSAGING_SENDER_ID=434887247433
+VITE_APP_ID=1:434887247433:web:636503bb15e5009e51e198
+```
+
+Now to start the application, confirm that you have navigated in your terminal to the Front End folder. There you will enter the following prompt
+
+```
+npm run dev
+```
+
+Follow the prompts to view the application in a web browser.
+
+## How to navigate Playpal
+### Sign up / Log in
+When first accessing Playpal, the user will be asked to Sign In or Sign Up via the buttons provided.
+
+For a new user, the user will select Sign Up. On this screen, the user will need to provide a username and password.  Both of these have validation checks. Upon completion, the user will click on "Click Here to Proceed". Playpal will then redirect the user to the sign in page and the process will be the same as an existing user.
+
+For a returning user, the user will select Sign In. On this screen the user will need to provide their username and password credentials and click on the Click Here to Proceed button.  From here, Playpal will navigate the user to the Home page.
+
+### Home page
+On the Home page the user will have the ability to navigate across the entire site using the navigation bar.  Additionally the user can search for a game title by clicking on the "Click hear to Search for any title" button. Below this is a List of Recommended Games with game title cards showing the following information:
+
+<ul>
+<li>Game name</li>
+<li>Game image</li>
+<li>Game genre(s)</li>
+<li>Game metacritic rating</li>
+<li>Game playpal rating</li>
+</ul>
+
+Each game card is clickable and will take the user to a page with more information and reviews for that game.
+
+### Search Game
+
+To look for a particular game, the user can enter the game title into the search bar and click "Submit". Playpal will return a list of games related to the title searched. The user can (as on the home page) click the game card to be taken to a page with more information about the game.
+
+### Profile
+
+This page will display the user's avatar, username and bio. There is an Update Profile section where the user can update their avatar (by supplying a link) and bio text. Below this is a section that will display all the reviews the user has submitted on to Playpal. Each of these review cards is clickable and will take the user to the specific game title page.
+
+### Calendar
+This page contains a calendar showing all the meeting/events for a user.  The user is able to add new events by clicking the "Add Event". The user will then be prompted to enter the following:
+
+<ul>
+<li>Start time</li>
+<li>End time</li>
+<li>Date</li>
+<li>Game Title</li>
+<li>Friend Name (optional)</li>
+</ul>
+
+Please note that if a Friend Name (other user's username) is provided, the event will show up on both the user's and the friend's calendars.
+
+### Games
+On this page, the user can browse game titles. To do this, a user can search for a particular game title, sort the showing game titles by using the drop down menu.
+
+### Friends
+On this page, the user will see a section listing all their current Friends (other Playpal users that the user has connected with) and another below listing all the Playpal users.  From this page, a user can add other users as friends, message friends and create group chats with multiple friends.
+
+### Messages
+On this page, the user can message their friends and any chat groups that the user is apart of.  The functionality is similar to most of chat applications like Whatsapp.  In addition to realtime chats, a user can send attachments, voice messages and react to messages via and emojis.
+
+## Credits
+### Acknowledgements
+The team would like to express their gratitude and thanks to the mentors and leads at Northcoders whom provided their expertise and guidance over the course of this project.  
+
+#### Northcoders Mentors (August 2023)
+<ul>
+<li>Alice Yang</li>
+<li>Mitch Wyatt</li>
+<li>Rayhann Ugharadar</li>
+<li>Niamh Smith</li>
+<li>Poonam Rajput</li>
+<li>Kev Morel - Section Lead</li>
+<li>David Bartlet - Cohort Lead</li>
+<li>Liam Duncan - Cohort Lead</li>
+<li>Rose Mullan - Cohort Lead</li>
+<li>Jim Stevenson - Cohort Lead</li>
+</ul>
+
+### Project Team Members
+<table>
+<tr>
+<td>Sam Woodall</td>
+<td>https://github.com/swoody2527</td>
+</tr>
+<tr>
+<td>Daniel Wong</td>
+<td>https://github.com/s08Reild</td>
+</tr>
+<tr>
+<td>Daniel Mohammadian</td>
+<td>https://github.com/Danmoham</td>
+</tr>
+<tr>
+<td>Matthew Mathieson</td>
+<td>https://github.com/matthew-131</td>
+</tr>
+<tr>
+<td>Emory Brock </td>
+<td>https://github.com/EmoryBrock</td>
+</tr>
+</table>
+
+
+## Links
+<table>
+<tr>
+<td>Axios</td>
+<td>https://axios-http.com/</td>
+</tr>
+<td>Calender</td>
+<td>https://github.com/vkurko/calendar</td>
+</tr>
+<tr>
+<td>Firebase</td>
+<td>https://firebase.google.com/</td>
+</tr>
+<tr>
+<td>Moment</td>
+<td>https://momentjs.com</td>
+</tr>
+<tr>
+<td>RAWG.io</td>
+<td>https://rawg.io</td>
+</tr>
+<tr>
+<td>Svelte</td>
+<td>https://svelte.dev/</td>
+</tr>
+<tr>
+<td>TalkJS</td>
+<td>https://talkjs.com/</td>
+</tr>
+</table>
+
+
+
+Readme version 1.0
