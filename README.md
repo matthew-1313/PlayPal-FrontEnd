@@ -233,7 +233,7 @@ The team would like to express their gratitude and thanks to the mentors and lea
 </tr>
 <tr>
 <td>Daniel Wong</td>
-<td>https://github.com/s08Reild</td>
+<td>https://github.com/08Reild</td>
 </tr>
 <tr>
 <td>Daniel Mohammadian</td>
